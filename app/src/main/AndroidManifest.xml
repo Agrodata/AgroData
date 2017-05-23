@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.gretchen.agrodata">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.Welcome"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LogIn"
+            android:parentActivityName=".activities.Welcome"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.Welcome" />
+        </activity>
+        <activity
+            android:name=".activities.SignUp"
+            android:parentActivityName=".activities.Welcome"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.Welcome" />
+        </activity>
+        <activity
+            android:name=".activities.MainPage"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.UserProfile"
+            android:parentActivityName=".activities.MainPage"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainPage" />
+        </activity>
+        <activity android:name=".activities.AddProduct" />
+        <activity android:name=".activities.EditUser"
+            android:parentActivityName=".activities.UserProfile"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.UserProfile" /></activity>
+        <activity android:name=".activities.ChangePassword"
+            android:parentActivityName=".activities.UserProfile"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.UserProfile" /></activity>
+        <activity android:name=".activities.ProductList"
+            android:parentActivityName=".activities.MainPage"
+            android:screenOrientation="portrait">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".activities.MainPage" /></activity>
+        <activity android:name=".activities.ProductProfile" />
+        <activity android:name=".activities.EditProduct"></activity>
+    </application>
+
+</manifest>

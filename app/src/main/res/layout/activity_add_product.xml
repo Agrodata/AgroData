@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.gretchen.agrodata.activities.AddProduct">
+
+        <EditText
+            android:id="@+id/APP_product_name_EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name of product"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            android:layout_marginTop="31dp"
+            app:layout_constraintTop_toBottomOf="@+id/APP_add_product_TextView" />
+
+        <Spinner
+            android:id="@+id/APP_product_type_Spinner"
+            android:layout_width="217dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="15dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/APP_product_name_EditText" />
+
+        <EditText
+            android:id="@+id/APP_price_text_EditText"
+            android:layout_width="157dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Price"
+            android:inputType="numberDecimal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/APP_product_type_Spinner"
+            tools:layout_editor_absoluteY="242dp" />
+
+        <EditText
+            android:id="@+id/APP_amount_text_EditText"
+            android:layout_width="157dp"
+            android:layout_height="47dp"
+            android:ems="10"
+            android:hint="Amount"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/APP_price_text_EditText"
+            android:layout_marginLeft="85dp"
+            android:layout_marginStart="85dp" />
+
+        <TextView
+            android:id="@+id/APP_add_product_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Add Product"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="76dp"
+            app:layout_constraintHorizontal_bias="0.502" />
+
+        <Button
+            android:id="@+id/APP_add_product_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="39dp"
+            android:onClick="addProduct"
+            android:text="Add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/APP_amount_text_EditText"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/APP_must_fill_all_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:text="All info must be provided."
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/APP_amount_Spinner"
+            android:layout_width="125dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/APP_amount_text_EditText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/APP_amount_text_EditText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/APP_amount_text_EditText" />
+
+        <Spinner
+            android:id="@+id/APP_price_Spinner"
+            android:layout_width="125dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/APP_price_text_EditText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/APP_price_text_EditText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/APP_price_text_EditText"
+            app:layout_constraintVertical_bias="0.666"
+            tools:layout_editor_absoluteY="233dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
