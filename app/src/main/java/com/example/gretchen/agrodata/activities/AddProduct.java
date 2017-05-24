@@ -73,6 +73,7 @@ public class AddProduct extends AppCompatActivity {
         EditText product_amount = (EditText)findViewById(R.id.APP_amount_text_EditText);
         Spinner product_amount1 = (Spinner) findViewById(R.id.APP_amount_Spinner);
 
+        //Check that all the texfields are filled
         if(product_name.getText().toString().isEmpty()||product_type.getSelectedItem().toString().isEmpty()
                 ||product_amount.getText().toString().isEmpty()||product_price.getText().toString().isEmpty())
         {
@@ -80,6 +81,7 @@ public class AddProduct extends AppCompatActivity {
             warning.setVisibility(View.VISIBLE);
 
         }
+        //Add the product
         else
         {
 
@@ -96,6 +98,7 @@ public class AddProduct extends AppCompatActivity {
             //Get user ID
             SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
 
+            //Get user info
             User user = urepo.getUserById(userInfo.getInt(getString(R.string.id_key), 0));
 
 
@@ -110,16 +113,16 @@ public class AddProduct extends AppCompatActivity {
             product.setSellerID(user.getId());
 
             //Insert product in table
-            int product_ID=repo.insert(product);
+            String product_ID=repo.insert(product);
 
             //Add product info for inventory
-            user.addToInventory(product.getType().substring(0,2).toUpperCase()+product_ID);
+            user.addToInventory(product_ID);
+
+            Product p = repo.getProductByUniqueId(product_ID);
 
             urepo.update(user);
 
-
-            Intent intent = new Intent(this, MainPage.class);
-            startActivity(intent);
+            //Finish this activity and go back to previous activity
             finish();
         }
     }

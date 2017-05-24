@@ -49,7 +49,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="8dp"
         android:onClick="logIn"
-        android:text="@string/log_in"
+        android:text="Log In"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WP_have_account_TextView" />
@@ -61,7 +61,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:onClick="signUp"
-        android:text="@string/sign_up"
+        android:text="Sign Up"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

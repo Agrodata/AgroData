@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.gretchen.agrodata.R;
+import com.example.gretchen.agrodata.data.repo.UserRepo;
 
 public class Welcome extends AppCompatActivity {
 
@@ -35,11 +36,11 @@ public class Welcome extends AppCompatActivity {
     {
         //Get info stored in shared preference
         SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
-        //Gets user email and password, if no value is assigned to one of them then its value is null
-        String email = loginInfo.getString(getString(R.string.email_key),null);
-        String pass = loginInfo.getString(getString(R.string.pass_key),null);
-        //Check if any value is null. If not then user is logged in.
-        if(email!=null && pass!=null)
+        //Gets user id, if 0 then no user is not logged in
+        int id = loginInfo.getInt(getString(R.string.id_key),0);
+
+        //Check if id is 0. If not then user is logged in.
+        if(id!=0)
         {
             //Go to store page
             Intent goToMainPage = new Intent(this, MainPage.class);

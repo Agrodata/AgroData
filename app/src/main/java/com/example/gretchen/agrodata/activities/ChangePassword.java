@@ -32,27 +32,18 @@ public class ChangePassword extends AppCompatActivity {
 
         EditText password = (EditText) findViewById(R.id.CPP_new_password_EditText);
         EditText password2 = (EditText) findViewById(R.id.CPP_re_new_password_EditText);
-
+        //Check passwords are the same
         if(password.getText().toString().equals(password2.getText().toString()))
         {
             user.setPassword(password.getText().toString());
             repo.update(user);
 
-            //Get shared preference that holds login info
-            SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key),Context.MODE_PRIVATE);
-            //This is so shared preference can be edited.
-            SharedPreferences.Editor loginEditor = loginInfo.edit();
-            //Set users email value
-            loginEditor.putString(getString(R.string.pass_key), user.getPassword());
-
-            //Save changes
-            loginEditor.commit();
-
-
+            //Go to user profile activity
             Intent back = new Intent(this,UserProfile.class);
             startActivity(back);
             finish();
         }
+        //If passwords aren't the same give a warning
         else
         {
             TextView warning = (TextView) findViewById(R.id.CPP_warning_TextView);
@@ -61,6 +52,7 @@ public class ChangePassword extends AppCompatActivity {
 
 
     }
+    //Cancel changes and go back to user profile activity
     public  void cancelPasswordChange(View v)
     {
         Intent back = new Intent(this, UserProfile.class);

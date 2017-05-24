@@ -27,47 +27,47 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         setUserInfo();
     }
+    //Delete the user's account from the database
     public void deleteUser(View v)
     {
-
+        //Warning pop-up. Delete is not immediate, but requires a second confirmation.
         AlertDialog.Builder warning = new AlertDialog.Builder(UserProfile.this);
         warning.setMessage("Are you sure you want to delete account?")
+                //If yes user account is deleted
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         UserRepo repo = new UserRepo(UserProfile.this);
-                        //Get user ID
+                        //Gets current user's ID
                         SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key),
                                 Context.MODE_PRIVATE);
-
+                        //Gets the user from the database
                         User user = repo.getUserById(userInfo.getInt("UserID",0));
-
+                        //Gets product database for deleting the user's products from the store
                         StoreRepo srepo = new StoreRepo(UserProfile.this);
-
-                        String [] inventory = user.getInventory().split("_,_");
-
+                        //The user's inventory
+                        String [] inventory = user.getInventoryArray();
+                        //Deletes every product of the user from the store
                         for (int i=0; i<inventory.length;i++)
                         {
-                            Product product = srepo.getProductById(inventory[i]);
+                            Product product = srepo.getProductByUniqueId(inventory[i]);
                             srepo.delete(product.getID(),product.getType());
                         }
-
+                        //Delete user
                         repo.delete(user.getId());
 
-                        //This is so shared preference can be edited.
+                        //User is no longer logged in
                         SharedPreferences.Editor loginEditor = userInfo.edit();
-                        //Set users email value
-                        loginEditor.putString(getString(R.string.email_key), null);
-                        //Set users password value
-                        loginEditor.putString(getString(R.string.pass_key),null);
                         //Set users id value
                         loginEditor.putInt(getString(R.string.id_key),0);
                         //Save changes
                         loginEditor.commit();
+                        //Go back to welcome page
                         Intent logout = new Intent(UserProfile.this, Welcome.class);
                         startActivity(logout);
                         finish();
                     }
                 })
+                //If cancel then do nothing
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -81,8 +81,10 @@ public class UserProfile extends AppCompatActivity {
 
 
     }
+    //Shows user info in the activity
     private void setUserInfo()
     {
+        //TextView's of the activity
         TextView name = (TextView) findViewById(R.id.UPP_profile_name_EditText);
         TextView email = (TextView) findViewById(R.id.UPP_profile_email_EditText) ;
         TextView phone  = (TextView) findViewById(R.id.UPP_profile_phone_EditText);
@@ -101,17 +103,19 @@ public class UserProfile extends AppCompatActivity {
         UserRepo repo = new UserRepo(this);
         user = repo.getUserById(userId);
 
+        //Set TextView text with user info
         name.setText(user.getName());
         email.setText(user.getEmail());
         phone.setText(user.getPhone());
 
-
+        //Buttons from the activity
         Button addProduct = (Button) findViewById(R.id.UPP_add_product_button);
         Button editAccount = (Button) findViewById(R.id.UPP_edit_account_button);
         Button changePass = (Button) findViewById(R.id.UPP_change_password_button);
         Button viewInv = (Button) findViewById(R.id.UPP_check_inventory_button);
         Button deleteAccount = (Button) findViewById(R.id.UPP_delete_account_button);
 
+        //If logged in user is viewing their own account show these options
         if(userInfo.getInt(getString(R.string.id_key),0)==user.getId())
         {
             addProduct.setVisibility(View.VISIBLE);
@@ -120,7 +124,7 @@ public class UserProfile extends AppCompatActivity {
             viewInv.setVisibility(View.VISIBLE);
             deleteAccount.setVisibility(View.VISIBLE);
         }
-        //If not the current use
+        //If not the current user's account then don't show editong options
         else
         {
             addProduct.setVisibility(View.INVISIBLE);
@@ -131,28 +135,32 @@ public class UserProfile extends AppCompatActivity {
         }
 
     }
+    //Got ot add product activity
     public void goToAddProductFromProfilePage(View v)
     {
         Intent intent = new Intent(this, AddProduct.class);
         startActivity(intent);
 
     }
+    //Go to edit user activity
     public void goToEditUserAccount(View v)
     {
         Intent editUser = new Intent(this,EditUser.class);
         startActivity(editUser);
     }
+    //Go to change password activity
     public void goToChangePassword(View v)
     {
         Intent changePassword= new Intent(this,ChangePassword.class);
         startActivity(changePassword);
     }
+    //Go to view inventory list
     public void goToInventory(View v)
     {
         Intent inventory = new Intent(this,ProductList.class);
 
         //This string hold the user inventory
-        inventory.putExtra(getString(R.string.user_inventory),user.getInventory());
+        inventory.putExtra(getString(R.string.user_inventory),user.getInventoryArray());
         //This tells the list that should be displayed is the inventory
         inventory.putExtra(getString(R.string.product_type),getString(R.string.user_inventory));
 

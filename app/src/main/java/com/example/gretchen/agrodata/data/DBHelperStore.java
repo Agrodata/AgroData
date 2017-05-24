@@ -16,7 +16,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "products.db";
@@ -27,6 +27,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
 
     private static final String TAG = DBHelperStore.class.getSimpleName().toString();
 
+    //Creates tables for all the products
     @Override
     public void onCreate(SQLiteDatabase db) {
         //All necessary tables you like to create will create here
@@ -38,7 +39,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_FRUIT = "CREATE TABLE " + "Fruit"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
@@ -46,7 +48,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_DAIRY = "CREATE TABLE " + "Dairy"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
@@ -54,7 +57,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_GRAIN = "CREATE TABLE " + "Grain"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
@@ -62,7 +66,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_VEGETABLES = "CREATE TABLE " + "Vegetable"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
@@ -70,7 +75,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_POULTRY = "CREATE TABLE " + "Poultry"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
@@ -78,7 +84,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_HAY = "CREATE TABLE " + "Hay"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
@@ -86,7 +93,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_type + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
-                + Product.KEY_seller + " TEXT )";
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
 
         db.execSQL(CREATE_TABLE_MEAT);
         db.execSQL(CREATE_TABLE_FRUIT);
@@ -101,15 +109,26 @@ public class DBHelperStore  extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        // If you need to add a new column
+//        if (newVersion > oldVersion) {
+//            db.execSQL("ALTER TABLE Meat ADD COLUMN uniqueID TEXT");
+//            db.execSQL("ALTER TABLE Fruit ADD COLUMN uniqueID TEXT");
+//            db.execSQL("ALTER TABLE Dairy ADD COLUMN uniqueID TEXT");
+//            db.execSQL("ALTER TABLE Hay ADD COLUMN uniqueID TEXT");
+//            db.execSQL("ALTER TABLE Poultry ADD COLUMN uniqueID TEXT");
+//
+//        }
         // Drop table if existed, all data will be gone!!!
-        db.execSQL("DROP TABLE IF EXISTS " + "Meat");
-        db.execSQL("DROP TABLE IF EXISTS " + "Fruit");
-        db.execSQL("DROP TABLE IF EXISTS " + "Dairy");
-        db.execSQL("DROP TABLE IF EXISTS " + "Hay");
-        db.execSQL("DROP TABLE IF EXISTS " + "Poultry");
-        db.execSQL("DROP TABLE IF EXISTS " + "Grain");
-        db.execSQL("DROP TABLE IF EXISTS " + "Vegetables");
-        onCreate(db);
+        if (newVersion > oldVersion) {
+            db.execSQL("DROP TABLE IF EXISTS " + "Meat");
+            db.execSQL("DROP TABLE IF EXISTS " + "Fruit");
+            db.execSQL("DROP TABLE IF EXISTS " + "Dairy");
+            db.execSQL("DROP TABLE IF EXISTS " + "Hay");
+            db.execSQL("DROP TABLE IF EXISTS " + "Poultry");
+            db.execSQL("DROP TABLE IF EXISTS " + "Grain");
+            db.execSQL("DROP TABLE IF EXISTS " + "Vegetables");
+            onCreate(db);
+        }
 
     }
 

@@ -23,8 +23,10 @@ public class EditUser extends AppCompatActivity {
         fillInUserInfo();
 
     }
+    //Place user info in the activity
     private void fillInUserInfo()
     {
+        //EdiText of the activity
         EditText userName = (EditText) findViewById(R.id.EUP_name_EditText);
         EditText userEmail = (EditText) findViewById(R.id.EUP_email_EditText);
         EditText userPhone = (EditText) findViewById(R.id.EUP_phone_EditText);
@@ -32,19 +34,23 @@ public class EditUser extends AppCompatActivity {
         //Get shared preference that holds logged user info
         SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
 
+        UserRepo repo = new UserRepo(this);
+        //Get current user
+        User user = repo.getUserById(userInfo.getInt(getString(R.string.id_key),0));
+
         //Set the edit texts to current info
-        userName.setText(userInfo.getString(getString(R.string.name_key),null));
-        userEmail.setText(userInfo.getString(getString(R.string.email_key),null));
-        userPhone.setText(userInfo.getString(getString(R.string.phone_key),null));
+        userName.setText(user.getName());
+        userEmail.setText(user.getEmail());
+        userPhone.setText(user.getPhone());
 
 
     }
+    //Cancel edit
     public void cancelEdit(View v)
     {
-        Intent back = new Intent(this, MainPage.class);
-        startActivity(back);
         finish();
     }
+    //Save changes to user info
     public void saveChanges(View v)
     {
         //Get shared preference that holds login info
@@ -54,30 +60,16 @@ public class EditUser extends AppCompatActivity {
 
         User user = repo.getUserById(userInfo.getInt(getString(R.string.id_key),0));
 
-
+        //Get edit text from activity
         EditText newName = (EditText) findViewById(R.id.EUP_name_EditText);
         EditText newEmail = (EditText) findViewById(R.id.EUP_email_EditText);
         EditText newPhone = (EditText) findViewById(R.id.EUP_phone_EditText);
-
+        //Set new user info
         user.setName(newName.getText().toString());
         user.setEmail(newEmail.getText().toString());
         user.setPhone(newPhone.getText().toString());
-
+        //Update info
         repo.update(user);
-
-        //Get shared preference that holds login info
-        SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key),Context.MODE_PRIVATE);
-        //This is so shared preference can be edited.
-        SharedPreferences.Editor loginEditor = loginInfo.edit();
-        //Set users email value
-        loginEditor.putString(getString(R.string.email_key), user.getEmail());
-
-        //Set users name value
-        loginEditor.putString(getString(R.string.name_key),user.getName());
-        //Save user phone value
-        loginEditor.putString(getString(R.string.phone_key),user.getPhone());
-        //Save changes
-        loginEditor.commit();
 
         Intent back = new Intent(this,MainPage.class);
         startActivity(back);

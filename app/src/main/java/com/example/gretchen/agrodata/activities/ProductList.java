@@ -64,69 +64,42 @@ public class ProductList extends Activity {
             }
 
         }
-        else if(productType.equals(getString(R.string.user_inventory)))
-        {
-            StoreRepo repo = new StoreRepo(this);
-
-            String inventoryStringList = listType.getString(getString(R.string.user_inventory));
-
-            String[] inventoryList = inventoryStringList.split("_,_");
-
-            ArrayList<HashMap<String, String>> products = repo.searchInventoryProducts(inventoryList);
-
-            if(!products.isEmpty())
-            {
-                ListAdapter adapter = new SimpleAdapter(this,products,R.layout.product_list_layout,
-                        new String[]{"id","name","amount","price"},
-                        new int[] {R.id.PLL_hidden_productId_TextView,R.id.PLL_name_given_TextView,R.id.PLL_amount_given_TextView,R.id.PLL_price_given_TextView});
-
-                list.setAdapter(adapter);
-                //perform listView item click event
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-                        TextView hidden = (TextView) view.findViewById(R.id.PLL_hidden_productId_TextView);
-
-                        String productId = productType.substring(0,2).toUpperCase()+hidden.getText().toString();
-
-                        Intent seeProduct = new Intent(ProductList.this, ProductProfile.class);
-                        seeProduct.putExtra(getString(R.string.product_id),productId);
-                        startActivity(seeProduct);
-                        finish();
-                    }
-                });
-            }
-            else
-            {
-                TextView none = (TextView) findViewById(R.id.PLP_nothing_here_TextView);
-                none.setVisibility(View.VISIBLE);
-            }
-
-
-        }
-
         else
         {
             StoreRepo repo = new StoreRepo(this);
 
-            ArrayList<HashMap<String, String>> products = repo.getProductList(productType);
+            //List that will hold all the products
+            ArrayList<HashMap<String, String>> products;
+            //If items from inventory list is from user inventory
+            if(productType.equals(getString(R.string.user_inventory)))
+            {
+                String inventoryList[] = listType.getStringArray(getString(R.string.user_inventory));
+
+                products = repo.searchInventoryProducts(inventoryList);
+            }
+            else
+            {
+                //Get list of the given product type
+                 products = repo.getProductList(productType);
+            }
 
             if(!products.isEmpty())
             {
                 ListAdapter adapter = new SimpleAdapter(this,products,R.layout.product_list_layout,
-                        new String[]{"id","name","amount","price"},
-                        new int[] {R.id.PLL_hidden_productId_TextView,R.id.PLL_name_given_TextView,R.id.PLL_amount_given_TextView,R.id.PLL_price_given_TextView});
+                        new String[]{"uniqueID","name","amount","price"},
+                        new int[] {R.id.PLL_hidden_productId_TextView,R.id.PLL_name_given_TextView,
+                                R.id.PLL_amount_given_TextView,R.id.PLL_price_given_TextView});
 
                 list.setAdapter(adapter);
                 //perform listView item click event
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
                         TextView hidden = (TextView) view.findViewById(R.id.PLL_hidden_productId_TextView);
 
-                        String productId = productType.substring(0,2).toUpperCase()+hidden.getText().toString();
+                        String productId = hidden.getText().toString();
 
                         Intent seeProduct = new Intent(ProductList.this, ProductProfile.class);
                         seeProduct.putExtra(getString(R.string.product_id),productId);
@@ -135,13 +108,16 @@ public class ProductList extends Activity {
                     }
                 });
             }
+            //If there are no items in the list them show this message
             else
             {
                 TextView none = (TextView) findViewById(R.id.PLP_nothing_here_TextView);
                 none.setVisibility(View.VISIBLE);
             }
 
+
         }
+
 
 
     }

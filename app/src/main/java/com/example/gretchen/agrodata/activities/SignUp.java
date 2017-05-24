@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
         EditText userPhone = (EditText)findViewById(R.id.SUP_phone_EditTExt);
         userPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
     }
-    //If signUp is pressed go back to welcome page
+    //If signUp is pressed go add user info to database and back to welcome page
     public void signUp(View v)
     {
         UserRepo repo = new UserRepo(this);
@@ -35,7 +35,7 @@ public class SignUp extends AppCompatActivity {
         EditText userPass2= (EditText) findViewById(R.id.SUP_re_paswword_EditText);
 
 
-
+        //Check that all textboxes have been filled
         if(userEmail.getText().toString().isEmpty()||userEmail.getText().toString().isEmpty()||
                 userPhone.getText().toString().isEmpty()||userPass.getText().toString().isEmpty())
         {
@@ -45,6 +45,7 @@ public class SignUp extends AppCompatActivity {
         }
         else
         {
+            //Make sure email isn't already in database.
             if(repo.getUserByEmail(userEmail.getText().toString()).getEmail()==null)
             {
                 //Check if both passwords given are the same
@@ -58,13 +59,14 @@ public class SignUp extends AppCompatActivity {
                     newUser.setPassword(userPass.getText().toString());
                     newUser.setInventory("empty");
 
-
+                    //Adds new user to database
                     repo.insert(newUser);
-
+                    //Return to welcome page
                     Intent startPage = new Intent(this, Welcome.class);
                     startActivity(startPage);
                     finish();
                 }
+                //Password didn't match
                 else
                 {
                     TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
@@ -72,6 +74,7 @@ public class SignUp extends AppCompatActivity {
                     warning.setVisibility(TextView.VISIBLE);
                 }
             }
+            //Email already in use
             else
             {
                 TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);

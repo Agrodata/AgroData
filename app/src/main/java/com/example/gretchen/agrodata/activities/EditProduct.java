@@ -23,10 +23,12 @@ public class EditProduct extends AppCompatActivity {
 
         setCurrentValues();
     }
+    //Cancel edit profile and return to product profile
     public void cancelEditProfile(View v)
     {
         finish();
     }
+    //Save changes done to product profile
     public void saveChanges(View v)
     {
         StoreRepo repo =new StoreRepo(this);
@@ -46,13 +48,14 @@ public class EditProduct extends AppCompatActivity {
 
         repo.update(product);
         Intent back = new Intent(this, ProductProfile.class);
-        back.putExtra(getString(R.string.product_id),product.getType().substring(0,2).toUpperCase()+product.getID());
+        back.putExtra(getString(R.string.product_id),product.getUniqueID());
         startActivity(back);
         finish();
 
     }
     private void setCurrentValues()
     {
+        //Elements of the edit profile activity
         EditText name = (EditText) findViewById(R.id.EPP_name_EditText);
         EditText amount = (EditText) findViewById(R.id.EPP_amount_EditText);
         EditText price = (EditText) findViewById(R.id.EPP_price_EditText);
@@ -84,8 +87,9 @@ public class EditProduct extends AppCompatActivity {
 
         String productID = productInfo.getString(getString(R.string.product_id));
 
-        product=repo.getProductById(productID);
-
+        //Get product
+        product=repo.getProductByUniqueId(productID);
+        //Set values to the EditTexts
         name.setText(product.getName());
         amount.setText(product.getAmount().substring(0,product.getAmount().indexOf(" ")));
         price.setText(product.getPrice().substring(0,product.getPrice().indexOf(" ")));

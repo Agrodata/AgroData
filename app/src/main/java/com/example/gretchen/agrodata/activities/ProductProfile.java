@@ -40,7 +40,7 @@ public class ProductProfile extends AppCompatActivity {
         UserRepo userRepo = new UserRepo(this);
 
         //Product to be displayed
-        product = repo.getProductById(productId);
+        product = repo.getProductByUniqueId(productId);
 
         //Owner of the product
         User owner = userRepo.getUserById(product.getSellerID());
@@ -85,6 +85,7 @@ public class ProductProfile extends AppCompatActivity {
             editBttn.setVisibility(View.INVISIBLE);
         }
     }
+    //Go to user profile page of the seller
     public void viewSellerProfile(View v)
     {
         Intent sellerProfile = new Intent(this,UserProfile.class);
@@ -93,6 +94,7 @@ public class ProductProfile extends AppCompatActivity {
 
         startActivity(sellerProfile);
     }
+    //Go to edit product info activity to edit the products information.
     public void changeProductInfo(View v)
     {
         Intent change = new Intent(this, EditProduct.class);
@@ -100,8 +102,10 @@ public class ProductProfile extends AppCompatActivity {
         startActivity(change);
 
     }
+    //Delete the product
     public void deleteProduct(View v)
     {
+        //Pop up message. To confirm the users intention
         AlertDialog.Builder warning = new AlertDialog.Builder(ProductProfile.this);
         warning.setMessage("Are you sure you want to delete account?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -111,6 +115,7 @@ public class ProductProfile extends AppCompatActivity {
                         UserRepo urepo= new UserRepo(ProductProfile.this);
                         //Eliminate from user inventory
                         User owner = urepo.getUserById(product.getSellerID());
+                        //Delete the product from the user's inventory
                         owner.deleteFromInventory(product.getType().substring(0,2).toUpperCase()+product.getID());
                         urepo.update(owner);
 
@@ -123,6 +128,7 @@ public class ProductProfile extends AppCompatActivity {
                         finish();
                     }
                 })
+                //Do nothing
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

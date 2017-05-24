@@ -33,26 +33,20 @@ public class LogIn extends AppCompatActivity {
         UserRepo repo = new UserRepo(this);
         User user = repo.getUserByEmail(email);
 
+        //If email isn't in database or password doesn't match then give warning message
         if(user.getEmail()==null||!user.getPassword().equals(pass))
         {
             TextView warning = (TextView) findViewById(R.id.LIP_warning_TextView);
             warning.setVisibility(TextView.VISIBLE);
         }
+        //If all is ok then save info internally to stay logged in and go to main store page.
         else {
             //Get shared preference that holds login info
             SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key),Context.MODE_PRIVATE);
             //This is so shared preference can be edited.
             SharedPreferences.Editor loginEditor = loginInfo.edit();
-            //Set users email value
-            loginEditor.putString(getString(R.string.email_key), email);
-            //Set users password value
-            loginEditor.putString(getString(R.string.pass_key),pass);
             //Save user id
             loginEditor.putInt(getString(R.string.id_key),user.getId());
-            //Set users name value
-            loginEditor.putString(getString(R.string.name_key),user.getName());
-            //Save user phone value
-            loginEditor.putString(getString(R.string.phone_key),user.getPhone());
             //Save changes
             loginEditor.commit();
             //Go to the store page

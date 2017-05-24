@@ -22,7 +22,7 @@ public class UserRepo {
         dbHelper = new DBHelperUsers(context);
     }
 
-    //Adds user to the table
+    //Adds user to the table. Returns user's ID.
     public int insert(User user) {
 
 
@@ -40,6 +40,7 @@ public class UserRepo {
         long user_Id = db.insert(User.TABLE, null, values);
 
         db.close(); // Closing database connection
+
         return (int) user_Id;
     }
     //Eliminates user from table

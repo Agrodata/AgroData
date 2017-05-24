@@ -30,6 +30,7 @@ public class MainPage extends AppCompatActivity {
 
         addListenerToIcons();
     }
+    //Places onClick Listeners to the icons in the store
     private void addListenerToIcons()
     {
         //A button that shows all users. Only for testing purposes
@@ -47,10 +48,7 @@ public class MainPage extends AppCompatActivity {
         //The activity that will have the list we want to see
         final Intent showProducts = new Intent(this,ProductList.class);
 
-
-
-
-
+        //Depending on which icon is pressed is the list that has to be displayed
         View.OnClickListener listener = new View.OnClickListener() {
 
                 @Override
@@ -132,23 +130,24 @@ public class MainPage extends AppCompatActivity {
         SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
         //This is so shared preference can be edited.
         SharedPreferences.Editor loginEditor = loginInfo.edit();
-        //Set users email value
-        loginEditor.putString(getString(R.string.email_key), null);
-        //Set users password value
-        loginEditor.putString(getString(R.string.pass_key),null);
+               //Set users id
+        loginEditor.putInt(getString(R.string.id_key),0);
         //Save changes
         loginEditor.commit();
+        //GO back to welcome page
         Intent logout = new Intent(this, Welcome.class);
         startActivity(logout);
         finish();
     }
 
+    //Goes to add product activity
     public void goToAddProduct(View v)
     {
         Intent intent = new Intent(this, AddProduct.class);
         startActivity(intent);
 
     }
+    //Shows the user profile
     public void viewProfile(View v)
     {
         Intent userProfile = new Intent(this, UserProfile.class);
