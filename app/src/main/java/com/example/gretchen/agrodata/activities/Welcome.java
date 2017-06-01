@@ -15,9 +15,9 @@ public class Welcome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Before Welcome activity loads check if user already logged in.
-        alreadyLoggedIn();
+
         setContentView(R.layout.activity_welcome);
+        alreadyLoggedIn();
     }
     // If login button is pressed go to login activity
     public void logIn(View v) {

@@ -37,6 +37,7 @@ public class LogIn extends AppCompatActivity {
         if(user.getEmail()==null||!user.getPassword().equals(pass))
         {
             TextView warning = (TextView) findViewById(R.id.LIP_warning_TextView);
+            warning.setText("Email or password is incorrect.");
             warning.setVisibility(TextView.VISIBLE);
         }
         //If all is ok then save info internally to stay logged in and go to main store page.
@@ -51,6 +52,7 @@ public class LogIn extends AppCompatActivity {
             loginEditor.commit();
             //Go to the store page
             Intent mainPage=new Intent(this,MainPage.class);
+            mainPage.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(mainPage);
             finish();
         }

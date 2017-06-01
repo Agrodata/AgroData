@@ -10,25 +10,26 @@
         android:id="@+id/PPP_product_name_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="84dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:textSize="30sp"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.501" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/PPP_amount_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount:"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/product_amount"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_marginTop="22dp"
-        app:layout_constraintTop_toBottomOf="@+id/PPP_date_added_TextView"
-        android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PPP_date_added_TextView" />
 
     <TextView
         android:id="@+id/PPP_product_amount_TextView"
@@ -51,13 +52,13 @@
         android:id="@+id/PPP_price_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
         android:layout_marginTop="18dp"
-        android:text="Price:"
+        android:text="@string/product_price"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/PPP_amount_TextView"
-        android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PPP_amount_TextView" />
 
     <TextView
         android:id="@+id/PPP_product_price_TextView"
@@ -80,13 +81,13 @@
         android:id="@+id/PPP_seller_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seller:"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/seller"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_marginTop="21dp"
-        app:layout_constraintTop_toBottomOf="@+id/PPP_price_TextView"
-        android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PPP_price_TextView" />
 
     <TextView
         android:id="@+id/PPP_product_seller_TextView"
@@ -106,13 +107,13 @@
         android:id="@+id/PPP_date_added_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date Added:"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/date_product_added"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_marginTop="17dp"
-        app:layout_constraintTop_toBottomOf="@+id/PPP_product_name_TextView"
-        android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PPP_product_name_TextView" />
 
     <TextView
         android:id="@+id/PPP_product_date_added_TextView"
@@ -135,15 +136,15 @@
         android:id="@+id/PPP_phone_TextView"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:text="Phone:"
-        android:textSize="24sp"
-        android:layout_marginTop="23dp"
-        app:layout_constraintTop_toBottomOf="@+id/PPP_seller_TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0"
         android:layout_marginLeft="48dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginTop="23dp"
+        android:text="@string/phone"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PPP_seller_TextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/PPP_product_phone_TextView"
@@ -166,13 +167,14 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:onClick="viewSellerProfile"
-        android:text="View Seller Info"
-        android:visibility="invisible"
+        android:text="@string/view_seller_info"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PPP_product_phone_TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/PPP_product_phone_TextView"
+        app:layout_constraintVertical_bias="0.593" />
 
     <Button
         android:id="@+id/PPP_change_info_button"
@@ -182,7 +184,7 @@
         android:layout_marginLeft="48dp"
         android:layout_marginTop="420dp"
         android:onClick="changeProductInfo"
-        android:text="Edit Product Info"
+        android:text="@string/edit_product"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -199,7 +201,7 @@
         android:layout_marginTop="0dp"
         android:background="@android:color/holo_red_dark"
         android:onClick="deleteProduct"
-        android:text="Delete"
+        android:text="@string/delete"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/PPP_change_info_button"
         app:layout_constraintHorizontal_bias="0.209"

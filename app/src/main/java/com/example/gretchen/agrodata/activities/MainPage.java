@@ -1,11 +1,17 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,6 +36,81 @@ public class MainPage extends AppCompatActivity {
 
         addListenerToIcons();
     }
+    //When returning to this activity after back the it updates its info
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(new ComponentName(this, SearchActivity.class)));
+        //Iconify the widget. Don't show search bar until search icon is pressed.
+        searchView.setIconifiedByDefault(true);
+        //Submit button not displayed by default
+        searchView.setSubmitButtonEnabled(true);
+
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //On selecting action bar icons
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // search action
+                onSearchRequested();
+                return true;
+            case R.id.action_add_product:
+                //Add product
+               Intent addProduct = new Intent(this, AddProduct.class);
+                startActivity(addProduct);
+
+                return true;
+            case R.id.action_view_profile:
+                // View profile
+                Intent userProfile = new Intent(this, UserProfile.class);
+                //Get user info saved internally
+                SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
+
+                //Sending user id to profile page.
+                userProfile.putExtra(getString(R.string.id_key),userInfo.getInt(getString(R.string.id_key),0));
+
+                startActivity(userProfile);
+
+
+                return true;
+            case R.id.action_log_out:
+                // Log out
+                SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
+                //This is so shared preference can be edited.
+                SharedPreferences.Editor loginEditor = loginInfo.edit();
+                //Set users id
+                loginEditor.putInt(getString(R.string.id_key),0);
+                //Save changes
+                loginEditor.commit();
+                //GO back to welcome page
+                Intent logout = new Intent(this, Welcome.class);
+                startActivity(logout);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
     //Places onClick Listeners to the icons in the store
     private void addListenerToIcons()
     {
@@ -60,50 +141,50 @@ public class MainPage extends AppCompatActivity {
                 {
                     case R.id.MP_chicken_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Poultry");
+                        showProducts.putExtra(getString(R.string.list_type),"Poultry");
 
                         startActivity(showProducts);
                         break;
                     case R.id.MP_banana_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Fruit");
+                        showProducts.putExtra(getString(R.string.list_type),"Fruit");
 
                         startActivity(showProducts);
                         break;
                     case R.id.MP_bean_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Grain");
+                        showProducts.putExtra(getString(R.string.list_type),"Grain");
 
                         startActivity(showProducts);
                         break;
                     case R.id.MP_brocolli_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Vegetable");
+                        showProducts.putExtra(getString(R.string.list_type),"Vegetable");
 
                         startActivity(showProducts);
                         break;
                     case R.id.MP_cow_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Dairy");
+                        showProducts.putExtra(getString(R.string.list_type),"Dairy");
 
                         startActivity(showProducts);
                         break;
                     case R.id.MP_hay_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Hay");
+                        showProducts.putExtra(getString(R.string.list_type),"Hay");
 
                         startActivity(showProducts);
                         break;
                     case R.id.MP_pig_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Meat");
+                        showProducts.putExtra(getString(R.string.list_type),"Meat");
 
                         startActivity(showProducts);
                         break;
                     //Temporary
                     case R.id.MP_secret_user_button:
 
-                        showProducts.putExtra(getString(R.string.product_type),"Users");
+                        showProducts.putExtra(getString(R.string.list_type),"Users");
 
                         startActivity(showProducts);
                         break;
@@ -124,7 +205,7 @@ public class MainPage extends AppCompatActivity {
 
     }
 
-    //If logout is pressed go to welcome page
+   /* //If logout is pressed go to welcome page
     public void logOut(View v)
     {
         SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
@@ -140,13 +221,7 @@ public class MainPage extends AppCompatActivity {
         finish();
     }
 
-    //Goes to add product activity
-    public void goToAddProduct(View v)
-    {
-        Intent intent = new Intent(this, AddProduct.class);
-        startActivity(intent);
 
-    }
     //Shows the user profile
     public void viewProfile(View v)
     {
@@ -158,6 +233,13 @@ public class MainPage extends AppCompatActivity {
         userProfile.putExtra(getString(R.string.id_key),userInfo.getInt(getString(R.string.id_key),0));
 
         startActivity(userProfile);
-    }
+    }*/
+   //Goes to add product activity
+   public void goToAddProduct(View v)
+   {
+       Intent intent = new Intent(this, AddProduct.class);
+       startActivity(intent);
+
+   }
 
 }

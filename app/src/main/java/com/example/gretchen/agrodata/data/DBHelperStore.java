@@ -25,7 +25,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    private static final String TAG = DBHelperStore.class.getSimpleName().toString();
+    //private static final String TAG = DBHelperStore.class.getSimpleName().toString();
 
     //Creates tables for all the products
     @Override

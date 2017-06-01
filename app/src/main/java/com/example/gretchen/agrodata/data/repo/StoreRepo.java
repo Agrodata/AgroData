@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.gretchen.agrodata.data.DBHelperStore;
 import com.example.gretchen.agrodata.data.model.Product;
 
+import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -113,21 +114,21 @@ public class StoreRepo {
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
 
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToLast()) {
             do {
                 HashMap<String, String> product = new HashMap<String, String>();
-                product.put("id", cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
-                product.put("name", cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
-                product.put("data_added", cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
-                product.put("type", cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
-                product.put("price", cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
-                product.put("amount", cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
-                product.put("sellerID", cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
-                product.put("uniqueID", cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
+                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
+                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
+                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
+                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
+                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
+                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
+                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
 
                 productList.add(product);
 
-            } while (cursor.moveToNext());
+            } while (cursor.moveToPrevious());
         }
 
         cursor.close();
@@ -148,29 +149,28 @@ public class StoreRepo {
                 Product.KEY_amount + "," +
                 Product.KEY_seller + "," +
                 Product.KEY_unique_ID +
-                //MUST check which table
                 " FROM " + product_type
                 + " WHERE " +
-                Product.KEY_name + "=?";// It's a good practice to use parameter ?, instead of concatenate string
+                Product.KEY_name+ " LIKE '%"+name+"%'";
         ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
 
-        Cursor cursor = db.rawQuery(selectQuery, new String[] {name } );
+        Cursor cursor = db.rawQuery(selectQuery, null );
 
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToLast()) {
             do {
                 HashMap<String, String> product = new HashMap<String, String>();
-                product.put("id", cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
-                product.put("name", cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
-                product.put("data_added", cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
-                product.put("type", cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
-                product.put("price", cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
-                product.put("amount", cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
-                product.put("sellerID", cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
-                product.put("uniqueID", cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
+                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
+                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
+                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
+                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
+                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
+                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
+                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
 
                 productList.add(product);
 
-            } while (cursor.moveToNext());
+            } while (cursor.moveToPrevious());
         }
 
         cursor.close();
@@ -178,7 +178,7 @@ public class StoreRepo {
         return productList;
     }
     //Searches for a product in all the lists
-    public ArrayList<HashMap<String, String>>  searchAllProductList(String name,String product_type) {
+    public ArrayList<HashMap<String, String>>  searchAllProductList(String name) {
 
         ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
         productList.addAll(searchProductListByName(name,"Fruit"));
@@ -195,22 +195,25 @@ public class StoreRepo {
 
         ArrayList<HashMap<String,String >> inventory =new ArrayList<HashMap<String, String>>();
 
-        HashMap<String, String> products = new HashMap<String, String>();
-
         Product product;
+
+        if(ids[0].equals("empty"))
+        {
+            return null;
+        }
 
         for(int i=0;i<ids.length;i++)
         {
             product = getProductByUniqueId(ids[i]);
-
-            products.put("id", Integer.toString(product.getID()));
-            products.put("name", product.getName());
-            products.put("data_added", product.getDate_added());
-            products.put("type", product.getType());
-            products.put("price", product.getPrice());
-            products.put("amount", product.getAmount());
-            products.put("sellerID", Integer.toString(product.getSellerID()));
-            products.put("uniqueID", product.getUniqueID());
+            HashMap<String, String> products = new HashMap<String, String>();
+            products.put(Product.KEY_ID, Integer.toString(product.getID()));
+            products.put(Product.KEY_name, product.getName());
+            products.put(Product.KEY_dateAdded, product.getDate_added());
+            products.put(Product.KEY_type, product.getType());
+            products.put(Product.KEY_price, product.getPrice());
+            products.put(Product.KEY_amount, product.getAmount());
+            products.put(Product.KEY_seller, Integer.toString(product.getSellerID()));
+            products.put(Product.KEY_unique_ID, product.getUniqueID());
 
             inventory.add(products);
         }
@@ -270,7 +273,7 @@ public class StoreRepo {
 
         Cursor cursor = db.rawQuery(selectQuery, new String[] { String.valueOf(Id) } );
 
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToLast()) {
             do {
                 product.setID(cursor.getInt(cursor.getColumnIndex(Product.KEY_ID)));
                 product.setName(cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
@@ -281,7 +284,7 @@ public class StoreRepo {
                 product.setSellerID(cursor.getInt(cursor.getColumnIndex(Product.KEY_seller)));
                 product.setUniqueID(cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
 
-            } while (cursor.moveToNext());
+            } while (cursor.moveToPrevious());
         }
 
         cursor.close();

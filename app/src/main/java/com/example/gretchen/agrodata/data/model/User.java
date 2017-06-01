@@ -114,6 +114,11 @@ public class User {
         //Places all the inventory id's in an array
         String [] items = this.inventory.split("_,_");
 
+        if(items.length==1)
+        {
+            this.setInventory("empty");
+            return "empty";
+        }
         //index of array
         int i=0;
 
@@ -126,6 +131,7 @@ public class User {
             }
             i++;
         }
+
         //Shift every item
         while(i<items.length-1)
         {
@@ -142,12 +148,13 @@ public class User {
             {
                 newInventory=items[i];
             }
-            //Every other items is added after the unque divider _,_
+            //Every other items is added after the unique divider _,_
             else
             {
                 newInventory=newInventory+"_,_"+items[i];
             }
         }
+        this.setInventory(newInventory);
         return newInventory;
 
     }

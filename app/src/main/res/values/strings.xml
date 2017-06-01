@@ -1,13 +1,59 @@
 <resources>
     //App name
     <string name="app_name">AgroData</string>
+    //-----Strings for searching info------//
+    //Directory where to write SharedPreference info
     <string name="login_preference_key">com.example.gretchen.agrodata.LOGIN_FILE_KEY</string>
-    //key for getting user id from shared preferences
+    //Key for getting and setting user ID from shared preferences
     <string name="id_key">UserID</string>
-    //Key for product type for displaying tables
-    <string name="product_type">TheList</string>
-    //Key for product id for displaying products
+    //Key for indicating the type of table to be displayed. (Used as variable for putExtra method)
+    <string name="list_type">TheList</string>
+    //Key for the product ID. (Used as a variable for putExtra method)
     <string name="product_id">ProductId</string>
+    //Key for user inventory. (Used as a variable for putExtra method)
+    <string name="user_inventory">UserInventory</string>
+
+    //------Strings for layout components--------//
+    <string name="welcome_message">Welcome</string>
+    <string name="if_account_msg">If you already have account</string>
+    <string name="log_in">Log In</string>
+    <string name="if_new_msg">If you\'re new</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email:</string>
+    <string name="name">Name:</string>
+    <string name="phone">Phone:</string>
+    <string name="password">Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="add_product">Add Product</string>
+    <string name="view_profile">View Profile</string>
+    <string name="log_out">Log Out</string>
+    <string name="fruit">Fruit</string>
+    <string name="meat">Meat</string>
+    <string name="poultry">Poultry</string>
+    <string name="grain">Grain</string>
+    <string name="vegetable">Vegetable</string>
+    <string name="hay">Hay</string>
+    <string name="dairy">Dairy</string>
+    <string name="view_all_users">View All Users</string>
+    <string name="name_of_product">Name of Product:</string>
+    <string name="date_product_added">Date Added:</string>
+    <string name="product_price">Price:</string>
+    <string name="product_amount">Amount:</string>
+    <string name="add">Add</string>
+    <string name="edit_account">Edit Account</string>
+    <string name="change_password">Change Password</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="view_inventory">View Inventory</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_product">Edit Product Profile</string>
+    <string name="seller">Seller:</string>
+    <string name="delete">Delete</string>
+    <string name="view_seller_info">View Seller Profile</string>
+    <string name="search">Search</string>
+
+
+    //--------Array Strings for spinners-------//
     //String array for product type Spinner in Product list activity
     <string-array name="product_list">
         <item>Meat</item>
@@ -31,8 +77,6 @@
         <item>lb</item>
         <item>oz</item>
     </string-array>
-    //Key for user inventory
-    <string name="user_inventory">UserInventory</string>
 
 
 </resources>

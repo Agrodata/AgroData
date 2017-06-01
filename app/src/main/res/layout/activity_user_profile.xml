@@ -19,7 +19,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:text="Name:"
+            android:text="@string/name"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -35,10 +35,10 @@
             android:textAlignment="textStart"
             android:gravity="start"
             android:textSize="24sp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@+id/UPP_profile_name_TextView"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/UPP_profile_name_TextView"
+            android:layout_marginLeft="16dp" />
 
         <TextView
             android:id="@+id/UPP_profile_email_TextView"
@@ -46,10 +46,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:text="Email:"
+            android:layout_marginTop="16dp"
+            android:text="@string/email"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/UPP_profile_name_TextView" />
 
         <TextView
@@ -71,15 +71,15 @@
             android:id="@+id/UPP_profile_phone_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="5dp"
-            android:text="Phone:"
-            android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_email_TextView"
+            android:text="@string/phone"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_email_TextView"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="224dp"
             android:onClick="goToAddProductFromProfilePage"
-            android:text="Add Product"
+            android:text="@string/add_product"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:onClick="goToEditUserAccount"
-            android:text="Edit Account"
+            android:text="@string/edit_account"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UPP_add_product_button" />
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:onClick="goToChangePassword"
-            android:text="Change Password"
+            android:text="@string/change_password"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UPP_edit_account_button" />
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:onClick="goToInventory"
-            android:text="View Inventory"
+            android:text="@string/view_inventory"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UPP_change_password_button" />
@@ -153,7 +153,7 @@
             android:layout_marginTop="8dp"
             android:background="@android:color/holo_red_light"
             android:onClick="deleteUser"
-            android:text="Delete Account"
+            android:text="@string/delete_account"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
