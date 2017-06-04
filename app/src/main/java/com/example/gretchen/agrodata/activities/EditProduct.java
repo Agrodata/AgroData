@@ -114,11 +114,35 @@ public class EditProduct extends AppCompatActivity {
         Spinner amount1 = (Spinner) findViewById(R.id.EPP_amount_Spinner);
 
 
+        //Check if price is written correctly
+        String thePrice = price.getText().toString();
+
+        if(thePrice.contains("."))
+        {
+            if(thePrice.indexOf(".")==0)
+            {
+                thePrice="0"+thePrice;
+            }
+            if((thePrice.length()-1)-thePrice.indexOf(".")>2)
+            {
+                thePrice=thePrice.substring(0,thePrice.indexOf(".")+3);
+            }
+            if((thePrice.length()-1)-thePrice.indexOf(".")==1)
+            {
+                thePrice=thePrice+"0";
+            }
+        }
+        else
+        {
+            thePrice = thePrice+".00";
+        }
+
+        thePrice="$"+thePrice;
 
 
         product.setName(name.getText().toString());
         product.setAmount(amount.getText().toString()+" "+amount1.getSelectedItem().toString());
-        product.setPrice(price.getText().toString()+" "+price1.getSelectedItem().toString());
+        product.setPrice(thePrice+" "+price1.getSelectedItem().toString());
 
         repo.update(product);
         Intent back = new Intent(this, ProductProfile.class);
@@ -165,8 +189,33 @@ public class EditProduct extends AppCompatActivity {
         product=repo.getProductByUniqueId(productID);
         //Set values to the EditTexts
         name.setText(product.getName());
+        //Substrings start at 1 so price does not include $
         amount.setText(product.getAmount().substring(0,product.getAmount().indexOf(" ")));
-        price.setText(product.getPrice().substring(0,product.getPrice().indexOf(" ")));
+        price.setText(product.getPrice().substring(1,product.getPrice().indexOf(" ")));
+
+        //Set spinner values
+        String priceSpinner = product.getPrice().substring(product.getPrice().indexOf(" ")+1);
+        String amountSpinner =product.getAmount().substring(product.getAmount().indexOf(" ")+1);
+
+        String priceArray[] = getResources().getStringArray(R.array.price_amount_list);
+        String amountArray[] = getResources().getStringArray(R.array.amount_list);
+
+        for (int i=0;i<priceArray.length;i++)
+        {
+            if(priceArray[i].equals(priceSpinner))
+            {
+                price1.setSelection(i);
+                break;
+            }
+        }
+        for(int i=0;i<amountArray.length;i++)
+        {
+            if(amountArray[i].equals(amountSpinner))
+            {
+                amount1.setSelection(i);
+                break;
+            }
+        }
 
     }
 }

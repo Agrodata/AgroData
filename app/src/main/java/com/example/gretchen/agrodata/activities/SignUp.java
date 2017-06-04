@@ -70,7 +70,7 @@ public class SignUp extends AppCompatActivity {
                 else
                 {
                     TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
-                    warning.setText("Passwords must match.");
+                    warning.setText(R.string.pass_must_match_msg);
                     warning.setVisibility(TextView.VISIBLE);
                 }
             }
@@ -78,7 +78,7 @@ public class SignUp extends AppCompatActivity {
             else
             {
                 TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
-                warning.setText("Email already exists in our database.");
+                warning.setText(R.string.email_exists);
                 warning.setVisibility(TextView.VISIBLE);
             }
 

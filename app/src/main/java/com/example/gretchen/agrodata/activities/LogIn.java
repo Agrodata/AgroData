@@ -37,7 +37,7 @@ public class LogIn extends AppCompatActivity {
         if(user.getEmail()==null||!user.getPassword().equals(pass))
         {
             TextView warning = (TextView) findViewById(R.id.LIP_warning_TextView);
-            warning.setText("Email or password is incorrect.");
+            warning.setText(R.string.incorrect_email_password);
             warning.setVisibility(TextView.VISIBLE);
         }
         //If all is ok then save info internally to stay logged in and go to main store page.

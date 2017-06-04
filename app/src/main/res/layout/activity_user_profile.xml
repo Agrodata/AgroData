@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -30,15 +31,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="32dp"
-            android:textAlignment="textStart"
             android:gravity="start"
+            android:textAlignment="textStart"
             android:textSize="24sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/UPP_profile_name_TextView"
-            android:layout_marginLeft="16dp" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/UPP_profile_email_TextView"
@@ -71,13 +72,13 @@
             android:id="@+id/UPP_profile_phone_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:text="@string/phone"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/UPP_add_product_button"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UPP_profile_email_TextView"
             app:layout_constraintVertical_bias="0.0" />
@@ -86,78 +87,80 @@
             android:id="@+id/UPP_profile_phone_EditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/UPP_profile_phone_TextView"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_email_EditText"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_email_EditText" />
 
         <Button
             android:id="@+id/UPP_add_product_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="224dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="32dp"
             android:onClick="goToAddProductFromProfilePage"
             android:text="@string/add_product"
+            app:layout_constraintBottom_toTopOf="@+id/UPP_edit_account_button"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_phone_EditText"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/UPP_edit_account_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:onClick="goToEditUserAccount"
             android:text="@string/edit_account"
+            app:layout_constraintBottom_toTopOf="@+id/UPP_change_password_button"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_add_product_button" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
             android:id="@+id/UPP_change_password_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:onClick="goToChangePassword"
             android:text="@string/change_password"
+            app:layout_constraintBottom_toTopOf="@+id/UPP_check_inventory_button"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_edit_account_button" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
             android:id="@+id/UPP_check_inventory_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:onClick="goToInventory"
             android:text="@string/view_inventory"
+            app:layout_constraintBottom_toTopOf="@+id/UPP_delete_account_button"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_change_password_button" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
             android:id="@+id/UPP_delete_account_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="-32dp"
             android:background="@android:color/holo_red_light"
             android:onClick="deleteUser"
             android:text="@string/delete_account"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_check_inventory_button" />
+            app:layout_constraintRight_toRightOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

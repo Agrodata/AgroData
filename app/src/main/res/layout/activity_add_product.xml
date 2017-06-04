@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +17,7 @@
             android:id="@+id/APP_product_name_EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
+            android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/name_of_product"
             android:inputType="textPersonName"
@@ -29,44 +30,43 @@
             android:id="@+id/APP_product_type_Spinner"
             android:layout_width="217dp"
             android:layout_height="33dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:spinnerMode="dialog"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/APP_product_name_EditText" />
 
         <EditText
             android:id="@+id/APP_price_text_EditText"
-            android:layout_width="157dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="14dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/product_price"
             android:inputType="numberDecimal"
-            app:layout_constraintTop_toBottomOf="@+id/APP_product_type_Spinner"
-            android:layout_marginLeft="85dp"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="@+id/APP_product_type_Spinner"
+            app:layout_constraintTop_toBottomOf="@+id/APP_product_type_Spinner" />
 
         <EditText
             android:id="@+id/APP_amount_text_EditText"
-            android:layout_width="157dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="85dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/product_amount"
             android:inputType="number"
-            app:layout_constraintTop_toBottomOf="@+id/APP_price_text_EditText"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintDimensionRatio=""
+            app:layout_constraintLeft_toLeftOf="@+id/APP_price_text_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/APP_price_text_EditText" />
 
         <TextView
             android:id="@+id/APP_add_product_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
-            android:fontFamily="cursive"
             android:text="@string/add_product"
             android:textAlignment="center"
             android:textSize="30sp"
@@ -79,15 +79,14 @@
             android:id="@+id/APP_add_product_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="32dp"
             android:onClick="addProduct"
             android:text="@string/add"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/APP_amount_text_EditText"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:id="@+id/APP_must_fill_all_TextView"
@@ -107,33 +106,32 @@
         <Spinner
             android:id="@+id/APP_amount_Spinner"
             android:layout_width="wrap_content"
-            android:layout_height="56dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/APP_amount_text_EditText"
-            app:layout_constraintLeft_toRightOf="@+id/APP_amount_text_EditText"
-            app:layout_constraintTop_toTopOf="@+id/APP_amount_text_EditText"
-            app:layout_constraintVertical_bias="0.72"
-            android:layout_marginLeft="0dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/APP_amount_text_EditText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/APP_amount_text_EditText"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/APP_amount_text_EditText" />
 
         <Spinner
             android:id="@+id/APP_price_Spinner"
             android:layout_width="wrap_content"
-            android:layout_height="56dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/APP_price_text_EditText"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/APP_price_text_EditText"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/APP_price_text_EditText"
-            app:layout_constraintVertical_bias="0.32" />
+            app:layout_constraintVertical_bias="0.307" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

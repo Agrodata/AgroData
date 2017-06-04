@@ -1,13 +1,11 @@
 package com.example.gretchen.agrodata.activities;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -15,14 +13,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.gretchen.agrodata.R;
-import com.example.gretchen.agrodata.data.model.Product;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
@@ -127,14 +123,14 @@ public class ProductList extends Activity {
             {
                 ListAdapter adapter = new SimpleAdapter(this,users,R.layout.user_list_layout,
                         new String[]{"id","name","email","phone","password"},
-                        new int[] {R.id.ULL_userId,R.id.ULL_username,R.id.ULL_email,R.id.ULL_phone,R.id.ULL_password});
+                        new int[] {R.id.ULL_userId_TextView,R.id.ULL_username_TextView,R.id.ULL_email_TextView,R.id.ULL_phone_TextView,R.id.ULL_password_TextView});
 
                 list.setAdapter(adapter);
             }
             else
             {
                 TextView none = (TextView) findViewById(R.id.PLP_nothing_here_TextView);
-                none.setText("There's nothing here.");
+                none.setText(R.string.theres_nothing_here_msg);
                 none.setVisibility(View.VISIBLE);
             }
 
@@ -188,7 +184,7 @@ public class ProductList extends Activity {
             else
             {
                 TextView none = (TextView) findViewById(R.id.PLP_nothing_here_TextView);
-                none.setText("There's nothing here.");
+                none.setText(R.string.theres_nothing_here_msg);
                 none.setVisibility(View.VISIBLE);
             }
 

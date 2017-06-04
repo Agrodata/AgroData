@@ -188,8 +188,8 @@ public class ProductProfile extends AppCompatActivity {
     {
         //Pop up message. To confirm the users intention
         AlertDialog.Builder warning = new AlertDialog.Builder(ProductProfile.this);
-        warning.setMessage("Are you sure you want to delete the product?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        warning.setMessage(R.string.are_you_sure_msg)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
 
@@ -210,7 +210,7 @@ public class ProductProfile extends AppCompatActivity {
                     }
                 })
                 //Do nothing
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }

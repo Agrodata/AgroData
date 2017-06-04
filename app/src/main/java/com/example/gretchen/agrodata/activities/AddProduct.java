@@ -150,7 +150,7 @@ public class AddProduct extends AppCompatActivity {
                 ||product_amount.getText().toString().isEmpty()||product_price.getText().toString().isEmpty())
         {
             TextView warning = (TextView) findViewById(R.id.APP_must_fill_all_TextView);
-            warning.setText("All fields must be filled.");
+            warning.setText(R.string.all_must_be_filled_msg);
             warning.setVisibility(View.VISIBLE);
 
         }
@@ -175,12 +175,38 @@ public class AddProduct extends AppCompatActivity {
             User user = urepo.getUserById(userInfo.getInt(getString(R.string.id_key), 0));
 
 
+            //Check if price is written correctly
+            String thePrice = product_price.getText().toString();
+
+            if(thePrice.contains("."))
+            {
+                if(thePrice.indexOf(".")==0)
+                {
+                    thePrice="0"+thePrice;
+                }
+                if((thePrice.length()-1)-thePrice.indexOf(".")>2)
+                {
+                    thePrice=thePrice.substring(0,thePrice.indexOf(".")+3);
+                }
+                if((thePrice.length()-1)-thePrice.indexOf(".")==1)
+                {
+                    thePrice=thePrice+"0";
+                }
+            }
+            else
+            {
+                thePrice = thePrice+".00";
+            }
+
+            thePrice="$"+thePrice;
+
+
             //Product where info is going to be saved
             Product product = new Product();
 
             product.setName(product_name.getText().toString());
             product.setDate_added(current_date);
-            product.setPrice(product_price.getText().toString()+" "+product_price1.getSelectedItem().toString());
+            product.setPrice(thePrice+" "+product_price1.getSelectedItem().toString());
             product.setType(product_type.getSelectedItem().toString());
             product.setAmount(product_amount.getText().toString()+" "+product_amount1.getSelectedItem().toString());
             product.setSellerID(user.getId());
@@ -190,7 +216,7 @@ public class AddProduct extends AppCompatActivity {
 
             //Add product info for inventory
             user.addToInventory(product_ID);
-            //Update user so table relfects the change in inventory
+            //Update user so table reflects the change in inventory
             urepo.update(user);
 
             //Finish this activity and go back to previous activity

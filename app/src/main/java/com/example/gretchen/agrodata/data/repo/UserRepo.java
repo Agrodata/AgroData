@@ -189,11 +189,46 @@ public class UserRepo {
                 User.KEY_inventory +
                 " FROM " + User.TABLE
                 + " WHERE " +
-                User.KEY_name + "=?";
+                User.KEY_name+ " LIKE '%"+name+"%'";
 
         //List that will hold all the users
         ArrayList<HashMap<String, String>> userList = new ArrayList<HashMap<String, String>>();
-        Cursor cursor = db.rawQuery(selectQuery, new String[] { name } );
+        Cursor cursor = db.rawQuery(selectQuery, null );
+
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> user = new HashMap<String, String>();
+                user.put("id", cursor.getString(cursor.getColumnIndex(User.KEY_ID)));
+                user.put("name", cursor.getString(cursor.getColumnIndex(User.KEY_name)));
+                user.put("email", cursor.getString(cursor.getColumnIndex(User.KEY_email)));
+                user.put("phone", cursor.getString(cursor.getColumnIndex(User.KEY_phone)));
+                user.put("password", cursor.getString(cursor.getColumnIndex(User.KEY_password)));
+                user.put("inventory", cursor.getString(cursor.getColumnIndex(User.KEY_inventory)));
+                userList.add(user);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return userList;
+    }
+    //Returns a list with all the users that have the given name.
+    public ArrayList<HashMap<String, String>> searchUsersByEmail(String email){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery =  "SELECT  " +
+                User.KEY_ID + "," +
+                User.KEY_name + "," +
+                User.KEY_email + "," +
+                User.KEY_phone + "," +
+                User.KEY_password + "," +
+                User.KEY_inventory +
+                " FROM " + User.TABLE
+                + " WHERE " +
+                User.KEY_email+ " LIKE '%"+email+"%'";
+
+        //List that will hold all the users
+        ArrayList<HashMap<String, String>> userList = new ArrayList<HashMap<String, String>>();
+        Cursor cursor = db.rawQuery(selectQuery, null );
 
         if (cursor.moveToFirst()) {
             do {

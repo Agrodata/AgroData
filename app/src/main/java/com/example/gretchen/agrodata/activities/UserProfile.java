@@ -113,9 +113,9 @@ public class UserProfile extends AppCompatActivity {
     {
         //Warning pop-up. Delete is not immediate, but requires a second confirmation.
         AlertDialog.Builder warning = new AlertDialog.Builder(UserProfile.this);
-        warning.setMessage("Are you sure you want to delete account?")
+        warning.setMessage(R.string.are_you_sure_msg)
                 //If yes user account is deleted
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         UserRepo repo = new UserRepo(UserProfile.this);
                         //Gets current user's ID
@@ -147,7 +147,7 @@ public class UserProfile extends AppCompatActivity {
                     }
                 })
                 //If cancel then do nothing
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }

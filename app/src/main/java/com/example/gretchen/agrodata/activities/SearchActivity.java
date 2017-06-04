@@ -21,7 +21,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.gretchen.agrodata.R;
+import com.example.gretchen.agrodata.data.SearchAdapter;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
+import com.example.gretchen.agrodata.data.repo.UserRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -111,22 +113,27 @@ public class SearchActivity extends Activity {
     private void showSearchResults(String query)
     {
 
+
         StoreRepo repo = new StoreRepo(this);
+        UserRepo uRepo  =new UserRepo(this);
         //Listview that will hold all the products
         ListView list = (ListView) findViewById(R.id.SP_search_view_ListView);
 
         //List that will hold all the products
-        ArrayList<HashMap<String, String>> products;
+        ArrayList<HashMap<String, String>> results;
 
-        products=repo.searchAllProductList(query);
+        //Search results of products
+        results=repo.searchAllProductList(query);
 
-        if(!products.isEmpty())
+        //Search for users
+        results.addAll(uRepo.searchUsersByName(query));
+
+        results.addAll(uRepo.searchUsersByEmail(query));
+
+
+        if(!results.isEmpty())
         {
-            ListAdapter adapter = new SimpleAdapter(this,products,R.layout.product_list_layout,
-                    new String[]{"uniqueID","name","amount","price", "date_added"},
-                    new int[] {R.id.PLL_hidden_productId_TextView,R.id.PLL_name_given_TextView,
-                            R.id.PLL_amount_given_TextView,R.id.PLL_price_given_TextView,
-                            R.id.PLL_date_given_TextView});
+            SearchAdapter adapter = new SearchAdapter(this,results);
 
             list.setAdapter(adapter);
             //perform listView item click event
@@ -134,22 +141,47 @@ public class SearchActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                    //Checks if item on list is user or product
+                    TextView hidden = (TextView) view.findViewById(R.id.SRL_object_type_TextView);
 
-                    TextView hidden = (TextView) view.findViewById(R.id.PLL_hidden_productId_TextView);
+                    String info = hidden.getText().toString();
+                    //If its a user
+                    if (info.equals("u")) {
+                        //Get the user id
+                        TextView id = (TextView) view.findViewById(R.id.SRL_id_TextView);
 
-                    String productId = hidden.getText().toString();
+                        int uID = Integer.parseInt(id.getText().toString());
 
-                    Intent seeProduct = new Intent(SearchActivity.this, ProductProfile.class);
-                    seeProduct.putExtra(getString(R.string.product_id),productId);
-                    startActivity(seeProduct);
-                    finish();
+                        //Go to user profile
+                        Intent seeUser = new Intent(SearchActivity.this, UserProfile.class);
+                        seeUser.putExtra(getString(R.string.id_key),uID);
+                        startActivity(seeUser);
+
+
+                    }
+                    else{
+                        //Get product id
+                        TextView uniqueID = (TextView) view.findViewById(R.id.SRL_id_TextView);
+
+                        String pID = uniqueID.getText().toString();
+
+                        //Go to product profile
+                        Intent seeProduct = new Intent(SearchActivity.this, ProductProfile.class);
+                        seeProduct.putExtra(getString(R.string.product_id),pID);
+                        startActivity(seeProduct);
+
+                    }
+
+
+
                 }
             });
         }
         else
         {
+            //Inform that there are no results
             TextView warning = (TextView) findViewById(R.id.SP_no_results_TextView);
-            warning.setText("No results found.");
+            warning.setText(R.string.no_results_found_msg);
             warning.setVisibility(View.VISIBLE);
         }
 

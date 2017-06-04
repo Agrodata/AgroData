@@ -75,7 +75,7 @@ public class MainPage extends AppCompatActivity {
                 return true;
             case R.id.action_add_product:
                 //Add product
-               Intent addProduct = new Intent(this, AddProduct.class);
+                Intent addProduct = new Intent(this, AddProduct.class);
                 startActivity(addProduct);
 
                 return true;
