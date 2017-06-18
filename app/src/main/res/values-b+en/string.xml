@@ -96,118 +96,119 @@
     </string-array>
     //String array for fruits
     <string-array name="fruit_list">
-        <item>Acerola</item>
-        <item>Aguacate</item>
+
+        <item>Avocato</item>
+        <item>Banana</item>
         <item>Cantaloupe</item>
-        <item>China</item>
-        <item>Coco</item>
-        <item>Guama</item>
-        <item>Guanábanas</item>
-        <item>Guineo</item>
-        <item>Honey Dew</item>
-        <item>Limón</item>
+        <item>Coconut</item>
+        <item>Grapefruit</item>
+        <item>Hawthorn Berry</item>
+        <item>Honey dew</item>
+        <item>Ice Cream Bean</item>
+        <item>Lemon</item>
+        <item>loquat</item>
         <item>Mango</item>
-        <item>Melón/Sandia</item>
-        <item>Nispero</item>
+        <item>Orange</item>
         <item>Papaya</item>
-        <item>Parcha</item>
-        <item>Piña</item>
+        <item>Passion Fruit</item>
+        <item>Pineapple</item>
         <item>Quenepas</item>
         <item>Rambután</item>
-        <item>Tamarindo</item>
-        <item>Toronja</item>
-        <item>Otros</item>
+        <item>Soursop</item>
+        <item>Tamarind</item>
+        <item>Watermellon</item>
+        <item>Other</item>
+
 
     </string-array>
     //String array for animal
     <string-array name="animal_list">
 
-        <item>Leche</item>
-        <item>Miel</item>
-        <item>Queso</item>
+        <item>Cheese</item>
+        <item>Honey</item>
+        <item>Milk</item>
         <item>Yogurt</item>
-        <item>Otro</item>
+        <item>Other</item>
 
     </string-array>
 
     //String array for poultry
     <string-array name="poultry_list">
 
-        <item>Codorniz</item>
-        <item>Guinea</item>
-        <item>Huevo</item>
-        <item>Pollo</item>
-        <item>Ponedora</item>
-        <item>Otros</item>
+        <item>Chicken</item>
+        <item>Eggs</item>
+        <item>Guineafowl</item>
+        <item>Laying Hen</item>
+        <item>Quail</item>
+        <item>Other</item>
 
     </string-array>
 
     //String array for vegetables
     <string-array name="vegetable_list">
 
-        <item>Ají Dulce</item>
-        <item>Albaca</item>
-        <item>Aromáticos</item>
-        <item>Berenjenas</item>
-        <item>Berro</item>
-        <item>Calabaza</item>
-        <item>Cebolla</item>
-        <item>Chayote</item>
+        <item>Aromatic</item>
+        <item>Basil</item>
+        <item>Beans</item>
+        <item>Bell pepper</item>
+        <item>Cabbage</item>
         <item>Cilantrillo</item>
-        <item>Espinaca</item>
+        <item>Corn</item>
+        <item>Eggplant</item>
         <item>Gandules</item>
-        <item>Habicuelas</item>
-        <item>Jengibre</item>
-        <item>Lechuga</item>
-        <item>Maíz</item>
-        <item>Menta</item>
-        <item>Pepinillo</item>
-        <item>Pimiento Morrón</item>
-        <item>Pimiento</item>
-        <item>Plátano Maduro</item>
+        <item>Ginger</item>
+        <item>Lettuce</item>
+        <item>Mint</item>
+        <item>Onion</item>
+        <item>Peppers</item>
+        <item>Pickle</item>
+        <item>Pumpkin</item>
         <item>Quimbombó</item>
         <item>Recao</item>
-        <item>Repollo</item>
-        <item>Repollo</item>
-        <item>Romero</item>
-        <item>Tomate</item>
+        <item>Ripe banana</item>
+        <item>Rosemary</item>
+        <item>Spinach</item>
+        <item>Squash</item>
+        <item>Sweet Pepper</item>
+        <item>Tomato</item>
+        <item>Watercress</item>
         <item>Yerba Buena</item>
-        <item>Otro</item>
+        <item>Other</item>
 
     </string-array>
 
     //String array for grain
     <string-array name="grain_list">
 
-        <item>Café</item>
-        <item>Otros</item>
+        <item>Coffee</item>
+        <item>Other</item>
 
     </string-array>
 
     //String array for meat
     <string-array name="meat_list">
 
-        <item>Cerdo</item>
-        <item>Conejo</item>
-        <item>Peces</item>
-        <item>Pollo</item>
-        <item>Res/Ternera</item>
-        <item>Otros</item>
+        <item>Beef/Veal</item>
+        <item>Chicken</item>
+        <item>Fishes</item>
+        <item>Pork</item>
+        <item>Rabbit</item>
+        <item>Other</item>
 
     </string-array>
 
     //String array for farinaceous
     <string-array name="farinaceous_list">
 
-        <item>Apio</item>
-        <item>Batata</item>
-        <item>Guineos</item>
+        <item>Banana</item>
+        <item>Celery</item>
         <item>Malanga</item>
-        <item>Ñame</item>
         <item>Pana Pen</item>
+        <item>Sweet potato</item>
+        <item>Yam</item>
         <item>Yautía</item>
-        <item>Yuca</item>
-        <item>Otros</item>
+        <item>Yucca</item>
+        <item>Other</item>
 
     </string-array>
 
