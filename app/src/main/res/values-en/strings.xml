@@ -13,6 +13,9 @@
     <string name="product_id">ProductId</string>
     //Key for user inventory. (Used as a variable for putExtra method)
     <string name="user_inventory">UserInventory</string>
+    //Key for subdivision of the products.
+    <string name="subdivision_key">SubList</string>
+
 
     //------Strings for layout components--------//
     <string name="welcome_message">Welcome</string>
@@ -56,6 +59,7 @@
     <string name="email_exists">Email already in use.</string>
     <string name="edit_password">Change Password</string>
     <string name="new_password">New Password</string>
+    <string name="change_language">Switch Language</string>
 
     //-------Main Page Divisions---------------//
     <string name="fruit">Fruits</string>
@@ -97,7 +101,7 @@
     //String array for fruits
     <string-array name="fruit_list">
 
-        <item>Avocato</item>
+        <item>Avocado</item>
         <item>Banana</item>
         <item>Cantaloupe</item>
         <item>Coconut</item>
@@ -106,7 +110,7 @@
         <item>Honey dew</item>
         <item>Ice Cream Bean</item>
         <item>Lemon</item>
-        <item>loquat</item>
+        <item>Loquat</item>
         <item>Mango</item>
         <item>Orange</item>
         <item>Papaya</item>
@@ -165,7 +169,7 @@
         <item>Pumpkin</item>
         <item>Quimbombó</item>
         <item>Recao</item>
-        <item>Ripe banana</item>
+        <item>Ripe Plantain</item>
         <item>Rosemary</item>
         <item>Spinach</item>
         <item>Squash</item>
@@ -204,12 +208,13 @@
         <item>Celery</item>
         <item>Malanga</item>
         <item>Pana Pen</item>
-        <item>Sweet potato</item>
+        <item>Sweet Potato</item>
         <item>Yam</item>
         <item>Yautía</item>
         <item>Yucca</item>
         <item>Other</item>
 
     </string-array>
+
 
 </resources>

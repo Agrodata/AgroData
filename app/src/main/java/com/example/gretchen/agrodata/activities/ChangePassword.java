@@ -15,11 +15,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.User;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
-public class ChangePassword extends AppCompatActivity {
+public class ChangePassword extends ParentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

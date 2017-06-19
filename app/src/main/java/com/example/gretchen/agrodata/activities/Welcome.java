@@ -1,5 +1,6 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +11,7 @@ import android.view.View;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
-public class Welcome extends AppCompatActivity {
+public class Welcome extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

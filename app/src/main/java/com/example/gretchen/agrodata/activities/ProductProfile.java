@@ -17,13 +17,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.Product;
 import com.example.gretchen.agrodata.data.model.User;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
-public class ProductProfile extends AppCompatActivity {
+public class ProductProfile extends ParentActivity {
 
     private Product product;
     @Override

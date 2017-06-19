@@ -188,7 +188,7 @@
         tools:layout_constraintRight_creator="1" />
 
     <TextView
-        android:id="@+id/MP_dairy_TextView"
+        android:id="@+id/MP_animal_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -312,19 +312,15 @@
         android:id="@+id/MP_add_product_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:contentDescription="@string/add_product"
         android:onClick="goToAddProduct"
         android:text="@string/add_product"
-        app:layout_constraintLeft_toRightOf="@+id/MP_secret_user_button"
-        android:layout_marginLeft="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/MP_secret_user_button"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -337,10 +333,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginStart="56dp"
-        tools:layout_editor_absoluteX="4dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/MP_add_product_button"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>

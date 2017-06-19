@@ -1,5 +1,6 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +14,7 @@ import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.User;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
-public class LogIn extends AppCompatActivity {
+public class LogIn extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

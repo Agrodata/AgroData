@@ -50,7 +50,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_DAIRY = "CREATE TABLE " + "Dairy"  + "("
+        String CREATE_TABLE_ANIMAL = "CREATE TABLE " + "Animal"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
@@ -86,7 +86,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_HAY = "CREATE TABLE " + "Hay"  + "("
+        String CREATE_TABLE_FARINACEOUS = "CREATE TABLE " + "Farinaceous"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
@@ -98,8 +98,8 @@ public class DBHelperStore  extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_TABLE_MEAT);
         db.execSQL(CREATE_TABLE_FRUIT);
-        db.execSQL(CREATE_TABLE_DAIRY);
-        db.execSQL(CREATE_TABLE_HAY);
+        db.execSQL(CREATE_TABLE_ANIMAL);
+        db.execSQL(CREATE_TABLE_FARINACEOUS);
         db.execSQL(CREATE_TABLE_POULTRY);
         db.execSQL(CREATE_TABLE_GRAIN);
         db.execSQL(CREATE_TABLE_VEGETABLES);

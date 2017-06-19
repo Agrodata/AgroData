@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.SearchAdapter;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
@@ -28,7 +29,7 @@ import com.example.gretchen.agrodata.data.repo.UserRepo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SearchActivity extends Activity {
+public class SearchActivity extends ParentActivity {
 
 
     @Override

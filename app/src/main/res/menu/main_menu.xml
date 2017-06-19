@@ -23,6 +23,12 @@
         app:showAsAction="never"
         />
 
+    <!-- Change language -->
+    <item android:id="@+id/action_change_language"
+        android:title="@string/change_language"
+        app:showAsAction="never"
+        />
+
     <!-- Log out -->
     <item android:id="@+id/action_log_out"
         android:title="@string/log_out"

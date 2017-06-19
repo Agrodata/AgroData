@@ -17,11 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.Product;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
 
-public class EditProduct extends AppCompatActivity {
+public class EditProduct extends ParentActivity {
 
     private Product product;
     @Override

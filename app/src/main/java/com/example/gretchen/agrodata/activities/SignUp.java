@@ -1,5 +1,6 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.User;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

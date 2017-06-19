@@ -9,18 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <!-- Welcome activity -->
         <activity
             android:name=".activities.Welcome"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <!-- Log In activity -->
@@ -46,19 +44,19 @@
         <!-- Main Page activity (Store Page) -->
         <activity
             android:name=".activities.MainPage"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop">
-
-            <meta-data android:name="android.app.default_searchable"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.default_searchable"
                 android:value=".SearchActivity" />
         </activity>
 
         <!-- User Profile activity -->
         <activity
             android:name=".activities.UserProfile"
+            android:launchMode="singleTop"
             android:parentActivityName=".activities.MainPage"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainPage" />
@@ -97,20 +95,23 @@
         <!-- Product List activity -->
         <activity
             android:name=".activities.ProductList"
+            android:launchMode="singleTop"
             android:parentActivityName=".activities.MainPage"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainPage" />
-            <meta-data android:name="android.app.default_searchable"
+            <meta-data
+                android:name="android.app.default_searchable"
                 android:value=".SearchableActivity" />
         </activity>
 
         <!-- Product Profile activity -->
-        <activity android:name=".activities.ProductProfile"
+        <activity
+            android:name=".activities.ProductProfile"
             android:launchMode="singleTop">
-            <meta-data android:name="android.app.default_searchable"
+            <meta-data
+                android:name="android.app.default_searchable"
                 android:value=".SearchableActivity" />
         </activity>
 
@@ -123,16 +124,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.ProductProfile" />
         </activity>
-        <!--Search activity-->
-        <activity android:name=".activities.SearchActivity"
+        <!-- Search activity -->
+        <activity
+            android:name=".activities.SearchActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        <activity android:name=".activities.SubdivisionList"></activity>
     </application>
 
 </manifest>
