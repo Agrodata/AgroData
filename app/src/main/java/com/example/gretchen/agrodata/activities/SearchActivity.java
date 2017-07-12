@@ -1,23 +1,11 @@
 package com.example.gretchen.agrodata.activities;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.app.SearchManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.gretchen.agrodata.ParentActivity;
@@ -63,9 +51,19 @@ public class SearchActivity extends ParentActivity {
         results=repo.searchAllProductList(query);
 
         //Search for users
-        results.addAll(uRepo.searchUsersByName(query));
+        ArrayList<HashMap<String, String>> usersByName=uRepo.searchUsersByName(query);
+        ArrayList<HashMap<String, String>> usersByEmail=uRepo.searchUsersByEmail(query);
 
-        results.addAll(uRepo.searchUsersByEmail(query));
+        for(int i=0;i<usersByName.size();i++)
+        {
+            usersByEmail.remove(usersByName.get(i));
+        }
+
+        results.addAll(usersByName);
+
+        results.addAll(usersByEmail);
+
+
 
 
         if(!results.isEmpty())

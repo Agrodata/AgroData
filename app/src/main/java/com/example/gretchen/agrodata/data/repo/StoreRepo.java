@@ -43,6 +43,8 @@ public class StoreRepo {
         values.put(Product.KEY_dateAdded,product.getDate_added());
         //The category this product goes to
         values.put(Product.KEY_type, product.getType());
+        //The subtype of the product
+        values.put(Product.KEY_subtype,product.getSubType());
         //Price of the product
         values.put(Product.KEY_price,product.getPrice());
         //Amount the seller has of the product
@@ -84,6 +86,7 @@ public class StoreRepo {
         values.put(Product.KEY_name, product.getName());
         values.put(Product.KEY_dateAdded,product.getDate_added());
         values.put(Product.KEY_type, product.getType());
+        values.put(Product.KEY_subtype, product.getSubType());
         values.put(Product.KEY_price,product.getPrice());
         values.put(Product.KEY_amount, product.getAmount());
         values.put(Product.KEY_seller,product.getSellerID());
@@ -101,6 +104,7 @@ public class StoreRepo {
                 Product.KEY_name + "," +
                 Product.KEY_dateAdded + "," +
                 Product.KEY_type + "," +
+                Product.KEY_subtype + "," +
                 Product.KEY_price + "," +
                 Product.KEY_amount + "," +
                 Product.KEY_seller + "," +
@@ -121,6 +125,55 @@ public class StoreRepo {
                 product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
                 product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
                 product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
+                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
+                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
+                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
+                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
+
+                productList.add(product);
+
+            } while (cursor.moveToPrevious());
+        }
+
+        cursor.close();
+        db.close();
+        return productList;
+
+    }
+    //Gives full list of a given product type
+    public ArrayList<HashMap<String, String>>  getProductListbySubtype(String product_type, String subtype) {
+        //Open connection to read only
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery =  "SELECT  " +
+                Product.KEY_ID + "," +
+                Product.KEY_name + "," +
+                Product.KEY_dateAdded + "," +
+                Product.KEY_type + "," +
+                Product.KEY_subtype + "," +
+                Product.KEY_price + "," +
+                Product.KEY_amount + "," +
+                Product.KEY_seller + "," +
+                Product.KEY_unique_ID +
+                //MUST check which table
+                " FROM " + product_type
+                + " WHERE " +
+                Product.KEY_subtype+ " LIKE '%"+subtype+"%'";
+
+
+        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+
+        if (cursor.moveToLast()) {
+            do {
+                HashMap<String, String> product = new HashMap<String, String>();
+                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
+                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
+                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
+                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
                 product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
                 product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
                 product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
@@ -145,6 +198,7 @@ public class StoreRepo {
                 Product.KEY_name + "," +
                 Product.KEY_dateAdded + "," +
                 Product.KEY_type + "," +
+                Product.KEY_subtype + "," +
                 Product.KEY_price + "," +
                 Product.KEY_amount + "," +
                 Product.KEY_seller + "," +
@@ -163,6 +217,7 @@ public class StoreRepo {
                 product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
                 product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
                 product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
                 product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
                 product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
                 product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
@@ -181,13 +236,13 @@ public class StoreRepo {
     public ArrayList<HashMap<String, String>>  searchAllProductList(String name) {
 
         ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
-        productList.addAll(searchProductListByName(name,"Fruit"));
-        productList.addAll(searchProductListByName(name,"Meat"));
-        productList.addAll(searchProductListByName(name,"Dairy"));
-        productList.addAll(searchProductListByName(name,"Grain"));
-        productList.addAll(searchProductListByName(name,"Vegetable"));
-        productList.addAll(searchProductListByName(name,"Hay"));
-        productList.addAll(searchProductListByName(name,"Poultry"));
+        productList.addAll(searchProductListByName(name,"Frutas"));
+        productList.addAll(searchProductListByName(name,"Carnes"));
+        productList.addAll(searchProductListByName(name,"Animal"));
+        productList.addAll(searchProductListByName(name,"Grano"));
+        productList.addAll(searchProductListByName(name,"Hortalizas"));
+        productList.addAll(searchProductListByName(name,"Farinaceos"));
+        productList.addAll(searchProductListByName(name,"Avicola"));
 
         return productList;
     }
@@ -210,6 +265,7 @@ public class StoreRepo {
             products.put(Product.KEY_name, product.getName());
             products.put(Product.KEY_dateAdded, product.getDate_added());
             products.put(Product.KEY_type, product.getType());
+            products.put(Product.KEY_subtype,product.getSubType());
             products.put(Product.KEY_price, product.getPrice());
             products.put(Product.KEY_amount, product.getAmount());
             products.put(Product.KEY_seller, Integer.toString(product.getSellerID()));
@@ -227,33 +283,33 @@ public class StoreRepo {
         String product_type=ID.substring(0,2);
         int Id = Integer.parseInt(ID.substring(2,ID.length()));
         //Check which table this belongs to
-        if(product_type.equals("DA"))
+        if(product_type.equals("AN"))
         {
-            product_type="Dairy";
+            product_type="Animal";
         }
-        else if(product_type.equals("PO"))
+        else if(product_type.equals("AV"))
         {
-            product_type="Poultry";
+            product_type="Avicola";
         }
-        else if(product_type.equals("VE"))
+        else if(product_type.equals("HO"))
         {
-            product_type="Vegetable";
+            product_type="Hortalizas";
         }
-        else if(product_type.equals("ME"))
+        else if(product_type.equals("CA"))
         {
-            product_type="Meat";
+            product_type="Carnes";
         }
         else if(product_type.equals("GR"))
         {
-            product_type="Grain";
+            product_type="Grano";
         }
         else if(product_type.equals("FR"))
         {
-            product_type="Fruit";
+            product_type="Frutas";
         }
         else
         {
-            product_type="Hay";
+            product_type="Farinaceos";
         }
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
@@ -261,6 +317,7 @@ public class StoreRepo {
                 Product.KEY_name + "," +
                 Product.KEY_dateAdded + "," +
                 Product.KEY_type + "," +
+                Product.KEY_subtype + "," +
                 Product.KEY_price + "," +
                 Product.KEY_amount + "," +
                 Product.KEY_seller + "," +
@@ -279,6 +336,7 @@ public class StoreRepo {
                 product.setName(cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
                 product.setDate_added(cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
                 product.setType(cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+                product.setSubType(cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
                 product.setPrice(cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
                 product.setAmount(cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
                 product.setSellerID(cursor.getInt(cursor.getColumnIndex(Product.KEY_seller)));

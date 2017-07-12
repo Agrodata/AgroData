@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.gretchen.agrodata.R;
-import com.example.gretchen.agrodata.data.repo.UserRepo;
 
 public class Welcome extends Activity {
 

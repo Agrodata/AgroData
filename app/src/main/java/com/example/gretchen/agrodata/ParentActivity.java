@@ -74,8 +74,18 @@ public class ParentActivity extends AppCompatActivity {
                 SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
                 //This is so shared preference can be edited.
                 SharedPreferences.Editor loginEditor = loginInfo.edit();
-                //Set users id
+                //Clear users id
                 loginEditor.putInt(getString(R.string.id_key),0);
+                //Clear username
+                loginEditor.putString(getString(R.string.user_name_key),null);
+                //Clear user email
+                loginEditor.putString(getString(R.string.user_email_key),null);
+                //Clear user phone
+                loginEditor.putString(getString(R.string.user_phone_key),null);
+                //Clear user rating
+                //loginEditor.putFloat(getString(R.string.user_rating_key),0);
+                //Clear user inventory
+                loginEditor.putString(getString(R.string.user_inventory_key),null);
                 //Save changes
                 loginEditor.commit();
                 //GO back to welcome page

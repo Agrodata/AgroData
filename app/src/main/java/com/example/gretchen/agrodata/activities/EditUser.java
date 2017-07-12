@@ -1,16 +1,9 @@
 package com.example.gretchen.agrodata.activities;
 
-import android.app.SearchManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -77,6 +70,21 @@ public class EditUser extends ParentActivity {
         user.setPhone(newPhone.getText().toString());
         //Update info
         repo.update(user);
+
+        //Get shared preference that holds login info so we can update the info here as well
+        SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key),Context.MODE_PRIVATE);
+        //This is so shared preference can be edited.
+        SharedPreferences.Editor loginEditor = loginInfo.edit();
+
+        //Save username
+        loginEditor.putString(getString(R.string.user_name_key),user.getName());
+        //Save user email
+        loginEditor.putString(getString(R.string.user_email_key),user.getEmail());
+        //Save user phone
+        loginEditor.putString(getString(R.string.user_phone_key),user.getPhone());
+
+        //Save changes
+        loginEditor.commit();
 
         Intent back = new Intent(this,MainPage.class);
         startActivity(back);

@@ -2,7 +2,6 @@ package com.example.gretchen.agrodata.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
@@ -20,9 +19,9 @@ public class SignUp extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sign_up);
-
-        EditText userPhone = (EditText)findViewById(R.id.SUP_phone_EditTExt);
+        EditText userPhone = (EditText)findViewById(R.id.SUP_phone_EditText);
         userPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+
     }
     //If signUp is pressed go add user info to database and back to welcome page
     public void signUp(View v)
@@ -31,7 +30,7 @@ public class SignUp extends Activity {
         //Get user information
         EditText userName = (EditText) findViewById(R.id.SUP_name_EditText);
         EditText userEmail = (EditText) findViewById(R.id.SUP_email_EditText);
-        EditText userPhone = (EditText) findViewById(R.id.SUP_phone_EditTExt);
+        EditText userPhone = (EditText) findViewById(R.id.SUP_phone_EditText);
         EditText userPass = (EditText) findViewById(R.id.SUP_password_EditText);
         EditText userPass2= (EditText) findViewById(R.id.SUP_re_paswword_EditText);
 

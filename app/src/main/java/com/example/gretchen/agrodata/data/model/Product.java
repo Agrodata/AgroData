@@ -16,10 +16,11 @@ public class Product {
     public static final String KEY_amount = "amount";
     public static final String KEY_seller = "sellerID";
     public static final String KEY_unique_ID = "uniqueID";
+    public static final String KEY_subtype = "subType";
 
 
 
-    //Properties
+    //*******Properties************//
     //Products ID within the database
     public int ID;
     //Products name
@@ -36,7 +37,10 @@ public class Product {
     public int sellerID;
     //Unique product ID used for finding the product in the database.
     public String uniqueID;
+    //Products subtype.
+    public String subType;
 
+    //********Property getters and setters************
     //Returns product's unique ID
     public String getUniqueID() {
         return uniqueID;
@@ -101,4 +105,12 @@ public class Product {
     public void setSellerID(int sellerID) {
         this.sellerID = sellerID;
     }
+    public String getSubType() {
+        return subType;
+    }
+
+    public void setSubType(String subType) {
+        this.subType = subType;
+    }
+
 }

@@ -1,17 +1,10 @@
 package com.example.gretchen.agrodata.activities;
 
-import android.app.SearchManager;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -35,7 +28,8 @@ public class AddProduct extends ParentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_product);
-
+        EditText product_name = (EditText) findViewById(R.id.APP_product_name_EditText);
+        product_name.setEnabled(false);
         populateSpinners();
 
     }
@@ -43,33 +37,117 @@ public class AddProduct extends ParentActivity {
 
     private void populateSpinners()
     {
+
         //Spinner that will hold product types
         Spinner spinner = (Spinner) findViewById(R.id.APP_product_type_Spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.product_list, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        //Add listener to spinner so that it can change the subtype spinners array
+        //Subtype spinner is populated based on the type spinner
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                //Spinner that will hold product subtypes
+                Spinner sSpinner = (Spinner) findViewById(R.id.APP_subtype_Spinner);
+                final int arrayID;
+
+                switch (position) {
+                    case 0:
+                        arrayID = R.array.meat_list;
+                        break;
+
+                    case 1:
+                        arrayID = R.array.poultry_list;
+                        break;
+
+                    case 2:
+                        arrayID = R.array.fruit_list;
+                        break;
+
+                    case 3:
+                        arrayID = R.array.animal_list;
+                        break;
+
+                    case 4:
+                        arrayID = R.array.vegetable_list;
+                        break;
+
+                    case 5:
+                        arrayID = R.array.grain_list;
+                        break;
+
+                    case 6:
+                        arrayID = R.array.farinaceous_list;
+                        break;
+
+                    default:
+                        arrayID = R.array.meat_list;
+
+                }
+
+                ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(AddProduct.this,
+                        arrayID, android.R.layout.simple_spinner_item);
+                // Specify the layout to use when the list of choices appears
+                adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // Apply the adapter to the spinner
+                sSpinner.setAdapter(adapter1);
+
+                sSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String slist[] = getResources().getStringArray(arrayID);
+                        EditText prod_name = (EditText) findViewById(R.id.APP_product_name_EditText);
+
+                        if(position==slist.length-1)
+                        {
+                            prod_name.setText("");
+                            prod_name.setEnabled(true);
+                        }
+                        else
+                        {
+                            prod_name.setEnabled(false);
+                            prod_name.setText(slist[position]);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        //Nothing here for now
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                //Not sure what to do here for now
+            }
+        });
+
+
+
 
         //Spinner that will hold price/amount spinner
         Spinner pSpinner = (Spinner) findViewById(R.id.APP_price_Spinner);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.price_amount_list, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        pSpinner.setAdapter(adapter1);
-
-        //Spinner that will hold amount spinner
-        Spinner aSpinner = (Spinner) findViewById(R.id.APP_amount_Spinner);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.amount_list, android.R.layout.simple_spinner_item);
+                R.array.price_amount_list, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        aSpinner.setAdapter(adapter2);
+        pSpinner.setAdapter(adapter2);
+
+        //Spinner that will hold amount spinner
+        Spinner aSpinner = (Spinner) findViewById(R.id.APP_amount_Spinner);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
+                R.array.amount_list, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        aSpinner.setAdapter(adapter3);
     }
     //Adds product to store
     public void addProduct(View v)
@@ -81,6 +159,8 @@ public class AddProduct extends ParentActivity {
         Spinner product_price1 = (Spinner) findViewById(R.id.APP_price_Spinner);
         EditText product_amount = (EditText)findViewById(R.id.APP_amount_text_EditText);
         Spinner product_amount1 = (Spinner) findViewById(R.id.APP_amount_Spinner);
+
+        Spinner product_subtype = (Spinner) findViewById(R.id.APP_subtype_Spinner);
 
         //Check that all the texfields are filled
         if(product_name.getText().toString().isEmpty()||product_type.getSelectedItem().toString().isEmpty()
@@ -147,6 +227,7 @@ public class AddProduct extends ParentActivity {
             product.setType(product_type.getSelectedItem().toString());
             product.setAmount(product_amount.getText().toString()+" "+product_amount1.getSelectedItem().toString());
             product.setSellerID(user.getId());
+            product.setSubType(product_subtype.getSelectedItem().toString());
 
             //Insert product in table
             String product_ID=repo.insert(product);
@@ -156,9 +237,18 @@ public class AddProduct extends ParentActivity {
             //Update user so table reflects the change in inventory
             urepo.update(user);
 
+           //Updating inventory info in shared pref
+            //This is so shared preference can be edited.
+            SharedPreferences.Editor loginEditor = userInfo.edit();
+
+            loginEditor.putString(getString(R.string.user_inventory_key),user.getInventory());
+            //Save changes
+            loginEditor.commit();
+
             //Finish this activity and go back to previous activity
             finish();
         }
     }
+
 }
 

@@ -4,8 +4,18 @@
     //-----Strings for searching info------//
     //Directory where to write SharedPreference info
     <string name="login_preference_key">com.example.gretchen.agrodata.LOGIN_FILE_KEY</string>
+    //Key for getting username
+    <string name="user_name_key">UserNameKey</string>
+    //Key for getting user email
+    <string name="user_email_key">UserEmailKey</string>
+    //Key for getting user phone
+    <string name="user_phone_key">UserPhoneKey</string>
+    //Key for getting user rating
+    <string name="user_rating_key">UserRatingKey</string>
+    //Key for getting user rating
+    <string name="user_inventory_key">UserInventoryKey</string>
     //Key for getting and setting user ID from shared preferences
-    <string name="id_key">UserID</string>
+    <string name="id_key">UserIDKey</string>
     //Key for indicating the type of table to be displayed. (Used as variable for putExtra method)
     <string name="list_type">TheList</string>
     //Key for the product ID. (Used as a variable for putExtra method)
@@ -58,7 +68,7 @@
     <string name="edit_password">Cambiar la contraseña</string>
     <string name="new_password">Contraseña Nueva</string>
     <string name="user_rating">Rating:</string>
-    <string name="change_language">Cambiar idioma</string>
+    <string name="see_all">Ver Todo</string>
 
     //-------Main Page Divisions---------------//
     <string name="fruit">Frutas</string>
@@ -67,7 +77,7 @@
     <string name="animal">Animal</string>
     <string name="poultry">Avicola</string>
     <string name="vegetable">Hortalizas</string>
-    <string name="farinaceous">Farináceos</string>
+    <string name="farinaceous">Farinaceos</string>
     //Not necessary. Used previously probably can be deleted later.//
     <string name="hay">Heno</string>
     <string name="dairy">Lacteos</string>
@@ -76,7 +86,7 @@
     //--------Array Strings for spinners-------//
     //String array for product type Spinner in Product list activity
     <string-array name="product_list">
-        <item>Carne</item>
+        <item>Carnes</item>
         <item>Avicola</item>
         <item>Frutas</item>
         <item>Animal</item>

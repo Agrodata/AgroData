@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -49,6 +48,16 @@ public class LogIn extends Activity {
             SharedPreferences.Editor loginEditor = loginInfo.edit();
             //Save user id
             loginEditor.putInt(getString(R.string.id_key),user.getId());
+            //Save username
+            loginEditor.putString(getString(R.string.user_name_key),user.getName());
+            //Save user email
+            loginEditor.putString(getString(R.string.user_email_key),user.getEmail());
+            //Save user phone
+            loginEditor.putString(getString(R.string.user_phone_key),user.getPhone());
+            //Save user rating
+            //loginEditor.putString(getString(R.string.user_rating_key),user.getRating());
+            //Save user inventory
+            loginEditor.putString(getString(R.string.user_inventory_key),user.getInventory());
             //Save changes
             loginEditor.commit();
             //Go to the store page

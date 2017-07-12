@@ -1,32 +1,13 @@
 package com.example.gretchen.agrodata.activities;
 
-import android.app.SearchManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
-import com.example.gretchen.agrodata.data.repo.StoreRepo;
-import com.example.gretchen.agrodata.data.repo.UserRepo;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainPage extends ParentActivity {
 
@@ -76,42 +57,49 @@ public class MainPage extends ParentActivity {
                     case R.id.MP_chicken_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.poultry_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.poultry));
 
                         startActivity(showSublist);
                         break;
                     case R.id.MP_banana_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.fruit_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.fruit));
 
                         startActivity(showSublist);
                         break;
                     case R.id.MP_bean_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.grain_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.grain));
 
                         startActivity(showSublist);
                         break;
                     case R.id.MP_brocolli_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.vegetable_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.vegetable));
 
                         startActivity(showSublist);
                         break;
                     case R.id.MP_cow_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.animal_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.animal));
 
                         startActivity(showSublist);
                         break;
                     case R.id.MP_hay_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.farinaceous_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.farinaceous));
 
                         startActivity(showSublist);
                         break;
                     case R.id.MP_pig_button:
 
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.meat_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.meat));
 
                         startActivity(showSublist);
                         break;
@@ -141,35 +129,7 @@ public class MainPage extends ParentActivity {
 
     }
 
-   /* //If logout is pressed go to welcome page
-    public void logOut(View v)
-    {
-        SharedPreferences loginInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
-        //This is so shared preference can be edited.
-        SharedPreferences.Editor loginEditor = loginInfo.edit();
-               //Set users id
-        loginEditor.putInt(getString(R.string.id_key),0);
-        //Save changes
-        loginEditor.commit();
-        //GO back to welcome page
-        Intent logout = new Intent(this, Welcome.class);
-        startActivity(logout);
-        finish();
-    }
 
-
-    //Shows the user profile
-    public void viewProfile(View v)
-    {
-        Intent userProfile = new Intent(this, UserProfile.class);
-        //Get user info saved internally
-        SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
-
-        //Sending user id to profile page.
-        userProfile.putExtra(getString(R.string.id_key),userInfo.getInt(getString(R.string.id_key),0));
-
-        startActivity(userProfile);
-    }*/
    //Goes to add product activity
    public void goToAddProduct(View v)
    {

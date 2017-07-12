@@ -1,18 +1,11 @@
 package com.example.gretchen.agrodata.activities;
 
 import android.app.AlertDialog;
-import android.app.SearchManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -114,14 +107,7 @@ public class UserProfile extends ParentActivity {
         SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
 
 
-        //For finding user
-        UserRepo repo = new UserRepo(this);
-        user = repo.getUserById(userId);
 
-        //Set TextView text with user info
-        name.setText(user.getName());
-        email.setText(user.getEmail());
-        phone.setText(user.getPhone());
 
         //Buttons from the activity
         Button addProduct = (Button) findViewById(R.id.UPP_add_product_button);
@@ -131,17 +117,39 @@ public class UserProfile extends ParentActivity {
         Button deleteAccount = (Button) findViewById(R.id.UPP_delete_account_button);
 
         //If logged in user is viewing their own account show these options
-        if(userInfo.getInt(getString(R.string.id_key),0)==user.getId())
+        if(userInfo.getInt(getString(R.string.id_key),0)==userId)
         {
+            user=new User();
+            user.setName(userInfo.getString(getString(R.string.user_name_key),""));
+            user.setEmail(userInfo.getString(getString(R.string.user_email_key),""));
+            user.setPhone(userInfo.getString(getString(R.string.user_phone_key),""));
+            user.setInventory(userInfo.getString(getString(R.string.user_inventory_key),"empty"));
+
+
+
+            //Set TextView text with user info
+            name.setText(user.getName());
+            email.setText(user.getEmail());
+            phone.setText(user.getPhone());
+
             addProduct.setVisibility(View.VISIBLE);
             editAccount.setVisibility(View.VISIBLE);
             changePass.setVisibility(View.VISIBLE);
             viewInv.setVisibility(View.VISIBLE);
             deleteAccount.setVisibility(View.VISIBLE);
         }
-        //If not the current user's account then don't show editong options
+        //If not the current user's account then don't show editing options
         else
         {
+            //For finding user
+            UserRepo repo = new UserRepo(this);
+            user = repo.getUserById(userId);
+
+            //Set TextView text with user info
+            name.setText(user.getName());
+            email.setText(user.getEmail());
+            phone.setText(user.getPhone());
+
             addProduct.setVisibility(View.INVISIBLE);
             editAccount.setVisibility(View.INVISIBLE);
             changePass.setVisibility(View.INVISIBLE);

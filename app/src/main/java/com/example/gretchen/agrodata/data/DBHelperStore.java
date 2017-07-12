@@ -16,7 +16,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 7;
 
     // Database Name
     private static final String DATABASE_NAME = "products.db";
@@ -32,65 +32,72 @@ public class DBHelperStore  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //All necessary tables you like to create will create here
 
-        String CREATE_TABLE_MEAT = "CREATE TABLE " + "Meat"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+        String CREATE_TABLE_MEAT = "CREATE TABLE " + "Carnes"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_FRUIT = "CREATE TABLE " + "Fruit"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+        String CREATE_TABLE_FRUIT = "CREATE TABLE " + "Frutas"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
         String CREATE_TABLE_ANIMAL = "CREATE TABLE " + "Animal"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_GRAIN = "CREATE TABLE " + "Grain"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+        String CREATE_TABLE_GRAIN = "CREATE TABLE " + "Grano"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_VEGETABLES = "CREATE TABLE " + "Vegetable"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+        String CREATE_TABLE_VEGETABLES = "CREATE TABLE " + "Hortalizas"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_POULTRY = "CREATE TABLE " + "Poultry"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+        String CREATE_TABLE_POULTRY = "CREATE TABLE " + "Avicola"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_FARINACEOUS = "CREATE TABLE " + "Farinaceous"  + "("
-                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+        String CREATE_TABLE_FARINACEOUS = "CREATE TABLE " + "Farinaceos"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
                 + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
                 + Product.KEY_price + " TEXT, "
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
@@ -120,10 +127,12 @@ public class DBHelperStore  extends SQLiteOpenHelper {
 //        }
         // Drop table if existed, all data will be gone!!!
         if (newVersion > oldVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + "Meat");
+            db.execSQL("DROP TABLE IF EXISTS " + "Carne");
             db.execSQL("DROP TABLE IF EXISTS " + "Fruit");
             db.execSQL("DROP TABLE IF EXISTS " + "Dairy");
             db.execSQL("DROP TABLE IF EXISTS " + "Hay");
+            db.execSQL("DROP TABLE IF EXISTS " + "Animal");
+            db.execSQL("DROP TABLE IF EXISTS " + "Farinaceous");
             db.execSQL("DROP TABLE IF EXISTS " + "Poultry");
             db.execSQL("DROP TABLE IF EXISTS " + "Grain");
             db.execSQL("DROP TABLE IF EXISTS " + "Vegetables");

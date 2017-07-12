@@ -1,17 +1,7 @@
 package com.example.gretchen.agrodata.activities;
 
-import android.app.Activity;
-import android.app.SearchManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -48,6 +38,8 @@ public class ProductList extends ParentActivity {
 
         //Holds the type of the list to be shown
         final String productType = listType.getString(getString(R.string.list_type));
+        //Holds the sublist type
+        final String subtype = listType.getString(getString(R.string.subdivision_key));
 
         //This is temporary
         if(productType.equals("Users"))
@@ -85,10 +77,16 @@ public class ProductList extends ParentActivity {
 
                 products = repo.searchInventoryProducts(inventoryList);
             }
-            else
+            else if(subtype.equals(getString(R.string.see_all)))
             {
                 //Get list of the given product type
-                 products = repo.getProductList(productType);
+                products = repo.getProductList(productType);
+            }
+            else
+            {
+                //Get list of the given subtype
+                products = repo.getProductListbySubtype(productType,subtype);
+
             }
 
             if(products!=null&&!products.isEmpty())
