@@ -24,6 +24,8 @@
     <string name="user_inventory">UserInventory</string>
     //Key for subdivision of the products.
     <string name="subdivision_key">SubList</string>
+    //Key with the sellers name
+    <string name="seller_name_key">SellersNameKey</string>
 
     //------Strings for layout components--------//
     <string name="welcome_message">Bienvenido</string>
@@ -69,6 +71,11 @@
     <string name="new_password">Contraseña Nueva</string>
     <string name="user_rating">Rating:</string>
     <string name="see_all">Ver Todo</string>
+    <string name="amount_available">Cantidad disponible:</string>
+    <string name="amount_to_pay">Cantidad a pagar:</string>
+    <string name="ok">OK</string>
+    <string name="direct_pay">Pago En Efectivo</string>
+    <string name="buy_product">Comprar</string>
 
     //-------Main Page Divisions---------------//
     <string name="fruit">Frutas</string>
