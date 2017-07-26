@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.gretchen.agrodata.activities.AddProduct;
+import com.example.gretchen.agrodata.activities.MainPage;
+import com.example.gretchen.agrodata.activities.ProductList;
 import com.example.gretchen.agrodata.activities.SearchActivity;
 import com.example.gretchen.agrodata.activities.UserProfile;
 import com.example.gretchen.agrodata.activities.Welcome;
@@ -66,7 +68,12 @@ public class ParentActivity extends AppCompatActivity {
                 userProfile.putExtra(getString(R.string.id_key),userInfo.getInt(getString(R.string.id_key),0));
 
                 startActivity(userProfile);
+            case R.id.action_view_all_users:
+                Intent showUsers = new Intent(this, ProductList.class);
+                showUsers.putExtra(getString(R.string.list_type),"Users");
 
+
+                startActivity(showUsers);
 
                 return true;
             case R.id.action_log_out:

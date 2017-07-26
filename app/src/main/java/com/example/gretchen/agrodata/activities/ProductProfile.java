@@ -19,8 +19,10 @@ import com.example.gretchen.agrodata.data.repo.UserRepo;
 
 public class ProductProfile extends ParentActivity {
 
+    //Holds product that will be displayed
     private Product product;
-    @Override
+    //Hold the user that owns the product
+    private User owner;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_profile);
@@ -52,7 +54,7 @@ public class ProductProfile extends ParentActivity {
         product = repo.getProductByUniqueId(productId);
 
         //Owner of the product
-        User owner = userRepo.getUserById(product.getSellerID());
+        owner = userRepo.getUserById(product.getSellerID());
 
         //Set text views of the product profile
         TextView name = (TextView) findViewById(R.id.PPP_product_name_TextView);
@@ -77,12 +79,14 @@ public class ProductProfile extends ParentActivity {
         Button sellerBttn = (Button) findViewById(R.id.PPP_seller_info_button);
         Button deleteBttn = (Button) findViewById(R.id.PPP_delete_product_button);
         Button editBttn = (Button) findViewById(R.id.PPP_change_info_button);
+        Button buyBttn = (Button) findViewById(R.id.PPP_buy_Button);
 
         //If the person viewing the profile is the owner of the product then they get other options
         //They get the options to delete and edit the product
         if(userInfo.getInt(getString(R.string.id_key),0)==product.getSellerID())
         {
             sellerBttn.setVisibility(View.INVISIBLE);
+            buyBttn.setVisibility(View.INVISIBLE);
             deleteBttn.setVisibility(View.VISIBLE);
             editBttn.setVisibility(View.VISIBLE);
         }
@@ -90,6 +94,7 @@ public class ProductProfile extends ParentActivity {
         else
         {
             sellerBttn.setVisibility(View.VISIBLE);
+            buyBttn.setVisibility(View.VISIBLE);
             deleteBttn.setVisibility(View.INVISIBLE);
             editBttn.setVisibility(View.INVISIBLE);
         }
@@ -111,6 +116,13 @@ public class ProductProfile extends ParentActivity {
         startActivity(change);
 
     }
+    public void buyProduct(View v)
+    {
+        Intent buy = new Intent(this, BuyProductPage.class);
+        buy.putExtra(getString(R.string.product_id),product.getType().substring(0,2).toUpperCase()+product.getID());
+        buy.putExtra(getString(R.string.seller_name_key), owner.getName());
+        startActivity(buy);
+    }
     //Delete the product
     public void deleteProduct(View v)
     {
@@ -122,8 +134,7 @@ public class ProductProfile extends ParentActivity {
 
 
                         UserRepo urepo= new UserRepo(ProductProfile.this);
-                        //Eliminate from user inventory
-                        User owner = urepo.getUserById(product.getSellerID());
+
                         //Delete the product from the user's inventory
                         owner.deleteFromInventory(product.getType().substring(0,2).toUpperCase()+product.getID());
                         urepo.update(owner);

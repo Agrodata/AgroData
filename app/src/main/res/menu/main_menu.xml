@@ -22,12 +22,17 @@
         android:title="@string/add_product"
         app:showAsAction="never"
         />
-
+    <!-- View all users -->
+    <item android:id="@+id/action_view_all_users"
+        android:title="@string/view_all_users"
+        app:showAsAction="never"
+        />
     <!-- Log out -->
     <item android:id="@+id/action_log_out"
         android:title="@string/log_out"
         app:showAsAction="never"
         />
+
 
 
 </menu>
