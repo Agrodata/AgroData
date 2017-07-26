@@ -96,6 +96,7 @@ public class UserProfile extends ParentActivity {
         TextView name = (TextView) findViewById(R.id.UPP_profile_name_EditText);
         TextView email = (TextView) findViewById(R.id.UPP_profile_email_EditText) ;
         TextView phone  = (TextView) findViewById(R.id.UPP_profile_phone_EditText);
+       // TextView rating = (TextView) findViewById(R.id.UPP_profile_rating_EditText);  //ADDED
 
         //Get user info that should be displayed
         Bundle bundle = getIntent().getExtras();
@@ -122,6 +123,7 @@ public class UserProfile extends ParentActivity {
             user=new User();
             user.setName(userInfo.getString(getString(R.string.user_name_key),""));
             user.setEmail(userInfo.getString(getString(R.string.user_email_key),""));
+           // user.setRating(userInfo.getString("UserRatingKey","")); //ADDED
             user.setPhone(userInfo.getString(getString(R.string.user_phone_key),""));
             user.setInventory(userInfo.getString(getString(R.string.user_inventory_key),"empty"));
 
@@ -131,6 +133,7 @@ public class UserProfile extends ParentActivity {
             name.setText(user.getName());
             email.setText(user.getEmail());
             phone.setText(user.getPhone());
+           // rating.setText(user.getRating()); //ADDED
 
             addProduct.setVisibility(View.VISIBLE);
             editAccount.setVisibility(View.VISIBLE);
@@ -149,6 +152,7 @@ public class UserProfile extends ParentActivity {
             name.setText(user.getName());
             email.setText(user.getEmail());
             phone.setText(user.getPhone());
+            //rating.setText(user.getRating()); //ADDED
 
             addProduct.setVisibility(View.INVISIBLE);
             editAccount.setVisibility(View.INVISIBLE);

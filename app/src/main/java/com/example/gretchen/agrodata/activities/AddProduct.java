@@ -35,8 +35,7 @@ public class AddProduct extends ParentActivity {
     }
 
 
-    private void populateSpinners()
-    {
+    private void populateSpinners() {
 
         //Spinner that will hold product types
         Spinner spinner = (Spinner) findViewById(R.id.APP_product_type_Spinner);
@@ -49,7 +48,7 @@ public class AddProduct extends ParentActivity {
         spinner.setAdapter(adapter);
         //Add listener to spinner so that it can change the subtype spinners array
         //Subtype spinner is populated based on the type spinner
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 //Spinner that will hold product subtypes
@@ -103,13 +102,10 @@ public class AddProduct extends ParentActivity {
                         String slist[] = getResources().getStringArray(arrayID);
                         EditText prod_name = (EditText) findViewById(R.id.APP_product_name_EditText);
 
-                        if(position==slist.length-1)
-                        {
+                        if (position == slist.length - 1) {
                             prod_name.setText("");
                             prod_name.setEnabled(true);
-                        }
-                        else
-                        {
+                        } else {
                             prod_name.setEnabled(false);
                             prod_name.setText(slist[position]);
                         }
@@ -129,10 +125,40 @@ public class AddProduct extends ParentActivity {
         });
 
 
-
-
-        //Spinner that will hold price/amount spinner
+        //Text that will hold amount type
         Spinner pSpinner = (Spinner) findViewById(R.id.APP_price_Spinner);
+
+        pSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                //TextVIew next to amount
+                TextView amountType = (TextView) findViewById(R.id.APP_type_amount_TextView);
+                //String array that holds amount type array
+                String amountArray[] = getResources().getStringArray(R.array.amount_list);
+                //If possition 0 string is c/u
+                if(position==0)
+                {
+                    amountType.setText(amountArray[position]);
+                }
+                //Set string to amount in price spinner without the /
+                else
+                {
+                    amountType.setText(amountArray[position]);
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //Nothing here for now
+            }
+        });
+
+
+
+
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.price_amount_list, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -140,14 +166,6 @@ public class AddProduct extends ParentActivity {
         // Apply the adapter to the spinner
         pSpinner.setAdapter(adapter2);
 
-        //Spinner that will hold amount spinner
-        Spinner aSpinner = (Spinner) findViewById(R.id.APP_amount_Spinner);
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-                R.array.amount_list, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        aSpinner.setAdapter(adapter3);
     }
     //Adds product to store
     public void addProduct(View v)
@@ -158,7 +176,7 @@ public class AddProduct extends ParentActivity {
         EditText product_price = (EditText) findViewById(R.id.APP_price_text_EditText);
         Spinner product_price1 = (Spinner) findViewById(R.id.APP_price_Spinner);
         EditText product_amount = (EditText)findViewById(R.id.APP_amount_text_EditText);
-        Spinner product_amount1 = (Spinner) findViewById(R.id.APP_amount_Spinner);
+
 
         Spinner product_subtype = (Spinner) findViewById(R.id.APP_subtype_Spinner);
 
@@ -225,7 +243,16 @@ public class AddProduct extends ParentActivity {
             product.setDate_added(current_date);
             product.setPrice(thePrice+" "+product_price1.getSelectedItem().toString());
             product.setType(product_type.getSelectedItem().toString());
-            product.setAmount(product_amount.getText().toString()+" "+product_amount1.getSelectedItem().toString());
+            if(product_price1.getSelectedItem().toString().equals("c/u"))
+            {
+                product.setAmount(product_amount.getText().toString());
+            }
+            else
+            {
+                product.setAmount(product_amount.getText().toString()+" "+product_price1.getSelectedItem().toString().substring(1));
+            }
+
+
             product.setSellerID(user.getId());
             product.setSubType(product_subtype.getSelectedItem().toString());
 

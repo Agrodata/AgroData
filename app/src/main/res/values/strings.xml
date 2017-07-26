@@ -32,7 +32,7 @@
     <string name="if_new_msg">Si eres nuevo</string>
     <string name="sign_up">Registrate</string>
     <string name="email">Email:</string>
-    <string name="name">Nombre:</string>
+    <string name="name">Nombre de Agricultor o Negocio:</string>
     <string name="phone">Telefono:</string>
     <string name="password">Contraseña</string>
     <string name="re_enter_password">Reingrese la contraseña</string>
@@ -96,16 +96,25 @@
     </string-array>
     //String array for price Spinner
     <string-array name="price_amount_list">
-        <item>Cada uno</item>
-        <item>/lb</item>
+        <item>c/u</item>
         <item>/oz</item>
-        <item>/racimo</item>
+        <item>/lb</item>
+        <item>/almud</item>
+        <item>/caja</item>
+        <item>/saco</item>
+        <item>/quintal</item>
+        <item>/tonelada</item>
     </string-array>
     //String array for amount Spinner
     <string-array name="amount_list">
-        <item> </item>
-        <item>lb</item>
+        <item>unidad(es)</item>
         <item>oz</item>
+        <item>lb(s)</item>
+        <item>almud(es)</item>
+        <item>caja(s)</item>
+        <item>saco(s)</item>
+        <item>quintal(es)</item>
+        <item>tonelada(s)</item>
     </string-array>
     //String array for fruits
     <string-array name="fruit_list">
@@ -222,5 +231,8 @@
         <item>Otros</item>
 
     </string-array>
+
+    //Other strings
+    <string name="dollar_sign">$</string>
 
 </resources>
