@@ -137,7 +137,8 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".activities.SubdivisionList" />
-        <activity android:name=".activities.BuyProductPage"></activity>
+        <activity android:name=".activities.BuyProductPage" />
+        <activity android:name=".activities.ContactUs"></activity>
     </application>
 
 </manifest>

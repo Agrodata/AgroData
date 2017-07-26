@@ -40,6 +40,7 @@ public class ParentActivity extends AppCompatActivity {
         searchView.setSubmitButtonEnabled(true);
 
 
+
         return super.onCreateOptionsMenu(menu);
     }
 
