@@ -27,6 +27,11 @@
         android:title="@string/view_all_users"
         app:showAsAction="never"
         />
+    <!-- View Contact Us -->
+    <item android:id="@+id/action_contact_us"
+        android:title="@string/contact_us_title"
+        app:showAsAction="never"
+        />
     <!-- Log out -->
     <item android:id="@+id/action_log_out"
         android:title="@string/log_out"

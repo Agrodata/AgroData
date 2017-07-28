@@ -238,7 +238,7 @@ public class StoreRepo {
         ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
         productList.addAll(searchProductListByName(name,"Frutas"));
         productList.addAll(searchProductListByName(name,"Carnes"));
-        productList.addAll(searchProductListByName(name,"Animal"));
+        productList.addAll(searchProductListByName(name,"Lacteos"));
         productList.addAll(searchProductListByName(name,"Grano"));
         productList.addAll(searchProductListByName(name,"Hortalizas"));
         productList.addAll(searchProductListByName(name,"Farinaceos"));
@@ -283,9 +283,9 @@ public class StoreRepo {
         String product_type=ID.substring(0,2);
         int Id = Integer.parseInt(ID.substring(2,ID.length()));
         //Check which table this belongs to
-        if(product_type.equals("AN"))
+        if(product_type.equals("LA"))
         {
-            product_type="Animal";
+            product_type="Lacteos";
         }
         else if(product_type.equals("AV"))
         {
@@ -306,6 +306,10 @@ public class StoreRepo {
         else if(product_type.equals("FR"))
         {
             product_type="Frutas";
+        }
+        else if(product_type.equals("AP"))
+        {
+            product_type="Apicultura";
         }
         else
         {

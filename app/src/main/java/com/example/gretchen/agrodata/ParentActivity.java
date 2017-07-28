@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.gretchen.agrodata.activities.AddProduct;
+import com.example.gretchen.agrodata.activities.ContactUs;
 import com.example.gretchen.agrodata.activities.MainPage;
 import com.example.gretchen.agrodata.activities.ProductList;
 import com.example.gretchen.agrodata.activities.SearchActivity;
@@ -69,6 +70,7 @@ public class ParentActivity extends AppCompatActivity {
                 userProfile.putExtra(getString(R.string.id_key),userInfo.getInt(getString(R.string.id_key),0));
 
                 startActivity(userProfile);
+                return true;
             case R.id.action_view_all_users:
                 Intent showUsers = new Intent(this, ProductList.class);
                 showUsers.putExtra(getString(R.string.list_type),"Users");
@@ -76,6 +78,11 @@ public class ParentActivity extends AppCompatActivity {
 
                 startActivity(showUsers);
 
+                return true;
+            case R.id.action_contact_us:
+                Intent contactUs = new Intent(this, ContactUs.class);
+
+                startActivity(contactUs);
                 return true;
             case R.id.action_log_out:
                 // Log out

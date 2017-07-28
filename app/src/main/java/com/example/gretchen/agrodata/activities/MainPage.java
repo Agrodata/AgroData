@@ -2,7 +2,6 @@ package com.example.gretchen.agrodata.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -36,7 +35,7 @@ public class MainPage extends ParentActivity {
     {
         //Icons for products
         ImageButton poultry = (ImageButton) findViewById(R.id.MP_poultry_button);
-        ImageButton animal = (ImageButton) findViewById(R.id.MP_animal_button);
+        ImageButton dairy = (ImageButton) findViewById(R.id.MP_dairy_button);
         ImageButton faniceous = (ImageButton) findViewById(R.id.MP_farinaceuos_button);
         ImageButton vegetable = (ImageButton) findViewById(R.id.MP_vegetable_button);
         ImageButton fruit = (ImageButton) findViewById(R.id.MP_fruit_button);
@@ -82,10 +81,10 @@ public class MainPage extends ParentActivity {
 
                         startActivity(showSublist);
                         break;
-                    case R.id.MP_animal_button:
+                    case R.id.MP_dairy_button:
 
-                        showSublist.putExtra(getString(R.string.subdivision_key),R.array.animal_list);
-                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.animal));
+                        showSublist.putExtra(getString(R.string.subdivision_key),R.array.dairy_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.dairy));
 
                         startActivity(showSublist);
                         break;
@@ -110,7 +109,7 @@ public class MainPage extends ParentActivity {
         };
 
         poultry.setOnClickListener(listener);
-        animal.setOnClickListener(listener);
+        dairy.setOnClickListener(listener);
         faniceous.setOnClickListener(listener);
         meat.setOnClickListener(listener);
         fruit.setOnClickListener(listener);

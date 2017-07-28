@@ -69,7 +69,7 @@ public class AddProduct extends ParentActivity {
                         break;
 
                     case 3:
-                        arrayID = R.array.animal_list;
+                        arrayID = R.array.dairy_list;
                         break;
 
                     case 4:

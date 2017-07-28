@@ -77,17 +77,30 @@
     <string name="direct_pay">Pago En Efectivo</string>
     <string name="buy_product">Comprar</string>
 
+    //------String for directory page----------//
+    <string name="contact_us_title">Contactanos</string>
+    <string name="FIDA_title">FIDA</string>
+    <string name="FIDA_email">fidagobierno@gmail.com</string>
+    <string name="FIDA_telephone">Tel. (787)</string>
+    <string name="ADEA_title">ADEA</string>
+    <string name="ADEA_email">gmail.com</string>
+    <string name="ADEA_telephone">Tel. (787) 304-5350</string>
+    <string name="ADT_title">Autoridad de Tierra</string>
+    <string name="ADT_email">gmail.com</string>
+    <string name="ADT_telephone">Tel. (787) 723-9090</string>
+
     //-------Main Page Divisions---------------//
     <string name="fruit">Frutas</string>
     <string name="meat">Carnes</string>
     <string name="grain">Grano</string>
-    <string name="animal">Animal</string>
+    <string name="dairy">Lacteos</string>
     <string name="poultry">Avicola</string>
     <string name="vegetable">Hortalizas</string>
     <string name="farinaceous">Farinaceos</string>
+    <string name="apiary">Apicultura</string>
     //Not necessary. Used previously probably can be deleted later.//
     <string name="hay">Heno</string>
-    <string name="dairy">Lacteos</string>
+    <string name="animal">Animal</string>
 
 
     //--------Array Strings for spinners-------//
@@ -96,7 +109,7 @@
         <item>Carnes</item>
         <item>Avicola</item>
         <item>Frutas</item>
-        <item>Animal</item>
+        <item>Lacteos</item>
         <item>Hortalizas</item>
         <item>Grano</item>
         <item>Farináceos</item>
@@ -148,11 +161,10 @@
         <item>Otros</item>
 
     </string-array>
-    //String array for animal
-    <string-array name="animal_list">
+    //String array for dairy
+    <string-array name="dairy_list">
 
         <item>Leche</item>
-        <item>Miel</item>
         <item>Queso</item>
         <item>Yogurt</item>
         <item>Otro</item>
@@ -208,6 +220,15 @@
     <string-array name="grain_list">
 
         <item>Café</item>
+        <item>Otros</item>
+
+    </string-array>
+
+    //String array for apiculture
+    <string-array name="apiculture_list">
+
+        <item>Miel</item>
+        <item>Servicios de Apicultura</item>
         <item>Otros</item>
 
     </string-array>

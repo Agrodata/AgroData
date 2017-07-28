@@ -16,7 +16,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     // Database Name
     private static final String DATABASE_NAME = "products.db";
@@ -52,7 +52,7 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
-        String CREATE_TABLE_ANIMAL = "CREATE TABLE " + "Animal"  + "("
+        String CREATE_TABLE_DAIRY = "CREATE TABLE " + "Lacteos"  + "("
                 + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Product.KEY_name + " TEXT, "
                 + Product.KEY_dateAdded + " TEXT, "
@@ -102,14 +102,25 @@ public class DBHelperStore  extends SQLiteOpenHelper {
                 + Product.KEY_amount + " TEXT, "
                 + Product.KEY_seller + " TEXT, "
                 + Product.KEY_unique_ID + " TEXT )";
+        String CREATE_TABLE_APICULTURE = "CREATE TABLE " + "Apicultura"  + "("
+                + Product.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Product.KEY_name + " TEXT, "
+                + Product.KEY_dateAdded + " TEXT, "
+                + Product.KEY_type + " TEXT, "
+                + Product.KEY_subtype + " TEXT, "
+                + Product.KEY_price + " TEXT, "
+                + Product.KEY_amount + " TEXT, "
+                + Product.KEY_seller + " TEXT, "
+                + Product.KEY_unique_ID + " TEXT )";
 
         db.execSQL(CREATE_TABLE_MEAT);
         db.execSQL(CREATE_TABLE_FRUIT);
-        db.execSQL(CREATE_TABLE_ANIMAL);
+        db.execSQL(CREATE_TABLE_DAIRY);
         db.execSQL(CREATE_TABLE_FARINACEOUS);
         db.execSQL(CREATE_TABLE_POULTRY);
         db.execSQL(CREATE_TABLE_GRAIN);
         db.execSQL(CREATE_TABLE_VEGETABLES);
+        db.execSQL(CREATE_TABLE_APICULTURE);
 
     }
 
