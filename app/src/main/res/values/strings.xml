@@ -81,13 +81,19 @@
     <string name="contact_us_title">Contactanos</string>
     <string name="FIDA_title">FIDA</string>
     <string name="FIDA_email">fidagobierno@gmail.com</string>
-    <string name="FIDA_telephone">Tel. (787)</string>
+    <string name="FIDA_telephone">Tel. : (787) 304-5350</string>
+    <string name ="FIDA_Physical_Address">Direcion Fisica\nEdificio Tres Río, Piso 5\nAve. Martínez Nadal\nEsq. Gonzáles Giusti\r\nGuaynabo</string>
+    <string name ="FIDA_Correspond">Dirección Postal\nPO Box 9100-0163\nSan Juan, PR 00908-0163</string>
     <string name="ADEA_title">ADEA</string>
     <string name="ADEA_email">gmail.com</string>
     <string name="ADEA_telephone">Tel. (787) 304-5350</string>
+    <string name="ADEA_Physical_Address">Dirección Física\nEdificio Tres Río, \nPiso 5 Ave. Martinez Nadal, Esq. \nGonzales Giusti\nGuaynabo</string>
+    <string name="ADEA_Corrsponds">Dirección Postal\nPO Box 9100-0163\nSan Juan, PR 00908-0163</string>
     <string name="ADT_title">Autoridad de Tierra</string>
     <string name="ADT_email">gmail.com</string>
     <string name="ADT_telephone">Tel. (787) 723-9090</string>
+    <string name="ADT_Physical_Address">Dirección Física\nAve. Fernández Juncos #1311\nSanturce</string>
+    <string name="ADT_Corresponds">Dirección Postal \nBox 9745 \nSan Juan, PR00908-9745</string>
 
     //-------Main Page Divisions---------------//
     <string name="fruit">Frutas</string>
