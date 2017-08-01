@@ -30,13 +30,14 @@
             android:id="@+id/EUP_edit_user_profile_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="98dp"
+            android:layout_marginTop="32dp"
             android:text="@string/edit_account"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.496" />
 
         <TextView
             android:id="@+id/EUP_name_TextView"
@@ -127,20 +128,22 @@
 
         <Button
             android:id="@+id/EUP_cancel_button"
-            android:layout_width="108dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="32dp"
             android:layout_marginTop="0dp"
+            android:background="@drawable/cancel_button"
+            android:minHeight="40dp"
             android:onClick="cancelEdit"
             android:text="@string/cancel"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="@+id/EUP_save_user_changes_button"
             app:layout_constraintLeft_toRightOf="@+id/EUP_save_user_changes_button"
-            app:layout_constraintTop_toTopOf="@+id/EUP_save_user_changes_button"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_marginRight="32dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.509" />
+            app:layout_constraintTop_toTopOf="@+id/EUP_save_user_changes_button"
+            app:layout_constraintVertical_bias="0.49"
+            tools:minHeight="40dp" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.gretchen.agrodata.data.model.Transaction;
+
 /**
  * Created by Gretchen on 7/28/2017.
  */
@@ -31,9 +33,9 @@ public class DBHelperTransaction extends SQLiteOpenHelper {
                 + Transaction.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + Transaction.KEY_productName + " TEXT, "
                 + Transaction.KEY_buyerName + " TEXT, "
-                + Transaction.KEY_buyerID + " TEXT, "
+                + Transaction.KEY_buyerID + " INTEGER, "
                 + Transaction.KEY_sellerName + " TEXT, "
-                + Transaction.KEY_sellerID + " TEXT, "
+                + Transaction.KEY_sellerID + " INTEGER, "
                 + Transaction.KEY_datePublished + " TEXT, "
                 + Transaction.KEY_dateSold + " TEXT, "
                 + Transaction.KEY_price + " TEXT, "

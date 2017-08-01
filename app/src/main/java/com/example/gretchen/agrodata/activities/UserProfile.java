@@ -6,8 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.gretchen.agrodata.ParentActivity;
@@ -101,64 +103,58 @@ public class UserProfile extends ParentActivity {
         //Get user info that should be displayed
         Bundle bundle = getIntent().getExtras();
 
-        //Obtain string array with user info. String array should always be in this order: name, email, phone.
+        //Obtain string array with user info.
         int userId = bundle.getInt(getString(R.string.id_key));
 
         //Get user ID to be able to enable appropriate buttons
         SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
 
+        //For finding user
+        UserRepo repo = new UserRepo(this);
+        user = repo.getUserById(userId);
 
 
 
         //Buttons from the activity
-        Button addProduct = (Button) findViewById(R.id.UPP_add_product_button);
-        Button editAccount = (Button) findViewById(R.id.UPP_edit_account_button);
-        Button changePass = (Button) findViewById(R.id.UPP_change_password_button);
-        Button viewInv = (Button) findViewById(R.id.UPP_check_inventory_button);
-        Button deleteAccount = (Button) findViewById(R.id.UPP_delete_account_button);
+        ImageButton addProduct = (ImageButton) findViewById(R.id.UPP_add_product_ImageButton);
+        ImageButton editAccount = (ImageButton) findViewById(R.id.UPP_edit_account_ImageButton);
+        ImageButton changePass = (ImageButton) findViewById(R.id.UPP_password_ImageButton);
+        ImageButton viewInv = (ImageButton) findViewById(R.id.UPP_inventory_ImageButton);
+        ImageButton deleteAccount = (ImageButton) findViewById(R.id.UPP_eliminate_ImageButton);
+        ImageButton orderHistory = (ImageButton) findViewById(R.id.UPP_order_history_ImageButton);
+        ImageButton sellHistory = (ImageButton) findViewById(R.id.UPP_sell_history_ImageButton);
+
+
+
+        //Set TextView text with user info
+        name.setText(user.getName());
+        email.setText(user.getEmail());
+        phone.setText(user.getPhone());
+        // rating.setText(user.getRating()); //ADDED
 
         //If logged in user is viewing their own account show these options
         if(userInfo.getInt(getString(R.string.id_key),0)==userId)
         {
-            user=new User();
-            user.setName(userInfo.getString(getString(R.string.user_name_key),""));
-            user.setEmail(userInfo.getString(getString(R.string.user_email_key),""));
-           // user.setRating(userInfo.getString("UserRatingKey","")); //ADDED
-            user.setPhone(userInfo.getString(getString(R.string.user_phone_key),""));
-            user.setInventory(userInfo.getString(getString(R.string.user_inventory_key),"empty"));
-
-
-
-            //Set TextView text with user info
-            name.setText(user.getName());
-            email.setText(user.getEmail());
-            phone.setText(user.getPhone());
-           // rating.setText(user.getRating()); //ADDED
 
             addProduct.setVisibility(View.VISIBLE);
             editAccount.setVisibility(View.VISIBLE);
             changePass.setVisibility(View.VISIBLE);
             viewInv.setVisibility(View.VISIBLE);
             deleteAccount.setVisibility(View.VISIBLE);
+            orderHistory.setVisibility(View.VISIBLE);
+            sellHistory.setVisibility(View.VISIBLE);
         }
         //If not the current user's account then don't show editing options
         else
         {
-            //For finding user
-            UserRepo repo = new UserRepo(this);
-            user = repo.getUserById(userId);
-
-            //Set TextView text with user info
-            name.setText(user.getName());
-            email.setText(user.getEmail());
-            phone.setText(user.getPhone());
-            //rating.setText(user.getRating()); //ADDED
 
             addProduct.setVisibility(View.INVISIBLE);
             editAccount.setVisibility(View.INVISIBLE);
             changePass.setVisibility(View.INVISIBLE);
             viewInv.setVisibility(View.INVISIBLE);
             deleteAccount.setVisibility(View.INVISIBLE);
+            orderHistory.setVisibility(View.INVISIBLE);
+            sellHistory.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -192,5 +188,10 @@ public class UserProfile extends ParentActivity {
         inventory.putExtra(getString(R.string.list_type),getString(R.string.user_inventory));
 
         startActivity(inventory);
+    }
+    public void goToHistory(View v)
+    {
+        Intent history = new Intent(this,OrderHistory.class);
+        startActivity(history);
     }
 }

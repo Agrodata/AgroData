@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
-import com.example.gretchen.agrodata.data.SearchAdapter;
+import com.example.gretchen.agrodata.data.Adapters.SearchAdapter;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 

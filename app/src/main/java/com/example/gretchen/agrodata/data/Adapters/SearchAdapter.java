@@ -1,4 +1,4 @@
-package com.example.gretchen.agrodata.data;
+package com.example.gretchen.agrodata.data.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.gretchen.agrodata.R;
+import com.example.gretchen.agrodata.data.model.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,11 +53,11 @@ public class SearchAdapter extends ArrayAdapter<HashMap<String, String>> {
             //This is a product on the list
             type.setText("p");
             //Assigning values to the TextViews so that it may appear in the list
-            id.setText(map.get("uniqueID"));
-            name.setText(map.get("name"));
-            info.setText(map.get("price"));
-            info2.setText(map.get("amount"));
-            info3.setText(map.get("date"));
+            id.setText(map.get(Product.KEY_ID));
+            name.setText(map.get(Product.KEY_name));
+            info.setText(map.get(Product.KEY_price));
+            info2.setText(map.get(Product.KEY_amount));
+            info3.setText(map.get(Product.KEY_dateAdded));
             info_title.setText(R.string.product_price);
             info_title2.setText(R.string.product_amount);
             info_title3.setText(R.string.date_product_added);

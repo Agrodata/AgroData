@@ -40,7 +40,7 @@ public class SignUp extends Activity {
                 userPhone.getText().toString().isEmpty()||userPass.getText().toString().isEmpty())
         {
             TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
-            warning.setText("All textboxes must be filled.");
+            warning.setText(getString(R.string.all_must_be_filled_msg));
             warning.setVisibility(TextView.VISIBLE);
         }
         else

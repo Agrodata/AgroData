@@ -72,11 +72,11 @@ public class UserRepo {
         db.close(); // Closing database connection
     }
     //Get list of all users
-    public ArrayList<HashMap<String, String>>  getUserList() {
+    public Cursor  getUserList() {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
-                User.KEY_ID + "," +
+                User.KEY_ID + " AS _id," +
                 User.KEY_name + "," +
                 User.KEY_email + "," +
                 User.KEY_phone + "," +
@@ -88,26 +88,8 @@ public class UserRepo {
         ArrayList<HashMap<String, String>> userList = new ArrayList<HashMap<String, String>>();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
-        // looping through all rows and adding to list
 
-        if (cursor.moveToFirst()) {
-            do {
-                HashMap<String, String> user = new HashMap<String, String>();
-                user.put("id", cursor.getString(cursor.getColumnIndex(User.KEY_ID)));
-                user.put("name", cursor.getString(cursor.getColumnIndex(User.KEY_name)));
-                user.put("email", cursor.getString(cursor.getColumnIndex(User.KEY_email)));
-                user.put("phone", cursor.getString(cursor.getColumnIndex(User.KEY_phone)));
-                user.put("password", cursor.getString(cursor.getColumnIndex(User.KEY_password)));
-                user.put("inventory",cursor.getString(cursor.getColumnIndex(User.KEY_inventory)));
-                //Adds user with all their info
-                userList.add(user);
-
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        db.close();
-        return userList;
+        return cursor;
 
     }
 
@@ -178,6 +160,7 @@ public class UserRepo {
         return user;
     }
     //Returns a list with all the users that have the given name.
+    //Used for searching
     public ArrayList<HashMap<String, String>> searchUsersByName(String name){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
@@ -213,6 +196,7 @@ public class UserRepo {
         return userList;
     }
     //Returns a list with all the users that have the given name.
+    //Used for searching
     public ArrayList<HashMap<String, String>> searchUsersByEmail(String email){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +

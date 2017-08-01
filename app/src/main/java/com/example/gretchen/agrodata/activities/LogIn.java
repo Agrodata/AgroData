@@ -50,14 +50,7 @@ public class LogIn extends Activity {
             loginEditor.putInt(getString(R.string.id_key),user.getId());
             //Save username
             loginEditor.putString(getString(R.string.user_name_key),user.getName());
-            //Save user email
-            loginEditor.putString(getString(R.string.user_email_key),user.getEmail());
-            //Save user phone
-            loginEditor.putString(getString(R.string.user_phone_key),user.getPhone());
-            //Save user rating
-            //loginEditor.putString(getString(R.string.user_rating_key),user.getRating());
-            //Save user inventory
-            loginEditor.putString(getString(R.string.user_inventory_key),user.getInventory());
+
             //Save changes
             loginEditor.commit();
             //Go to the store page

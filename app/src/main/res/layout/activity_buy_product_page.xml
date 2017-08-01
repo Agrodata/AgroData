@@ -127,11 +127,10 @@
             android:ems="10"
             android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="@+id/BPP_client_amount_TextView"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/BPP_client_amount_TextView"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/BPP_client_amount_TextView"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            app:layout_constraintVertical_bias="0.461" />
 
         <TextView
             android:id="@+id/BPP_amount_to_pay_TextView"
@@ -178,10 +177,10 @@
 
         <ImageButton
             android:id="@+id/BPP_ath_movil_ImageButton"
-            android:layout_width="69dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="466dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="72dp"
             android:padding="0dp"
@@ -191,8 +190,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/BPP_amount_to_pay_TextView"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteY="350dp" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/BPP_amount_type_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/BPP_amount_EditText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/BPP_amount_EditText"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/BPP_amount_EditText" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

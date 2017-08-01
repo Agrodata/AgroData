@@ -4,18 +4,10 @@
     //-----Strings for searching info------//
     //Directory where to write SharedPreference info
     <string name="login_preference_key">com.example.gretchen.agrodata.LOGIN_FILE_KEY</string>
+    //Key for getting and setting user ID from shared preferences(Also used for putExtra method)
+    <string name="id_key">UserIDKey</string>
     //Key for getting username
     <string name="user_name_key">UserNameKey</string>
-    //Key for getting user email
-    <string name="user_email_key">UserEmailKey</string>
-    //Key for getting user phone
-    <string name="user_phone_key">UserPhoneKey</string>
-    //Key for getting user rating
-    <string name="user_rating_key">UserRatingKey</string>
-    //Key for getting user rating
-    <string name="user_inventory_key">UserInventoryKey</string>
-    //Key for getting and setting user ID from shared preferences
-    <string name="id_key">UserIDKey</string>
     //Key for indicating the type of table to be displayed. (Used as variable for putExtra method)
     <string name="list_type">TheList</string>
     //Key for the product ID. (Used as a variable for putExtra method)
@@ -26,28 +18,44 @@
     <string name="subdivision_key">SubList</string>
     //Key with the sellers name
     <string name="seller_name_key">SellersNameKey</string>
+    //Key with transaction id. (Used as variable for putExtra method)
+    <string name="transaction_id_key">TransactionID</string>
 
     //------Strings for layout components--------//
+    //The string resources are organized by the activities they were designed for, but can be used
+    //in other activities as well.
+
+    //In welcome page
     <string name="welcome_message">Bienvenido</string>
     <string name="if_account_msg">Si ya tiene una cuenta</string>
     <string name="log_in">Entrar</string>
     <string name="if_new_msg">Si eres nuevo</string>
     <string name="sign_up">Registrate</string>
+    //In sign up and login
     <string name="email">Email:</string>
     <string name="name">Nombre de Agricultor o Negocio:</string>
     <string name="phone">Telefono:</string>
     <string name="password">Contraseña</string>
     <string name="re_enter_password">Reingrese la contraseña</string>
+    //Warning messages for login and sign up
+    <string name="all_must_be_filled_msg">Todo tiene que ser llenado.</string>
+    <string name="incorrect_email_password">Email o contraseña incorrecta.</string>
+    <string name="pass_must_match_msg">La contraseña tiene que ser igual.</string>
+    <string name="email_exists">Email ya esta en uso.</string>
+    //In menu bar
     <string name="add_product">Añadir Producto</string>
     <string name="view_profile">Ver Perfil</string>
     <string name="log_out">Salir</string>
-
     <string name="view_all_users">Ver Todo los Usuarios</string>
+    <string name="see_all">Ver Todo</string>
+    //Add product
     <string name="name_of_product">Nombre del Producto:</string>
     <string name="date_product_added">Fecha Añadida:</string>
     <string name="product_price">Precio:</string>
     <string name="product_amount">Cantidad:</string>
+    <string name="dollar_sign">$</string>
     <string name="add">Añadir</string>
+    //User profile
     <string name="edit_account">Editar Cuenta</string>
     <string name="change_password">Cambiar Contraseña</string>
     <string name="delete_account">Eliminar Cuenta</string>
@@ -57,25 +65,41 @@
     <string name="edit_product">Editar Producto</string>
     <string name="seller">Vendedor:</string>
     <string name="delete">Eliminar</string>
+    <string name="user_rating">Rating:</string>
+    //Product profile
     <string name="view_seller_info">Ver Vendedor</string>
+    //Search
     <string name="search">Buscar</string>
     <string name="no_results_found_msg">No se encontraron resultados.</string>
+    //Product list
     <string name="theres_nothing_here_msg">No hay nada aqui.</string>
+    //Messages for when deleting a user account or a product
     <string name="are_you_sure_msg">Seguro que quieres borrar esto?</string>
     <string name="confirm">Si</string>
-    <string name="all_must_be_filled_msg">Todo tiene que ser llenado.</string>
-    <string name="incorrect_email_password">Email o contraseña incorrecta.</string>
-    <string name="pass_must_match_msg">La contraseña tiene que ser igual.</string>
-    <string name="email_exists">Email ya esta en uso.</string>
+
+    //Change Password
     <string name="edit_password">Cambiar la contraseña</string>
     <string name="new_password">Contraseña Nueva</string>
-    <string name="user_rating">Rating:</string>
-    <string name="see_all">Ver Todo</string>
+    //Buy product
     <string name="amount_available">Cantidad disponible:</string>
     <string name="amount_to_pay">Cantidad a pagar:</string>
     <string name="ok">OK</string>
     <string name="direct_pay">Pago En Efectivo</string>
     <string name="buy_product">Comprar</string>
+
+    //Order and sell histories
+    <string name="recall">Devolver</string>
+    <string name="amount_purchased">Cantidad comprada:</string>
+    <string name="amount_paid">Cantidad Pagada:</string>
+    <string name="date_of_purchase">Fecha de la compra:</string>
+    <string name="order_history">Historial de Ordenes</string>
+    <string name="selling_history">Historial de Ventas</string>
+    //Purchase completed
+    <string name="purchase_successful">La compra fue exitosa.</string>
+    <string name="purchase_failed">La compra no pudo ser completada.</string>
+    <string name="order_number_msg">Orden #</string>
+
+
 
     //------String for directory page----------//
     <string name="contact_us_title">Contactanos</string>
@@ -266,7 +290,14 @@
 
     </string-array>
 
-    //Other strings
-    <string name="dollar_sign">$</string>
+    //Extra string just in case
+    //Key for getting user email
+    <string name="user_email_key">UserEmailKey</string>
+    //Key for getting user phone
+    <string name="user_phone_key">UserPhoneKey</string>
+    //Key for getting user rating
+    <string name="user_rating_key">UserRatingKey</string>
+    //Key for getting user inventory
+    <string name="user_inventory_key">UserInventoryKey</string>
 
 </resources>

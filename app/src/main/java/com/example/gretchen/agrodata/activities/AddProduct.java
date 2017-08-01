@@ -233,7 +233,7 @@ public class AddProduct extends ParentActivity {
                 thePrice = thePrice+".00";
             }
 
-            thePrice="$"+thePrice;
+            thePrice=getString(R.string.dollar_sign)+thePrice;
 
 
             //Product where info is going to be saved
@@ -264,13 +264,6 @@ public class AddProduct extends ParentActivity {
             //Update user so table reflects the change in inventory
             urepo.update(user);
 
-           //Updating inventory info in shared pref
-            //This is so shared preference can be edited.
-            SharedPreferences.Editor loginEditor = userInfo.edit();
-
-            loginEditor.putString(getString(R.string.user_inventory_key),user.getInventory());
-            //Save changes
-            loginEditor.commit();
 
             //Finish this activity and go back to previous activity
             finish();

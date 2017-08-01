@@ -1,4 +1,4 @@
-package com.example.gretchen.agrodata.data;
+package com.example.gretchen.agrodata.data.model;
 
 
 public class Transaction {
@@ -25,9 +25,9 @@ public class Transaction {
     private int id;
     private String productName;
     private String sellerName;
-    private String sellerID;
+    private int sellerID;
     private String buyerName;
-    private String buyerID;
+    private int buyerID;
     private String datePublished;
     private String dateSold;
     private String price;
@@ -36,7 +36,7 @@ public class Transaction {
 
 
 
-    public Transaction(String pName, String pSeller, String pSellerID, String pBuyerName, String pBuyerID, String pDatePublish, String pDateSold, String pPrice, String pAmountSold, String pTotalAmoutPaid){
+    public Transaction(String pName, String pSeller, int pSellerID, String pBuyerName, int pBuyerID, String pDatePublish, String pDateSold, String pPrice, String pAmountSold, String pTotalAmoutPaid){
 
         this.productName = pName;
         this.sellerName = pSeller;
@@ -51,6 +51,20 @@ public class Transaction {
 
 
     }
+    public Transaction()
+    {
+        this.productName = "";
+        this.sellerName = "";
+        this.sellerID = 0;
+        this.buyerName = "";
+        this.buyerID = 0;
+        this.datePublished = "";
+        this.dateSold = "";
+        this.price = "";
+        this.amountSold = "";
+        this.totalAmountPaid = "";
+    }
+
 
     //Getters and Setters
 
@@ -86,11 +100,11 @@ public class Transaction {
         this.buyerName = buyerName;
     }
 
-    public String getBuyerID() {
+    public int getBuyerID() {
         return buyerID;
     }
 
-    public void setBuyerID(String buyerID) {
+    public void setBuyerID(int buyerID) {
         this.buyerID = buyerID;
     }
 
@@ -133,11 +147,11 @@ public class Transaction {
     public void setTotalAmountPaid(String totalAmountPaid) {
         this.totalAmountPaid = totalAmountPaid;
     }
-    public String getSellerID() {
+    public int getSellerID() {
         return sellerID;
     }
 
-    public void setSellerID(String sellerID) {
+    public void setSellerID(int sellerID) {
         this.sellerID = sellerID;
     }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
@@ -34,7 +35,6 @@ public class EditProduct extends ParentActivity {
     {
         StoreRepo repo =new StoreRepo(this);
 
-        EditText name = (EditText) findViewById(R.id.EPP_name_EditText);
         EditText amount = (EditText) findViewById(R.id.EPP_amount_EditText);
         EditText price = (EditText) findViewById(R.id.EPP_price_EditText);
         Spinner price1 = (Spinner) findViewById(R.id.EPP_price_Spinner);
@@ -64,10 +64,9 @@ public class EditProduct extends ParentActivity {
             thePrice = thePrice+".00";
         }
 
-        thePrice="$"+thePrice;
+        thePrice=getString(R.string.dollar_sign)+thePrice;
 
 
-        product.setName(name.getText().toString());
         product.setAmount(amount.getText().toString()+" "+amount1.getSelectedItem().toString());
         product.setPrice(thePrice+" "+price1.getSelectedItem().toString());
 
@@ -81,7 +80,7 @@ public class EditProduct extends ParentActivity {
     private void setCurrentValues()
     {
         //Elements of the edit profile activity
-        EditText name = (EditText) findViewById(R.id.EPP_name_EditText);
+        TextView name = (TextView) findViewById(R.id.EPP_product_name_TextView);
         EditText amount = (EditText) findViewById(R.id.EPP_amount_EditText);
         EditText price = (EditText) findViewById(R.id.EPP_price_EditText);
         Spinner price1 = (Spinner) findViewById(R.id.EPP_price_Spinner);
@@ -116,17 +115,18 @@ public class EditProduct extends ParentActivity {
         product=repo.getProductByUniqueId(productID);
         //Set values to the EditTexts
         name.setText(product.getName());
-        //Substrings start at 1 so price does not include $
+
         amount.setText(product.getAmount().substring(0,product.getAmount().indexOf(" ")));
+        //Substrings start at 1 so price does not include $
         price.setText(product.getPrice().substring(1,product.getPrice().indexOf(" ")));
 
-        //Set spinner values
+        //Get spinner values
         String priceSpinner = product.getPrice().substring(product.getPrice().indexOf(" ")+1);
         String amountSpinner =product.getAmount().substring(product.getAmount().indexOf(" ")+1);
 
         String priceArray[] = getResources().getStringArray(R.array.price_amount_list);
         String amountArray[] = getResources().getStringArray(R.array.amount_list);
-
+        //Set spinner values
         for (int i=0;i<priceArray.length;i++)
         {
             if(priceArray[i].equals(priceSpinner))

@@ -1,5 +1,7 @@
 package com.example.gretchen.agrodata.data.model;
 
+import java.util.HashMap;
+
 /**
  * Created by Gretchen on 5/15/2017.
  */
@@ -16,23 +18,31 @@ public class User {
     public static final String KEY_phone = "phone";
     public static final String KEY_password = "password";
     public static final String KEY_inventory = "inventory";
+    public static final String KEY_order_history = "orderHistory";
+    public static final String KEY_sell_history = "sellHistory";
 
 
 
 
     //Properties
     //User's ID in the database
-    public int id;
+    private int id;
     //Name of the user
-    public String name;
+    private String name;
     //User's email
-    public String email;
+    private String email;
     //User's phone number
-    public String phone;
+    private String phone;
     //User's password
-    public String password;
+    private String password;
     //User's inventory. Will be a string that will hold the unique ID's of each product they are selling
-    public String inventory;
+    private String inventory;
+
+    //Might be needed later
+   /* //Users order history
+    private String orderHistory;
+    //User's sell history
+    private String sellHistory;*/
 
 
     //Returns the user's id
@@ -44,7 +54,7 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-    //Retuen's the user's name
+    //Return's the user's name
     public String getName() {
         return name;
     }
@@ -53,7 +63,7 @@ public class User {
         this.name = name;
     }
 
-    //Retuens the user's email
+    //Returns the user's email
     public String getEmail() {
         return email;
     }
@@ -158,6 +168,177 @@ public class User {
         return newInventory;
 
     }
+    //Might be needed later
+    /*public  String getSellHistory()
+    {
+        return sellHistory;
+    }
+    public void   setSellHistory(String sellHistory)
+    {
+        this.sellHistory = sellHistory;
+    }
+    public String getOrderHistory() {
+        return orderHistory;
+    }
+
+    public void setOrderHistory(String orderHistory) {
+        this.orderHistory = orderHistory;
+    }
+    public void addOrder(int id)
+    {
+        //If it's the first item on the list
+        if(this.orderHistory==null||this.orderHistory.equals(""))
+        {
+            this.orderHistory=Integer.toString(id);
+        }
+        //If the second item or more then place it after the unique divider _,_
+        else
+        {
+            this.orderHistory=this.orderHistory+"_,_"+Integer.toString(id);
+        }
+
+    }
+    public void addSell(int id)
+    {
+        //If it's the first item on the list
+        if(this.sellHistory==null||this.sellHistory.equals(""))
+        {
+            this.sellHistory=Integer.toString(id);
+        }
+        //If the second item or more then place it after the unique divider _,_
+        else
+        {
+            this.sellHistory=this.sellHistory+"_,_"+Integer.toString(id);
+        }
+
+    }
+    public int[] getOrderHistoryArray()
+    {
+        String ordersS[] = getOrderHistory().split("_,_");
+        int ordersI[]= new int[ordersS.length];
+
+        for(int i=0; i<ordersS.length;i++)
+        {
+            ordersI[i]=Integer.parseInt(ordersS[i]);
+        }
+
+        return ordersI;
+
+    }
+    public int[] getSellHistoryArray()
+    {
+        String ordersS[] = getSellHistory().split("_,_");
+        int ordersI[]= new int[ordersS.length];
+
+        for(int i=0; i<ordersS.length;i++)
+        {
+            ordersI[i]=Integer.parseInt(ordersS[i]);
+        }
+
+        return ordersI;
+
+    }
+    public void deleteOrderFromHistory(int id)
+    {
+        //Places all the order id's in an array
+        String [] items = getOrderHistory().split("_,_");
+
+        //Make id string
+        String ID = Integer.toString(id);
+
+        if(items.length==1)
+        {
+            setOrderHistory(null);
+        }
+        //index of array
+        int i=0;
+
+        //Search for the ID given
+        while(i<items.length)
+        {
+            if(items[i].equals(ID))
+            {
+                break;
+            }
+            i++;
+        }
+
+        //Shift every item
+        while(i<items.length-1)
+        {
+            items[i]=items[i+1];
+            i++;
+        }
+
+        String newHistory="";
+        //Make the inventory a string again
+        for(i=0;i<items.length-1;i++)
+        {
+            //First item is added
+            if(i==0)
+            {
+                newHistory=items[i];
+            }
+            //Every other items is added after the unique divider _,_
+            else
+            {
+                newHistory=newHistory+"_,_"+items[i];
+            }
+        }
+        this.setOrderHistory(newHistory);
+
+    }
+    public void deleteSellFromHistory(int id)
+    {
+        //Places all the order id's in an array
+        String [] items = getSellHistory().split("_,_");
+
+        //Make id string
+        String ID = Integer.toString(id);
+
+        if(items.length==1)
+        {
+            setSellHistory(null);
+        }
+        //index of array
+        int i=0;
+
+        //Search for the ID given
+        while(i<items.length)
+        {
+            if(items[i].equals(ID))
+            {
+                break;
+            }
+            i++;
+        }
+
+        //Shift every item
+        while(i<items.length-1)
+        {
+            items[i]=items[i+1];
+            i++;
+        }
+
+        String newHistory="";
+        //Make the inventory a string again
+        for(i=0;i<items.length-1;i++)
+        {
+            //First item is added
+            if(i==0)
+            {
+                newHistory=items[i];
+            }
+            //Every other items is added after the unique divider _,_
+            else
+            {
+                newHistory=newHistory+"_,_"+items[i];
+            }
+        }
+        this.setSellHistory(newHistory);
+
+    }*/
+
 
 
 }

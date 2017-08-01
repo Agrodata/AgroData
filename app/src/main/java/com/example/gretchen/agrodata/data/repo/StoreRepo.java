@@ -96,11 +96,57 @@ public class StoreRepo {
         db.close(); // Closing database connection
     }
     //Gives full list of a given product type
-    public ArrayList<HashMap<String, String>>  getProductList(String product_type) {
+//    public ArrayList<HashMap<String, String>>  getProductList(String product_type) {
+//        //Open connection to read only
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        String selectQuery =  "SELECT  " +
+//                Product.KEY_ID + "," +
+//                Product.KEY_name + "," +
+//                Product.KEY_dateAdded + "," +
+//                Product.KEY_type + "," +
+//                Product.KEY_subtype + "," +
+//                Product.KEY_price + "," +
+//                Product.KEY_amount + "," +
+//                Product.KEY_seller + "," +
+//                Product.KEY_unique_ID +
+//                //MUST check which table
+//                " FROM " + product_type;
+//
+//
+//        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
+//
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//        // looping through all rows and adding to list
+//
+//        if (cursor.moveToLast()) {
+//            do {
+//                HashMap<String, String> product = new HashMap<String, String>();
+//                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
+//                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
+//                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
+//                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+//                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
+//                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
+//                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
+//                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
+//                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
+//
+//                productList.add(product);
+//
+//            } while (cursor.moveToPrevious());
+//        }
+//
+//        cursor.close();
+//        db.close();
+//        return productList;
+//
+//    }
+    //Gives full list of a given product type
+    public Cursor getProductList(String product_type) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
-                Product.KEY_ID + "," +
+                Product.KEY_ID + " AS _id," +
                 Product.KEY_name + "," +
                 Product.KEY_dateAdded + "," +
                 Product.KEY_type + "," +
@@ -113,40 +159,65 @@ public class StoreRepo {
                 " FROM " + product_type;
 
 
-        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
-
         Cursor cursor = db.rawQuery(selectQuery, null);
-        // looping through all rows and adding to list
-
-        if (cursor.moveToLast()) {
-            do {
-                HashMap<String, String> product = new HashMap<String, String>();
-                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
-                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
-                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
-                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
-                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
-                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
-                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
-                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
-                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
-
-                productList.add(product);
-
-            } while (cursor.moveToPrevious());
-        }
-
-        cursor.close();
-        db.close();
-        return productList;
+        return cursor;
 
     }
+//    //Gives full list of a given product type
+//    public ArrayList<HashMap<String, String>>  getProductListbySubtype(String product_type, String subtype) {
+//        //Open connection to read only
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        String selectQuery =  "SELECT  " +
+//                Product.KEY_ID + "," +
+//                Product.KEY_name + "," +
+//                Product.KEY_dateAdded + "," +
+//                Product.KEY_type + "," +
+//                Product.KEY_subtype + "," +
+//                Product.KEY_price + "," +
+//                Product.KEY_amount + "," +
+//                Product.KEY_seller + "," +
+//                Product.KEY_unique_ID +
+//                //MUST check which table
+//                " FROM " + product_type
+//                + " WHERE " +
+//                Product.KEY_subtype+ " LIKE '%"+subtype+"%'";
+//
+//
+//        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
+//
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//        // looping through all rows and adding to list
+//
+//        if (cursor.moveToLast()) {
+//            do {
+//                HashMap<String, String> product = new HashMap<String, String>();
+//                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
+//                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
+//                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
+//                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
+//                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
+//                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
+//                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
+//                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
+//                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
+//
+//                productList.add(product);
+//
+//            } while (cursor.moveToPrevious());
+//        }
+//
+//        cursor.close();
+//        db.close();
+//        return productList;
+//
+//    }
+
     //Gives full list of a given product type
-    public ArrayList<HashMap<String, String>>  getProductListbySubtype(String product_type, String subtype) {
+    public Cursor  getProductListbySubtype(String product_type, String subtype) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
-                Product.KEY_ID + "," +
+                Product.KEY_ID + " AS _id," +
                 Product.KEY_name + "," +
                 Product.KEY_dateAdded + "," +
                 Product.KEY_type + "," +
@@ -161,32 +232,8 @@ public class StoreRepo {
                 Product.KEY_subtype+ " LIKE '%"+subtype+"%'";
 
 
-        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
-
         Cursor cursor = db.rawQuery(selectQuery, null);
-        // looping through all rows and adding to list
-
-        if (cursor.moveToLast()) {
-            do {
-                HashMap<String, String> product = new HashMap<String, String>();
-                product.put(Product.KEY_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_ID)));
-                product.put(Product.KEY_name, cursor.getString(cursor.getColumnIndex(Product.KEY_name)));
-                product.put(Product.KEY_dateAdded, cursor.getString(cursor.getColumnIndex(Product.KEY_dateAdded)));
-                product.put(Product.KEY_type, cursor.getString(cursor.getColumnIndex(Product.KEY_type)));
-                product.put(Product.KEY_subtype, cursor.getString(cursor.getColumnIndex(Product.KEY_subtype)));
-                product.put(Product.KEY_price, cursor.getString(cursor.getColumnIndex(Product.KEY_price)));
-                product.put(Product.KEY_amount, cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
-                product.put(Product.KEY_seller, cursor.getString(cursor.getColumnIndex(Product.KEY_seller)));
-                product.put(Product.KEY_unique_ID, cursor.getString(cursor.getColumnIndex(Product.KEY_unique_ID)));
-
-                productList.add(product);
-
-            } while (cursor.moveToPrevious());
-        }
-
-        cursor.close();
-        db.close();
-        return productList;
+        return cursor;
 
     }
     //Searches for a given product in a specific list
