@@ -139,16 +139,37 @@ public class BuyProductPage extends AppCompatActivity {
         Date date = new Date();
         String current_date = dateFormat.format(date);
 
+        //Create transaction
         Transaction transaction = new Transaction(product.getName(), owner, product.getSellerID(), buyerName,buyerId,
                 product.getDate_added(),current_date, product.getPrice(), amountBought, total);
 
         TransactionRepo repo = new TransactionRepo(this);
-
+        //Get transaction id
         int transactionId = repo.insert(transaction);
+
+        //Get amount that the product had. (Just the number)
+        String PAmount = product.getAmount().substring(0,product.getAmount().indexOf(" "));
+        //Get the amount the buyer got. (Just the number)
+        String buyerAmount = amountBought.substring(0,amountBought.indexOf(" "));
+        //Get the units used
+        String amountUnits = product.getAmount().substring(product.getAmount().indexOf(" "))+1;
+
+        //How much was left of the product
+        float resultingAmount = Float.parseFloat(PAmount)-Float.parseFloat(buyerAmount);
+
+        //Set new amount values
+        product.setAmount(Float.toString(resultingAmount)+" "+amountUnits);
+
+        //Get product repo
+        StoreRepo repo1 = new StoreRepo(this);
+        repo1.update(product);
 
         Intent transactionDone = new Intent(this, PurchaseCompleted.class);
 
         transactionDone.putExtra(getString(R.string.transaction_id_key),transactionId);
+
+
+
 
         startActivity(transactionDone);
         finish();

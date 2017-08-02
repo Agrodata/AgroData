@@ -98,6 +98,8 @@
     <string name="purchase_successful">La compra fue exitosa.</string>
     <string name="purchase_failed">La compra no pudo ser completada.</string>
     <string name="order_number_msg">Orden #</string>
+    <string name="return_to_main_page">Volver a página de inicio</string>
+    <string name="try_again">Intentar denuevo</string>
 
 
 

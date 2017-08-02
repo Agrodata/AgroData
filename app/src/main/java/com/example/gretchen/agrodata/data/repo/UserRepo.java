@@ -84,9 +84,6 @@ public class UserRepo {
                 User.KEY_inventory +
                 " FROM " + User.TABLE;
 
-        //ArrayList that will hold all users
-        ArrayList<HashMap<String, String>> userList = new ArrayList<HashMap<String, String>>();
-
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         return cursor;

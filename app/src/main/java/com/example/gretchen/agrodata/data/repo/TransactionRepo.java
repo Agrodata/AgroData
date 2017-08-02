@@ -152,6 +152,54 @@ public class TransactionRepo {
         return history;
 
     }
+    //Search for transaction group based on the buyer
+    public Cursor searchOrderHistoryofUser(String user)
+    {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery =  "SELECT  " +
+                Transaction.KEY_ID  + "As _id," +
+                Transaction.KEY_productName + "," +
+                Transaction.KEY_buyerName + "," +
+                Transaction.KEY_buyerID + "," +
+                Transaction.KEY_sellerName + "," +
+                Transaction.KEY_sellerID + "," +
+                Transaction.KEY_datePublished + "," +
+                Transaction.KEY_dateSold + "," +
+                Transaction.KEY_price + "," +
+                Transaction.KEY_amountSold + "," +
+                Transaction.KEY_totalAmountPaid +
+                " FROM " + Transaction.TABLE
+                + " WHERE " +
+                Transaction.KEY_buyerName+ "=?";// It's a good practice to use parameter ?, instead of concatenate string
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[] { user } );
+
+        return cursor;
+    }
+    //Search for transaction group based on the seller
+    public Cursor searchSellerHistoryofUser(String user)
+    {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selectQuery =  "SELECT  " +
+                Transaction.KEY_ID  + "As _id," +
+                Transaction.KEY_productName + "," +
+                Transaction.KEY_buyerName + "," +
+                Transaction.KEY_buyerID + "," +
+                Transaction.KEY_sellerName + "," +
+                Transaction.KEY_sellerID + "," +
+                Transaction.KEY_datePublished + "," +
+                Transaction.KEY_dateSold + "," +
+                Transaction.KEY_price + "," +
+                Transaction.KEY_amountSold + "," +
+                Transaction.KEY_totalAmountPaid +
+                " FROM " + Transaction.TABLE
+                + " WHERE " +
+                Transaction.KEY_sellerName+ "=?";// It's a good practice to use parameter ?, instead of concatenate string
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[] { user } );
+
+        return cursor;
+    }
 
 
 }

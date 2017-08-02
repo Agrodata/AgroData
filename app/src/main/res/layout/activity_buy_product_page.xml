@@ -164,15 +164,16 @@
             android:id="@+id/BPP_direct_pay_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/direct_pay"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginRight="32dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/BPP_ath_movil_ImageButton"
+            android:layout_marginStart="16dp"
+            android:onClick="directPay"
+            android:text="@string/direct_pay"
             app:layout_constraintBottom_toBottomOf="@+id/BPP_ath_movil_ImageButton"
             app:layout_constraintLeft_toRightOf="@+id/BPP_ath_movil_ImageButton"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="32dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/BPP_ath_movil_ImageButton"
             app:layout_constraintVertical_bias="0.473" />
 
         <ImageButton

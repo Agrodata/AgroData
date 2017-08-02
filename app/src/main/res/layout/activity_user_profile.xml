@@ -94,7 +94,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:src="@drawable/ic_edit_account"
             android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/edit_account_TextView" />
+            app:layout_constraintTop_toBottomOf="@+id/UPP_edit_account_TextView" />
 
         <ImageButton
             android:id="@+id/UPP_password_ImageButton"
@@ -115,15 +115,16 @@
             android:id="@+id/UPP_inventory_ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
             android:onClick="goToInventory"
             android:padding="0dp"
-            app:layout_constraintLeft_toRightOf="@+id/UPP_password_ImageButton"
             android:src="@drawable/ic_inventory"
             app:layout_constraintBottom_toBottomOf="@+id/UPP_edit_account_ImageButton"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/edit_account_TextView" />
+            app:layout_constraintTop_toBottomOf="@+id/UPP_edit_account_TextView"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/UPP_password_ImageButton"
+            android:layout_marginLeft="0dp" />
 
         <ImageButton
             android:id="@+id/UPP_add_product_ImageButton"
@@ -136,7 +137,7 @@
             android:onClick="goToAddProductFromProfilePage"
             android:padding="0dp"
             android:src="@drawable/ic_add_product"
-            app:layout_constraintBottom_toTopOf="@+id/password_TextView"
+            app:layout_constraintBottom_toTopOf="@+id/UPP_password_TextView"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/UPP_inventory_ImageButton"
             app:layout_constraintRight_toRightOf="parent"
@@ -164,7 +165,7 @@
             android:padding="0dp"
             android:src="@drawable/ic_order_history"
             android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/order_history_TextView"
+            app:layout_constraintTop_toBottomOf="@+id/UPP_order_history_TextView"
             app:layout_constraintRight_toLeftOf="@+id/UPP_sell_history_ImageButton"
             android:layout_marginRight="0dp" />
 
@@ -185,7 +186,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
-            android:id="@+id/edit_account_TextView"
+            android:id="@+id/UPP_edit_account_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit_account"
@@ -198,7 +199,7 @@
             app:layout_constraintHorizontal_bias="0.461" />
 
         <TextView
-            android:id="@+id/password_TextView"
+            android:id="@+id/UPP_password_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -210,7 +211,7 @@
             android:layout_marginRight="0dp" />
 
         <TextView
-            android:id="@+id/inventory_TextView"
+            android:id="@+id/UPP_inventory_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -222,7 +223,7 @@
             app:layout_constraintRight_toLeftOf="@+id/UPP_add_product_ImageButton" />
 
         <TextView
-            android:id="@+id/add_product_TextView"
+            android:id="@+id/UPP_add_product_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
@@ -235,7 +236,7 @@
             app:layout_constraintTop_toBottomOf="@+id/UPP_add_product_ImageButton" />
 
         <TextView
-            android:id="@+id/order_history_TextView"
+            android:id="@+id/UPP_order_history_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
@@ -244,10 +245,10 @@
             app:layout_constraintLeft_toLeftOf="@+id/UPP_order_history_ImageButton"
             app:layout_constraintRight_toRightOf="@+id/UPP_order_history_ImageButton"
             android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/password_TextView" />
+            app:layout_constraintTop_toBottomOf="@+id/UPP_password_TextView" />
 
         <TextView
-            android:id="@+id/sell_history_TextView"
+            android:id="@+id/UPP_sell_history_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -261,7 +262,7 @@
             app:layout_constraintTop_toBottomOf="@+id/UPP_sell_history_ImageButton" />
 
         <TextView
-            android:id="@+id/delete_TextView"
+            android:id="@+id/UPP_delete_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"

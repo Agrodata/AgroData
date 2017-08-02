@@ -123,7 +123,14 @@ public class UserProfile extends ParentActivity {
         ImageButton deleteAccount = (ImageButton) findViewById(R.id.UPP_eliminate_ImageButton);
         ImageButton orderHistory = (ImageButton) findViewById(R.id.UPP_order_history_ImageButton);
         ImageButton sellHistory = (ImageButton) findViewById(R.id.UPP_sell_history_ImageButton);
-
+        //TextViews related to the buttons
+        TextView addProductText = (TextView) findViewById(R.id.UPP_add_product_TextView);
+        TextView editAccountText = (TextView) findViewById(R.id.UPP_edit_account_TextView);
+        TextView changePassText = (TextView) findViewById(R.id.UPP_password_TextView);
+        TextView viewInventoryText = (TextView) findViewById(R.id.UPP_inventory_TextView);
+        TextView deleteText = (TextView) findViewById(R.id.UPP_delete_TextView);
+        TextView orderHistoryText = (TextView) findViewById(R.id.UPP_order_history_TextView);
+        TextView sellHistoryText = (TextView) findViewById(R.id.UPP_sell_history_TextView);
 
 
         //Set TextView text with user info
@@ -135,7 +142,7 @@ public class UserProfile extends ParentActivity {
         //If logged in user is viewing their own account show these options
         if(userInfo.getInt(getString(R.string.id_key),0)==userId)
         {
-
+            //Buttons
             addProduct.setVisibility(View.VISIBLE);
             editAccount.setVisibility(View.VISIBLE);
             changePass.setVisibility(View.VISIBLE);
@@ -143,11 +150,19 @@ public class UserProfile extends ParentActivity {
             deleteAccount.setVisibility(View.VISIBLE);
             orderHistory.setVisibility(View.VISIBLE);
             sellHistory.setVisibility(View.VISIBLE);
+            //Texts
+            addProductText.setVisibility(View.VISIBLE);
+            editAccountText.setVisibility(View.VISIBLE);
+            changePassText.setVisibility(View.VISIBLE);
+            viewInventoryText.setVisibility(View.VISIBLE);
+            deleteText.setVisibility(View.VISIBLE);
+            orderHistoryText.setVisibility(View.VISIBLE);
+            sellHistoryText.setVisibility(View.VISIBLE);
         }
         //If not the current user's account then don't show editing options
         else
         {
-
+            //Buttons
             addProduct.setVisibility(View.INVISIBLE);
             editAccount.setVisibility(View.INVISIBLE);
             changePass.setVisibility(View.INVISIBLE);
@@ -155,6 +170,14 @@ public class UserProfile extends ParentActivity {
             deleteAccount.setVisibility(View.INVISIBLE);
             orderHistory.setVisibility(View.INVISIBLE);
             sellHistory.setVisibility(View.INVISIBLE);
+            //Texts
+            addProductText.setVisibility(View.INVISIBLE);
+            editAccountText.setVisibility(View.INVISIBLE);
+            changePassText.setVisibility(View.INVISIBLE);
+            viewInventoryText.setVisibility(View.INVISIBLE);
+            deleteText.setVisibility(View.INVISIBLE);
+            orderHistoryText.setVisibility(View.INVISIBLE);
+            sellHistoryText.setVisibility(View.INVISIBLE);
         }
 
     }
