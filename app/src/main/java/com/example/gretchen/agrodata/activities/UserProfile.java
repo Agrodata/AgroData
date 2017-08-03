@@ -212,9 +212,20 @@ public class UserProfile extends ParentActivity {
 
         startActivity(inventory);
     }
-    public void goToHistory(View v)
+    public void goToPurchaseHistory(View v)
     {
+        //Go to order history page
         Intent history = new Intent(this,OrderHistory.class);
+        //Tell page that it should show the purchase history. Value is 0.
+        history.putExtra(getString(R.string.order_history_bit_key),0);
+        startActivity(history);
+    }
+    public void goToSellHistory(View v)
+    {
+        //Go to order history page
+        Intent history = new Intent(this,OrderHistory.class);
+        //Tell page that it should show the sell history. Value is 1.
+        history.putExtra(getString(R.string.order_history_bit_key),1);
         startActivity(history);
     }
 }

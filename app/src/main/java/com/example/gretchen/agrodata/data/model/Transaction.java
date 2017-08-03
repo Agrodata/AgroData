@@ -5,7 +5,7 @@ public class Transaction {
 
 
     // Labels table name
-    public static final String TABLE = "Transaction";
+    public static final String TABLE = "Transactions";
 
     // Labels Table Columns names
     public static final String KEY_ID = "id";

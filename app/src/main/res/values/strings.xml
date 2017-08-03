@@ -20,6 +20,10 @@
     <string name="seller_name_key">SellersNameKey</string>
     //Key with transaction id. (Used as variable for putExtra method)
     <string name="transaction_id_key">TransactionID</string>
+    //Key for knowing if the order history to show is the purchase or the sell history of the user
+    //Used for putExtra for order history page. If it receives a 0 it is purchase history and a
+    // 1 is sell history.
+    <string name="order_history_bit_key">OrderHistoryBitKey</string>
 
     //------Strings for layout components--------//
     //The string resources are organized by the activities they were designed for, but can be used
@@ -94,12 +98,15 @@
     <string name="date_of_purchase">Fecha de la compra:</string>
     <string name="order_history">Historial de Ordenes</string>
     <string name="selling_history">Historial de Ventas</string>
+    <string name="no_amount_was_given_warning">Cantidad a comprar no puede ser 0</string>
     //Purchase completed
     <string name="purchase_successful">La compra fue exitosa.</string>
     <string name="purchase_failed">La compra no pudo ser completada.</string>
     <string name="order_number_msg">Orden #</string>
     <string name="return_to_main_page">Volver a página de inicio</string>
     <string name="try_again">Intentar denuevo</string>
+    //Transaction profile
+    <string name="total_paid">Total:</string>
 
 
 

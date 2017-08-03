@@ -30,7 +30,7 @@ public class DBHelperTransaction extends SQLiteOpenHelper {
         //All necessary tables you like to create will create here
 
         String CREATE_TABLE_TRANSACTION = "CREATE TABLE " + Transaction.TABLE  + "("
-                + Transaction.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + Transaction.KEY_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Transaction.KEY_productName + " TEXT, "
                 + Transaction.KEY_buyerName + " TEXT, "
                 + Transaction.KEY_buyerID + " INTEGER, "

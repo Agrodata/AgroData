@@ -1,6 +1,8 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -139,6 +141,24 @@ public class BuyProductPage extends AppCompatActivity {
         Date date = new Date();
         String current_date = dateFormat.format(date);
 
+        if(amountBought==null || total.equals("$ 0.00"))
+        {
+            //Warning that amount was not given
+            AlertDialog.Builder warning = new AlertDialog.Builder(BuyProductPage.this);
+            warning.setMessage(R.string.no_amount_was_given_warning)
+                    //If yes user account is deleted
+                    .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            warning.create();
+            warning.show();
+
+            return;
+        }
+
         //Create transaction
         Transaction transaction = new Transaction(product.getName(), owner, product.getSellerID(), buyerName,buyerId,
                 product.getDate_added(),current_date, product.getPrice(), amountBought, total);
@@ -152,7 +172,7 @@ public class BuyProductPage extends AppCompatActivity {
         //Get the amount the buyer got. (Just the number)
         String buyerAmount = amountBought.substring(0,amountBought.indexOf(" "));
         //Get the units used
-        String amountUnits = product.getAmount().substring(product.getAmount().indexOf(" "))+1;
+        String amountUnits = product.getAmount().substring(product.getAmount().indexOf(" ")+1);
 
         //How much was left of the product
         float resultingAmount = Float.parseFloat(PAmount)-Float.parseFloat(buyerAmount);

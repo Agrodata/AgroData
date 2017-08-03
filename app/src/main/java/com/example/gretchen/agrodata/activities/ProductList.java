@@ -118,6 +118,8 @@ public class ProductList extends ParentActivity {
             {
                 ProductCursorAdapter adapter = new ProductCursorAdapter(this,products);
                 list.setAdapter(adapter);
+
+
             }
             else
             {
@@ -154,6 +156,10 @@ public class ProductList extends ParentActivity {
 
 
 
+
+    }
+    public void goToNext(View view)
+    {
 
     }
 }

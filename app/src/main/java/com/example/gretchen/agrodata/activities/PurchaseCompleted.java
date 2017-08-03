@@ -27,8 +27,8 @@ public class PurchaseCompleted extends AppCompatActivity {
 
         TextView status = (TextView) findViewById(R.id.PC_purchase_status_TextView);
         TextView orderID = (TextView) findViewById(R.id.PC_order_id_TextView);
-        Button returnToMainPage = (Button) findViewById(R.id.PC_back_Button);
-        Button tryAgain = (Button) findViewById(R.id.PC_return_Button);
+        Button returnToMainPage = (Button) findViewById(R.id.PC_return_Button);
+        Button tryAgain = (Button) findViewById(R.id.PC_try_again_Button);
         Button cancel = (Button) findViewById(R.id.PC_cancel_Button);
 
         //If number is 0 or less then the transaction failed.
@@ -49,7 +49,7 @@ public class PurchaseCompleted extends AppCompatActivity {
             cancel.setVisibility(View.INVISIBLE);
             tryAgain.setVisibility(View.INVISIBLE);
             returnToMainPage.setVisibility(View.VISIBLE);
-            orderID.setText(Integer.toString(transactionStatusNumber));
+            orderID.setText(getString(R.string.order_number_msg)+Integer.toString(transactionStatusNumber));
 
 
         }

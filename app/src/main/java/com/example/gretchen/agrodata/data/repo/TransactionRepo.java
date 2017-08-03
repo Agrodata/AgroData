@@ -127,7 +127,7 @@ public class TransactionRepo {
         db.close();
         return transaction;
     }
-    public ArrayList<HashMap<String, String>>  searchInventoryProducts(int[] ids) {
+    public ArrayList<HashMap<String, String>>  getTransactionsById(int[] ids) {
 
         ArrayList<HashMap<String,String >> history =new ArrayList<HashMap<String, String>>();
 
@@ -153,11 +153,11 @@ public class TransactionRepo {
 
     }
     //Search for transaction group based on the buyer
-    public Cursor searchOrderHistoryofUser(String user)
+    public Cursor getPurchaseHistoryofUser(String user)
     {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
-                Transaction.KEY_ID  + "As _id," +
+                Transaction.KEY_ID  + " AS _id," +
                 Transaction.KEY_productName + "," +
                 Transaction.KEY_buyerName + "," +
                 Transaction.KEY_buyerID + "," +
@@ -177,11 +177,11 @@ public class TransactionRepo {
         return cursor;
     }
     //Search for transaction group based on the seller
-    public Cursor searchSellerHistoryofUser(String user)
+    public Cursor getSellHistoryofUser(String user)
     {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
-                Transaction.KEY_ID  + "As _id," +
+                Transaction.KEY_ID  + " AS _id," +
                 Transaction.KEY_productName + "," +
                 Transaction.KEY_buyerName + "," +
                 Transaction.KEY_buyerID + "," +
