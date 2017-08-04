@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -23,8 +24,7 @@ import java.util.HashMap;
 
 public class ProductList extends ParentActivity {
 
-    //List that will display the products
-    private ListView list;
+
     //Adapter that populates the listView layout
     private ProductCursorAdapter adapter;
     //Cursor that will point at all the products
@@ -32,7 +32,7 @@ public class ProductList extends ParentActivity {
     //Holds type of list to be shown and the sublist type
     private String productType, subtype;
     //Holds where the cursor should start pointing to display info
-    private int start;
+    private int start,counter;
 
 
     @Override
@@ -47,19 +47,21 @@ public class ProductList extends ParentActivity {
     private void showList()
     {
         //Start cursor at 0
-        start = 0;
+        this.start = 0;
+        this.counter = 0;
+
         //Tells if list if empty
         boolean empty = false;
         //Listview that will hold all the products
-        list = (ListView) findViewById(R.id.PLP_product_list_ListView);
+        ListView list = (ListView) findViewById(R.id.PLP_product_list_ListView);
 
         //Gets info about the list that will be displayed
         Bundle listType = getIntent().getExtras();
 
         //Holds the type of the list to be shown
-        productType = listType.getString(getString(R.string.list_type));
+        this.productType = listType.getString(getString(R.string.list_type));
         //Holds the sublist type
-        subtype = listType.getString(getString(R.string.subdivision_key));
+        this.subtype = listType.getString(getString(R.string.subdivision_key));
 
         //This is temporary
         if(productType.equals("Users"))
@@ -82,7 +84,7 @@ public class ProductList extends ParentActivity {
         }
         //If its the user's inventory
         //Method is different for obtaining list. ArrayList and listadapters are used.
-        else if(productType.equals(getString(R.string.user_inventory)))
+        else if(this.productType.equals(getString(R.string.user_inventory)))
         {
             StoreRepo repo = new StoreRepo(this);
 
@@ -113,20 +115,41 @@ public class ProductList extends ParentActivity {
         //Uses cursors and cursorAdapters to get lists
         else
         {
+            //Buttons at the bottom of the screen
+            Button next = (Button) findViewById(R.id.PLP_next_Button);
+            Button prev = (Button) findViewById(R.id.PLP_previous_Button);
+
+            //Disable them for now. At beginning of list there cannot be a previous page
+            //There might be a next page
+            prev.setEnabled(false);
+            next.setEnabled(false);
 
             getProducts(this.start);
 
-            if(products.moveToFirst())
+            if(this.products.moveToFirst())
             {
-                adapter = new ProductCursorAdapter(this,products);
+                //Give the adapter the cursor
+                this.adapter = new ProductCursorAdapter(this,products);
                 list.setAdapter(adapter);
 
+                //Set start for next batch of items
+                this.start+=5;
+                //Get cursor pointing at next items
+                getProducts(this.start);
+
+                //If there are items in the cursor then there is a next page
+                if(this.products.getCount()!=0)
+                {
+                    //Enable the next button
+                    next.setEnabled(true);
+                }
 
             }
             else
             {
                 empty =true;
             }
+
 
         }
         //If the list is empty
@@ -157,48 +180,88 @@ public class ProductList extends ParentActivity {
             });
         }
 
-
-
-
     }
     private void getProducts(int start)
     {
         StoreRepo repo = new StoreRepo(this);
 
         //All items from a given product type
-        if(subtype.equals(getString(R.string.see_all)))
+        if(this.subtype.equals(getString(R.string.see_all)))
         {
             //Get list of the given product type
-            products = repo.getProductList(productType, start);
+            this.products = repo.getProductList(this.productType, start);
         }
         else
         {
             //Get list of the given subtype
-            products = repo.getProductListbySubtype(productType,subtype,start);
+            this.products = repo.getProductListbySubtype(this.productType,this.subtype,start);
 
         }
     }
-
+    //Show next page with products
     public void goToNext(View view)
     {
-        this.start+=5;
-        getProducts(this.start);
-        if(products.getCount()>0)
+        //Buttons
+        Button next = (Button) findViewById(R.id.PLP_next_Button);
+        Button prev = (Button) findViewById(R.id.PLP_previous_Button);
+
+        if(this.products.getCount()>0)
         {
-            adapter.changeCursor(products);
-            this.start-=5;
+            //Change cursor in the adapter
+            this.adapter.changeCursor(this.products);
+            this.start+=5;
+            getProducts(this.start);
+            if(!prev.isEnabled())
+            {
+                prev.setEnabled(true);
+            }
+            //If next worked then add one to the counter
+            this.counter++;
+        }
+        //If cursor with next items has a count of 0 then there is no items left
+        //Then disable next button
+        if(this.products.getCount()==0)
+        {
+
+            next.setEnabled(false);
         }
 
 
+
     }
+    //Show previous page with items
     public void goToPrev(View view)
     {
-        this.start-=5;
-        getProducts(this.start);
-        if(products.getCount()>0)
+        Button next = (Button) findViewById(R.id.PLP_next_Button);
+        Button prev = (Button) findViewById(R.id.PLP_previous_Button);
+
+
+        //If counter is not 0 then there must be a previous page
+        if(counter!=0)
         {
-            adapter.changeCursor(products);
-            this.start+=5;
+            //Start 10 items back since start always is at the position of the next items to show.
+            int prevStart = this.start-10;
+            //Get previous items
+            getProducts(prevStart);
+            //Change the cursor in the adapter
+            this.adapter.changeCursor(this.products);
+            if(!next.isEnabled())
+            {
+                next.setEnabled(true);
+            }
+
+            //SInce previous worked then change start location
+            this.start-=5;
+            //Change cursor to the next items
+            getProducts(this.start);
+            //If previous happened then subtract one from the counter
+            this.counter--;
+        }
+        //If counter reaches 0 then we are back to the first list and should disable
+        //the previous button
+        if(counter==0)
+        {
+            prev.setEnabled(false);
         }
     }
 }
