@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class StoreRepo {
     private DBHelperStore dbHelper;
-
+    private int limit = 5;
 
     //Store Repo constructor
     public StoreRepo(Context context) {
@@ -141,8 +141,9 @@ public class StoreRepo {
 //        return productList;
 //
 //    }
-    //Gives full list of a given product type
-    public Cursor getProductList(String product_type) {
+    //Gives full list of a given product type. Start indicates where the cursor starts pointing.
+    //Cursor returns a limited number of entries.
+    public Cursor getProductList(String product_type, int start) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
@@ -156,7 +157,9 @@ public class StoreRepo {
                 Product.KEY_seller + "," +
                 Product.KEY_unique_ID +
                 //MUST check which table
-                " FROM " + product_type;
+                " FROM " + product_type
+                + " ORDER BY "+ Product.KEY_ID + " DESC "+
+                "LIMIT "+start+", "+start+this.limit;
 
 
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -212,8 +215,9 @@ public class StoreRepo {
 //
 //    }
 
-    //Gives full list of a given product type
-    public Cursor  getProductListbySubtype(String product_type, String subtype) {
+    //Gives full list of a given product subtype. Start indicates where the cursor should start pointing
+    //It will only give a given number of entries.
+    public Cursor  getProductListbySubtype(String product_type, String subtype, int start) {
         //Open connection to read only
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery =  "SELECT  " +
@@ -229,7 +233,9 @@ public class StoreRepo {
                 //MUST check which table
                 " FROM " + product_type
                 + " WHERE " +
-                Product.KEY_subtype+ " LIKE '%"+subtype+"%'";
+                Product.KEY_subtype+ " LIKE '%"+subtype+"%'"
+                + "ORDER BY "+ Product.KEY_ID + " DESC"+
+                " LIMIT "+start+", "+start+this.limit;
 
 
         Cursor cursor = db.rawQuery(selectQuery, null);

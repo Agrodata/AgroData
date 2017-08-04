@@ -243,16 +243,18 @@ public class AddProduct extends ParentActivity {
             product.setDate_added(current_date);
             product.setPrice(thePrice+" "+product_price1.getSelectedItem().toString());
             product.setType(product_type.getSelectedItem().toString());
-            if(product_price1.getSelectedItem().toString().equals("c/u"))
+
+            //Not needed anymore
+            /*if(product_price1.getSelectedItem().toString().equals("c/u"))
             {
                 product.setAmount(product_amount.getText().toString());
             }
             else
             {
                 product.setAmount(product_amount.getText().toString()+" "+product_price1.getSelectedItem().toString().substring(1));
-            }
+            }*/
 
-
+            product.setAmount(product_amount.getText().toString()+" "+product_price1.getSelectedItem().toString().substring(1));
             product.setSellerID(user.getId());
             product.setSubType(product_subtype.getSelectedItem().toString());
 

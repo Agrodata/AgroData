@@ -14,6 +14,7 @@ import com.example.gretchen.agrodata.ParentActivity;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.Adapters.ProductCursorAdapter;
 import com.example.gretchen.agrodata.data.Adapters.UserCursorAdapter;
+import com.example.gretchen.agrodata.data.model.Product;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
 
@@ -21,6 +22,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ProductList extends ParentActivity {
+
+    //List that will display the products
+    private ListView list;
+    //Adapter that populates the listView layout
+    private ProductCursorAdapter adapter;
+    //Cursor that will point at all the products
+    private Cursor products;
+    //Holds type of list to be shown and the sublist type
+    private String productType, subtype;
+    //Holds where the cursor should start pointing to display info
+    private int start;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +46,20 @@ public class ProductList extends ParentActivity {
 
     private void showList()
     {
+        //Start cursor at 0
+        start = 0;
         //Tells if list if empty
         boolean empty = false;
         //Listview that will hold all the products
-        ListView list = (ListView) findViewById(R.id.PLP_product_list_ListView);
+        list = (ListView) findViewById(R.id.PLP_product_list_ListView);
 
         //Gets info about the list that will be displayed
         Bundle listType = getIntent().getExtras();
 
         //Holds the type of the list to be shown
-        final String productType = listType.getString(getString(R.string.list_type));
+        productType = listType.getString(getString(R.string.list_type));
         //Holds the sublist type
-        final String subtype = listType.getString(getString(R.string.subdivision_key));
+        subtype = listType.getString(getString(R.string.subdivision_key));
 
         //This is temporary
         if(productType.equals("Users"))
@@ -98,25 +113,12 @@ public class ProductList extends ParentActivity {
         //Uses cursors and cursorAdapters to get lists
         else
         {
-            StoreRepo repo = new StoreRepo(this);
 
-            //Cursor that will point at all the products
-            Cursor products;
-            //If items from inventory list is from user inventory
-            if(subtype.equals(getString(R.string.see_all)))
-            {
-                //Get list of the given product type
-                products = repo.getProductList(productType);
-            }
-            else
-            {
-                //Get list of the given subtype
-                products = repo.getProductListbySubtype(productType,subtype);
+            getProducts(this.start);
 
-            }
-            if(products.moveToLast())
+            if(products.moveToFirst())
             {
-                ProductCursorAdapter adapter = new ProductCursorAdapter(this,products);
+                adapter = new ProductCursorAdapter(this,products);
                 list.setAdapter(adapter);
 
 
@@ -149,6 +151,7 @@ public class ProductList extends ParentActivity {
                     Intent seeProduct = new Intent(ProductList.this, ProductProfile.class);
                     seeProduct.putExtra(getString(R.string.product_id),productId);
                     startActivity(seeProduct);
+                    ProductList.this.products.close();
                     finish();
                 }
             });
@@ -158,8 +161,44 @@ public class ProductList extends ParentActivity {
 
 
     }
+    private void getProducts(int start)
+    {
+        StoreRepo repo = new StoreRepo(this);
+
+        //All items from a given product type
+        if(subtype.equals(getString(R.string.see_all)))
+        {
+            //Get list of the given product type
+            products = repo.getProductList(productType, start);
+        }
+        else
+        {
+            //Get list of the given subtype
+            products = repo.getProductListbySubtype(productType,subtype,start);
+
+        }
+    }
+
     public void goToNext(View view)
     {
+        this.start+=5;
+        getProducts(this.start);
+        if(products.getCount()>0)
+        {
+            adapter.changeCursor(products);
+            this.start-=5;
+        }
 
+
+    }
+    public void goToPrev(View view)
+    {
+        this.start-=5;
+        getProducts(this.start);
+        if(products.getCount()>0)
+        {
+            adapter.changeCursor(products);
+            this.start+=5;
+        }
     }
 }

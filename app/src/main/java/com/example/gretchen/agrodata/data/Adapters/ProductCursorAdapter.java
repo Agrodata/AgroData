@@ -20,6 +20,8 @@ public class ProductCursorAdapter extends CursorAdapter {
 
     public ProductCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
+
+
     }
 
     // The newView method is used to inflate a new view and return it.
@@ -30,6 +32,8 @@ public class ProductCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+
+
 
         TextView productName = (TextView) view.findViewById(R.id.PLL_name_given_TextView);
         TextView productID = (TextView) view.findViewById(R.id.PLL_hidden_productId_TextView);
@@ -44,4 +48,5 @@ public class ProductCursorAdapter extends CursorAdapter {
         amount.setText(cursor.getString(cursor.getColumnIndex(Product.KEY_amount)));
 
     }
+
 }

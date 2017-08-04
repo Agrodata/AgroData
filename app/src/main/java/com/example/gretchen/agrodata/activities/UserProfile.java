@@ -166,7 +166,7 @@ public class UserProfile extends ParentActivity {
             addProduct.setVisibility(View.INVISIBLE);
             editAccount.setVisibility(View.INVISIBLE);
             changePass.setVisibility(View.INVISIBLE);
-            viewInv.setVisibility(View.INVISIBLE);
+            //viewInv.setVisibility(View.INVISIBLE);
             deleteAccount.setVisibility(View.INVISIBLE);
             orderHistory.setVisibility(View.INVISIBLE);
             sellHistory.setVisibility(View.INVISIBLE);
@@ -174,7 +174,7 @@ public class UserProfile extends ParentActivity {
             addProductText.setVisibility(View.INVISIBLE);
             editAccountText.setVisibility(View.INVISIBLE);
             changePassText.setVisibility(View.INVISIBLE);
-            viewInventoryText.setVisibility(View.INVISIBLE);
+            //viewInventoryText.setVisibility(View.INVISIBLE);
             deleteText.setVisibility(View.INVISIBLE);
             orderHistoryText.setVisibility(View.INVISIBLE);
             sellHistoryText.setVisibility(View.INVISIBLE);
