@@ -14,12 +14,26 @@ import android.widget.TextView;
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.User;
 import com.example.gretchen.agrodata.data.repo.UserRepo;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.FusedLocationProviderClient;
+
 
 public class LogIn extends Activity {
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_log_in);
+
+
+
+
+
     }
     //If log in is pressed
     public void logIn(View v)
