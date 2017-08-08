@@ -25,6 +25,8 @@ public class LogIn extends Activity {
 
 
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_log_in);
 
 
 
