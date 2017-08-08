@@ -1,6 +1,8 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -49,8 +51,7 @@ public class ChangePassword extends ParentActivity {
         //If passwords aren't the same give a warning
         else
         {
-            TextView warning = (TextView) findViewById(R.id.CPP_warning_TextView);
-            warning.setVisibility(TextView.VISIBLE);
+            showWarningMessage();
         }
 
 
@@ -61,5 +62,20 @@ public class ChangePassword extends ParentActivity {
         Intent back = new Intent(this, UserProfile.class);
         startActivity(back);
         finish();
+    }
+    private void showWarningMessage()
+    {
+        //Warning that passwords do not match
+        AlertDialog.Builder warning = new AlertDialog.Builder(this);
+        warning.setMessage(R.string.pass_must_match_msg)
+                //If yes user account is deleted
+                .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        // Create the AlertDialog object and return it
+        warning.create();
+        warning.show();
     }
 }

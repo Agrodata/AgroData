@@ -1,6 +1,7 @@
 package com.example.gretchen.agrodata.data;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -15,7 +16,7 @@ public class DBHelperTransaction extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database Name
     private static final String DATABASE_NAME = "transaction.db";
@@ -40,7 +41,9 @@ public class DBHelperTransaction extends SQLiteOpenHelper {
                 + Transaction.KEY_dateSold + " TEXT, "
                 + Transaction.KEY_price + " TEXT, "
                 + Transaction.KEY_amountSold + " TEXT, "
-                + Transaction.KEY_totalAmountPaid + " TEXT )";
+                + Transaction.KEY_totalAmountPaid + " TEXT, "
+                + Transaction.KEY_paymentMethod + " TEXT, "
+                + Transaction.KEY_transactionStatus + " TEXT )";
 
         db.execSQL(CREATE_TABLE_TRANSACTION);
 
@@ -51,10 +54,9 @@ public class DBHelperTransaction extends SQLiteOpenHelper {
         // Drop older table if existed, all data will be gone!!!
 
         if (newVersion > oldVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + Transaction.TABLE);
+            db.execSQL("DROP TABLE " + Transaction.TABLE + " ADD COLUMN "+Transaction.KEY_paymentMethod+" TEXT DEFAULT DirectPay");
+            db.execSQL("DROP TABLE " + Transaction.TABLE + " ADD COLUMN "+Transaction.KEY_transactionStatus+" TEXT DEFAULT Pending");
 
-            // Create tables again
-            onCreate(db);
         }
 
     }

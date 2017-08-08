@@ -43,6 +43,8 @@ public class TransactionRepo {
         values.put(Transaction.KEY_price, transaction.getPrice());
         values.put(Transaction.KEY_amountSold, transaction.getAmountSold());
         values.put(Transaction.KEY_totalAmountPaid,transaction.getTotalAmountPaid());
+        values.put(Transaction.KEY_paymentMethod,transaction.getPaymentMethod());
+        values.put(Transaction.KEY_transactionStatus,transaction.getTransactionStatus());
         // Inserting Row
         long user_Id = db.insert(Transaction.TABLE, null, values);
 
@@ -77,6 +79,8 @@ public class TransactionRepo {
         values.put(Transaction.KEY_price, transaction.getPrice());
         values.put(Transaction.KEY_amountSold, transaction.getAmountSold());
         values.put(Transaction.KEY_totalAmountPaid,transaction.getTotalAmountPaid());
+        values.put(Transaction.KEY_paymentMethod,transaction.getPaymentMethod());
+        values.put(Transaction.KEY_transactionStatus,transaction.getTransactionStatus());
 
 
         db.update(Transaction.TABLE, values, Transaction.KEY_ID + "= ?", new String[] { String.valueOf(transaction.getId()) });
@@ -97,7 +101,9 @@ public class TransactionRepo {
                 Transaction.KEY_dateSold + "," +
                 Transaction.KEY_price + "," +
                 Transaction.KEY_amountSold + "," +
-                Transaction.KEY_totalAmountPaid +
+                Transaction.KEY_totalAmountPaid + ","+
+                Transaction.KEY_paymentMethod + ","+
+                Transaction.KEY_transactionStatus +
                 " FROM " + Transaction.TABLE
                 + " WHERE " +
                 Transaction.KEY_ID + "=?";// It's a good practice to use parameter ?, instead of concatenate string
@@ -119,6 +125,9 @@ public class TransactionRepo {
                 transaction.setPrice(cursor.getString(cursor.getColumnIndex(Transaction.KEY_price)));
                 transaction.setAmountSold(cursor.getString(cursor.getColumnIndex(Transaction.KEY_amountSold)));
                 transaction.setTotalAmountPaid(cursor.getString(cursor.getColumnIndex(Transaction.KEY_totalAmountPaid)));
+                transaction.setPaymentMethod(cursor.getString(cursor.getColumnIndex(Transaction.KEY_paymentMethod)));
+                transaction.setTransactionStatus(cursor.getString(cursor.getColumnIndex(Transaction.KEY_transactionStatus)));
+
 
             } while (cursor.moveToNext());
         }
@@ -127,31 +136,7 @@ public class TransactionRepo {
         db.close();
         return transaction;
     }
-    public ArrayList<HashMap<String, String>>  getTransactionsById(int[] ids) {
 
-        ArrayList<HashMap<String,String >> history =new ArrayList<HashMap<String, String>>();
-
-        Transaction transaction;
-
-        if(ids.length==0)
-        {
-            return null;
-        }
-
-        for(int i=0;i<ids.length;i++)
-        {
-            transaction = getTransactionById(ids[i]);
-            HashMap<String, String> orders = new HashMap<String, String>();
-            orders.put(Transaction.KEY_ID, Integer.toString(transaction.getId()));
-            orders.put(Transaction.KEY_totalAmountPaid, transaction.getTotalAmountPaid());
-            orders.put(Transaction.KEY_dateSold, transaction.getDateSold());
-
-
-            history.add(orders);
-        }
-        return history;
-
-    }
     //Search for transaction group based on the buyer
     public Cursor getPurchaseHistoryofUser(String user)
     {
@@ -167,7 +152,9 @@ public class TransactionRepo {
                 Transaction.KEY_dateSold + "," +
                 Transaction.KEY_price + "," +
                 Transaction.KEY_amountSold + "," +
-                Transaction.KEY_totalAmountPaid +
+                Transaction.KEY_totalAmountPaid + ","+
+                Transaction.KEY_paymentMethod + ","+
+                Transaction.KEY_transactionStatus +
                 " FROM " + Transaction.TABLE
                 + " WHERE " +
                 Transaction.KEY_buyerName+ "=?";// It's a good practice to use parameter ?, instead of concatenate string
@@ -191,7 +178,9 @@ public class TransactionRepo {
                 Transaction.KEY_dateSold + "," +
                 Transaction.KEY_price + "," +
                 Transaction.KEY_amountSold + "," +
-                Transaction.KEY_totalAmountPaid +
+                Transaction.KEY_totalAmountPaid + ","+
+                Transaction.KEY_paymentMethod + ","+
+                Transaction.KEY_transactionStatus +
                 " FROM " + Transaction.TABLE
                 + " WHERE " +
                 Transaction.KEY_sellerName+ "=?";// It's a good practice to use parameter ?, instead of concatenate string

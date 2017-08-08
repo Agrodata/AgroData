@@ -32,7 +32,7 @@ public class OrderHistory extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         //Get order bit. It determines if the list to be presented is the purchase (0) or sell (1)
         //history
-        int orderBit = bundle.getInt(getString(R.string.order_history_bit_key));
+        final int orderBit = bundle.getInt(getString(R.string.order_history_bit_key));
 
         //Get transaction repository
         TransactionRepo repo = new TransactionRepo(this);
@@ -57,7 +57,6 @@ public class OrderHistory extends AppCompatActivity {
         //If their is something in the list then present it
         if(transactionPointer.moveToLast())
         {
-            transactionPointer.moveToLast();
             TransactionCursorAdapter adapter = new TransactionCursorAdapter(this, transactionPointer);
 
             orderList.setAdapter(adapter);
@@ -74,6 +73,7 @@ public class OrderHistory extends AppCompatActivity {
 
                     Intent transaction_profile = new Intent(OrderHistory.this, TransactionProfile.class);
                     transaction_profile.putExtra(getString(R.string.transaction_id_key),transaction_id);
+                    transaction_profile.putExtra(getString(R.string.order_history_bit_key),orderBit);
 
                     startActivity(transaction_profile);
 

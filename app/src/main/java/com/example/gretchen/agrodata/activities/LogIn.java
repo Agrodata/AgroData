@@ -1,7 +1,9 @@
 package com.example.gretchen.agrodata.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,9 +38,7 @@ public class LogIn extends Activity {
         //If email isn't in database or password doesn't match then give warning message
         if(user.getEmail()==null||!user.getPassword().equals(pass))
         {
-            TextView warning = (TextView) findViewById(R.id.LIP_warning_TextView);
-            warning.setText(R.string.incorrect_email_password);
-            warning.setVisibility(TextView.VISIBLE);
+            showWarningMessage();
         }
         //If all is ok then save info internally to stay logged in and go to main store page.
         else {
@@ -61,6 +61,21 @@ public class LogIn extends Activity {
         }
 
 
+    }
+    private void showWarningMessage()
+    {
+        //Warning that incorrect password or email was given
+        AlertDialog.Builder warning = new AlertDialog.Builder(this);
+        warning.setMessage(R.string.incorrect_email_password)
+                //If yes user account is deleted
+                .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        // Create the AlertDialog object and return it
+        warning.create();
+        warning.show();
     }
 
 }

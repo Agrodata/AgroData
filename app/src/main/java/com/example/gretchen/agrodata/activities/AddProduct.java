@@ -1,6 +1,8 @@
 package com.example.gretchen.agrodata.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -184,9 +186,7 @@ public class AddProduct extends ParentActivity {
         if(product_name.getText().toString().isEmpty()||product_type.getSelectedItem().toString().isEmpty()
                 ||product_amount.getText().toString().isEmpty()||product_price.getText().toString().isEmpty())
         {
-            TextView warning = (TextView) findViewById(R.id.APP_must_fill_all_TextView);
-            warning.setText(R.string.all_must_be_filled_msg);
-            warning.setVisibility(View.VISIBLE);
+            showWarningMessage();
 
         }
         //Add the product
@@ -244,15 +244,6 @@ public class AddProduct extends ParentActivity {
             product.setPrice(thePrice+" "+product_price1.getSelectedItem().toString());
             product.setType(product_type.getSelectedItem().toString());
 
-            //Not needed anymore
-            /*if(product_price1.getSelectedItem().toString().equals("c/u"))
-            {
-                product.setAmount(product_amount.getText().toString());
-            }
-            else
-            {
-                product.setAmount(product_amount.getText().toString()+" "+product_price1.getSelectedItem().toString().substring(1));
-            }*/
 
             product.setAmount(product_amount.getText().toString()+" "+product_price1.getSelectedItem().toString().substring(1));
             product.setSellerID(user.getId());
@@ -271,6 +262,22 @@ public class AddProduct extends ParentActivity {
             finish();
         }
     }
+    private void showWarningMessage()
+    {
+        //Warning that all text must be filled
+        AlertDialog.Builder warning = new AlertDialog.Builder(this);
+        warning.setMessage(R.string.all_must_be_filled_msg)
+                //If yes user account is deleted
+                .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        // Create the AlertDialog object and return it
+        warning.create();
+        warning.show();
+    }
+
 
 }
 

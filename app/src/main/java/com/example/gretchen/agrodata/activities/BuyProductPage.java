@@ -127,20 +127,18 @@ public class BuyProductPage extends AppCompatActivity {
             }
         });
     }
+    //If user pays in cash
     public void directPay(View view)
     {
-        //Get shared preference that holds local user info
-        SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
-
-        //Buyer info
-        int buyerId = userInfo.getInt(getString(R.string.id_key),0);
-        String buyerName = userInfo.getString(getString(R.string.user_name_key),"");
-
-        //Time when product was purchased
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        Date date = new Date();
-        String current_date = dateFormat.format(date);
-
+        checkAmountAndPay(getString(R.string.direct_pay_method_KEY),getString(R.string.order_pending_KEY));
+    }
+    //If user pays through ath movil
+    private void payWithATHMovil(View view)
+    {
+        checkAmountAndPay(getString(R.string.ATH_movil_pay_method_KEY), getString(R.string.order_is_paid_KEY));
+    }
+    private void checkAmountAndPay(String paymentMethod, String status)
+    {
         if(amountBought==null || total.equals("$ 0.00"))
         {
             //Warning that amount was not given
@@ -156,12 +154,37 @@ public class BuyProductPage extends AppCompatActivity {
             warning.create();
             warning.show();
 
-            return;
+
+        }
+        else
+        {
+            createTransaction(paymentMethod, status);
         }
 
+    }
+    //Creates the transaction and save it in the transaction table. Must indicate the payment method
+    // of the transaction can be direct pay or ath movil
+    private void createTransaction(String paymentMethod, String status)
+    {
+        //Get shared preference that holds local user info
+        SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
+
+        //Buyer info
+        int buyerId = userInfo.getInt(getString(R.string.id_key),0);
+        String buyerName = userInfo.getString(getString(R.string.user_name_key),"");
+
+        //Time when product was purchased
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date date = new Date();
+        String current_date = dateFormat.format(date);
         //Create transaction
         Transaction transaction = new Transaction(product.getName(), owner, product.getSellerID(), buyerName,buyerId,
                 product.getDate_added(),current_date, product.getPrice(), amountBought, total);
+
+        //Indicate the payment method
+        transaction.setPaymentMethod(paymentMethod);
+        //Payment is pending
+        transaction.setTransactionStatus(status);
 
         TransactionRepo repo = new TransactionRepo(this);
         //Get transaction id
@@ -186,14 +209,11 @@ public class BuyProductPage extends AppCompatActivity {
 
         Intent transactionDone = new Intent(this, PurchaseCompleted.class);
 
+
         transactionDone.putExtra(getString(R.string.transaction_id_key),transactionId);
-
-
-
 
         startActivity(transactionDone);
         finish();
-
 
     }
 
