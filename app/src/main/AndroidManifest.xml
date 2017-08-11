@@ -2,14 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gretchen.agrodata">
 
-
+    <!--Permission for getting user location-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-
-
-
-
-
 
 
     <application
@@ -176,6 +170,10 @@
         <!-- Purchase Complete -->
         <activity android:name=".activities.PurchaseCompleted" />
         <activity android:name=".activities.RecallPage"></activity>
+
+        <provider
+            android:authorities=".SuggestionProvider"
+            android:name="com.example.gretchen.agrodata.data.SuggestionProvider"></provider>
     </application>
 
 </manifest>

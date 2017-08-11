@@ -1,9 +1,11 @@
 <resources>
     //App name
     <string name="app_name">AgroData</string>
-    //-----Strings for searching info------//
+    //---------------URLs-------------------//
     //Directory where to write SharedPreference info
     <string name="login_preference_key">com.example.gretchen.agrodata.LOGIN_FILE_KEY</string>
+
+    //-----Strings for searching info------//
     //Key for getting and setting user ID from shared preferences(Also used for putExtra method)
     <string name="id_key">UserIDKey</string>
     //Key for getting username

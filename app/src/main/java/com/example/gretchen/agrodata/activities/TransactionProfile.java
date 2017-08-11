@@ -82,22 +82,25 @@ public class TransactionProfile extends AppCompatActivity {
             if(order_bit==0 )
             {
                 paid.setVisibility(View.INVISIBLE);
-                cancel.setVisibility(View.INVISIBLE);
+                cancel.setVisibility(View.VISIBLE);
 
                 if(this.transaction.getTransactionStatus().equals(getString(R.string.order_is_cancelled_KEY)))
                 {
                     recall.setVisibility(View.INVISIBLE);
+                    cancel.setVisibility(View.INVISIBLE);
                 }
+                //User has a given amount of days to reclaim anything
                 else
                 {
                     //User has a given amount of days to reclaim anything
-                    if(days>=1)
+                    if(this.transaction.getTransactionStatus().equals(getString(R.string.order_is_paid_KEY)))
                     {
-                        recall.setVisibility(View.INVISIBLE);
+                        recall.setVisibility(View.VISIBLE);
+                        cancel.setVisibility(View.INVISIBLE);
                     }
                     else
                     {
-                        recall.setEnabled(true);
+                        recall.setVisibility(View.INVISIBLE);
                     }
                 }
 
@@ -146,7 +149,7 @@ public class TransactionProfile extends AppCompatActivity {
         Intent recall = new Intent(this,RecallPage.class);
 
         startActivity(recall);
-        //Notify seller
+        //Add notification to seller
     }
     public void buyerPaid(View view)
     {
@@ -165,7 +168,9 @@ public class TransactionProfile extends AppCompatActivity {
         this.transaction.setTransactionStatus(getString(R.string.order_is_cancelled_KEY));
         repo.update(this.transaction);
         setTransactionInfo();
-        //Add notification to user that there order has been cancelled
+        //Add notification to user that their order has been cancelled
+
+        //Add notification to seller that the order was cancelled
     }
     //Sets appropriate message to user about the status of the purchase
     private void setStatus()

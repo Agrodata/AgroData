@@ -6,9 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -95,9 +93,9 @@ public class UserProfile extends ParentActivity {
     private void setUserInfo()
     {
         //TextView's of the activity
-        TextView name = (TextView) findViewById(R.id.UPP_profile_name_EditText);
-        TextView email = (TextView) findViewById(R.id.UPP_profile_email_EditText) ;
-        TextView phone  = (TextView) findViewById(R.id.UPP_profile_phone_EditText);
+        TextView name = (TextView) findViewById(R.id.UPP_profile_name_TextView);
+        TextView email = (TextView) findViewById(R.id.UPP_profile_email_TextView) ;
+        TextView phone  = (TextView) findViewById(R.id.UPP_profile_phone_TextView);
        // TextView rating = (TextView) findViewById(R.id.UPP_profile_rating_EditText);  //ADDED
 
         //Get user info that should be displayed
