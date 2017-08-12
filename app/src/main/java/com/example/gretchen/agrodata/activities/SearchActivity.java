@@ -26,6 +26,7 @@ public class SearchActivity extends ParentActivity {
         setContentView(R.layout.activity_search);
         // Get the intent, verify the action and get the query
         Intent intent = getIntent();
+        //Search or enter is pressed
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             showSearchResults(query);

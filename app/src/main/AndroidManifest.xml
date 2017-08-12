@@ -171,9 +171,6 @@
         <activity android:name=".activities.PurchaseCompleted" />
         <activity android:name=".activities.RecallPage"></activity>
 
-        <provider
-            android:authorities=".SuggestionProvider"
-            android:name="com.example.gretchen.agrodata.data.SuggestionProvider"></provider>
     </application>
 
 </manifest>
