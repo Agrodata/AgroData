@@ -83,9 +83,18 @@ public class ProductList extends ParentActivity {
 
         }
         //If its the user's inventory
-        //Method is different for obtaining list. ArrayList and listadapters are used.
+        //Method is different for obtaining list. ArrayList and listAdapters are used.
         else if(this.productType.equals(getString(R.string.user_inventory)))
         {
+            //Buttons at the bottom of the screen
+            Button next = (Button) findViewById(R.id.PLP_next_Button);
+            Button prev = (Button) findViewById(R.id.PLP_previous_Button);
+
+            //Hide buttons
+            prev.setVisibility(View.INVISIBLE);
+            next.setVisibility(View.INVISIBLE);
+
+
             StoreRepo repo = new StoreRepo(this);
 
             //List that will hold all the products
@@ -174,7 +183,7 @@ public class ProductList extends ParentActivity {
                     Intent seeProduct = new Intent(ProductList.this, ProductProfile.class);
                     seeProduct.putExtra(getString(R.string.product_id),productId);
                     startActivity(seeProduct);
-                    ProductList.this.products.close();
+
                     finish();
                 }
             });
@@ -250,7 +259,7 @@ public class ProductList extends ParentActivity {
                 next.setEnabled(true);
             }
 
-            //SInce previous worked then change start location
+            //Since previous worked then change start location
             this.start-=5;
             //Change cursor to the next items
             getProducts(this.start);

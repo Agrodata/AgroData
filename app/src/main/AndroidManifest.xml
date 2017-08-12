@@ -2,14 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gretchen.agrodata">
 
-
+    <!--Permission for getting user location-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-
-
-
-
-
 
 
     <application
@@ -137,7 +131,8 @@
         <!-- Search activity -->
         <activity
             android:name=".activities.SearchActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -146,12 +141,39 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".activities.SubdivisionList" />
-        <activity android:name=".activities.BuyProductPage" />
-        <activity android:name=".activities.ContactUs" />
-        <activity android:name=".activities.OrderHistory" />
+        <!-- Sub list activity -->
+        <activity
+            android:name=".activities.SubdivisionList"
+            android:parentActivityName=".activities.ProductList"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.ProductList" />
+        </activity>
+        <!-- Buy product -->
+        <activity
+            android:name=".activities.BuyProductPage"
+            android:screenOrientation="portrait"></activity>
+        <!-- Contact Us -->
+        <activity
+            android:name=".activities.ContactUs"
+            android:parentActivityName=".activities.MainPage"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainPage" />
+        </activity>
+        <!-- Order History -->
+        <activity android:name=".activities.OrderHistory"></activity>
+        <!-- Transaction Profile -->
         <activity android:name=".activities.TransactionProfile" />
-        <activity android:name=".activities.PurchaseCompleted"></activity>
+        <!-- Purchase Complete -->
+        <activity android:name=".activities.PurchaseCompleted" />
+        <activity android:name=".activities.RecallPage"></activity>
+
+        <provider
+            android:authorities=".SuggestionProvider"
+            android:name="com.example.gretchen.agrodata.data.SuggestionProvider"></provider>
     </application>
 
 </manifest>

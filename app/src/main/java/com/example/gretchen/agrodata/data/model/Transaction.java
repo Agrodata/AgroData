@@ -19,6 +19,8 @@ public class Transaction {
     public static final String KEY_price = "price";
     public static final String KEY_amountSold = "amountSold";
     public static final String KEY_totalAmountPaid = "totalAmountPaid";
+    public static final String KEY_paymentMethod = "paymentMethod";
+    public static final String KEY_transactionStatus = "transactionStatus";
 
 
     //Variables to be stored
@@ -33,6 +35,8 @@ public class Transaction {
     private String price;
     private String amountSold;
     private String totalAmountPaid;
+    private String paymentMethod;
+    private String transactionStatus;
 
 
 
@@ -154,7 +158,20 @@ public class Transaction {
     public void setSellerID(int sellerID) {
         this.sellerID = sellerID;
     }
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
 
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+    public String getTransactionStatus() {
+        return transactionStatus;
+    }
+
+    public void setTransactionStatus(String transactionStatus) {
+        this.transactionStatus = transactionStatus;
+    }
 
 
 }

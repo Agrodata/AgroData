@@ -1,9 +1,11 @@
 <resources>
     //App name
     <string name="app_name">AgroData</string>
-    //-----Strings for searching info------//
+    //---------------URLs-------------------//
     //Directory where to write SharedPreference info
     <string name="login_preference_key">com.example.gretchen.agrodata.LOGIN_FILE_KEY</string>
+
+    //-----Strings for searching info------//
     //Key for getting and setting user ID from shared preferences(Also used for putExtra method)
     <string name="id_key">UserIDKey</string>
     //Key for getting username
@@ -109,8 +111,27 @@
     <string name="try_again">Intentar denuevo</string>
     //Transaction profile
     <string name="total_paid">Total:</string>
+    <string name="buyer_paid">Se pagó</string>
 
-
+    //Transaction payment methods
+    <string name="direct_pay_method_KEY">DirectPay</string>
+    <string name="ATH_movil_pay_method_KEY">ATHMovil</string>
+    //Key when a transaction is paid
+    <string name="order_is_paid_KEY">Paid</string>
+    //Key when a transaction is cancelled
+    <string name="order_is_cancelled_KEY">Cancelled</string>
+    //Key when a transaction is pending
+    <string name="order_pending_KEY">Pending</string>
+    //Transaction status messages
+    <string name="order_is_paid">Orden pagada</string>
+    <string name="order_is_cancelled">Orden cancelada</string>
+    <string name="order_pending">Orden pendiente</string>
+    //Recall page
+    <string name="recall_title">Devolver orden</string>
+    <string name="date_title">Fecha:</string>
+    <string name="amount_to_recall">Cantidad a devolver:</string>
+    <string name="reason_for_recall">Razón para la devolución:</string>
+    <string name="submit">Enviar</string>
 
 
     //------String for directory page----------//
@@ -118,12 +139,12 @@
     <string name="FIDA_title">FIDA</string>
     <string name="FIDA_email">fidagobierno@gmail.com</string>
     <string name="FIDA_telephone">Tel. : (787) 304-5350</string>
-    <string name ="FIDA_Physical_Address">Direcion Fisica\nEdificio Tres Río, Piso 5\nAve. Martínez Nadal\nEsq. Gonzáles Giusti\r\nGuaynabo</string>
-    <string name ="FIDA_Correspond">Dirección Postal\nPO Box 9100-0163\nSan Juan, PR 00908-0163</string>
+    <string name="FIDA_Physical_Address">Direcion Fisica\nEdificio Tres Río, Piso 5\nAve. Martínez Nadal\nEsq. Gonzáles Giusti\r\nGuaynabo</string>
+    <string name="FIDA_Correspond">Dirección Postal\nPO Box 9100-0163\nSan Juan, PR 00908-0163</string>
     <string name="ADEA_title">ADEA</string>
     <string name="ADEA_email">gmail.com</string>
     <string name="ADEA_telephone">Tel. (787) 304-5350</string>
-    <string name="ADEA_Physical_Address">Dirección Física\nEdificio Tres Río, \nPiso 5 Ave. Martinez Nadal, Esq. \nGonzales Giusti\nGuaynabo</string>
+    <string name="ADEA_Physical_Address">Direcion Fisica\nEdificio Tres Río, Piso 5\nAve. Martínez Nadal\nEsq. Gonzáles Giusti\r\nGuaynabo</string>
     <string name="ADEA_Corrsponds">Dirección Postal\nPO Box 9100-0163\nSan Juan, PR 00908-0163</string>
     <string name="ADT_title">Autoridad de Tierra</string>
     <string name="ADT_email">gmail.com</string>

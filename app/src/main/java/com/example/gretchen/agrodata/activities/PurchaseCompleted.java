@@ -51,6 +51,8 @@ public class PurchaseCompleted extends AppCompatActivity {
             returnToMainPage.setVisibility(View.VISIBLE);
             orderID.setText(getString(R.string.order_number_msg)+Integer.toString(transactionStatusNumber));
 
+            //Notify seller of the purchase
+
 
         }
 

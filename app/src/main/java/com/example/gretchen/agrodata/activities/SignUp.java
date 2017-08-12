@@ -1,6 +1,8 @@
 package com.example.gretchen.agrodata.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -101,9 +103,7 @@ public class SignUp extends Activity {
         if(userEmail.getText().toString().isEmpty()||userEmail.getText().toString().isEmpty()||
                 userPhone.getText().toString().isEmpty()||userPass.getText().toString().isEmpty())
         {
-            TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
-            warning.setText(getString(R.string.all_must_be_filled_msg));
-            warning.setVisibility(TextView.VISIBLE);
+            showWarningMessage(getString(R.string.all_must_be_filled_msg));
         }
         else
         {
@@ -131,21 +131,32 @@ public class SignUp extends Activity {
                 //Password didn't match
                 else
                 {
-                    TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
-                    warning.setText(R.string.pass_must_match_msg);
-                    warning.setVisibility(TextView.VISIBLE);
+                    showWarningMessage(getString(R.string.pass_must_match_msg));
                 }
             }
             //Email already in use
             else
             {
-                TextView warning = (TextView) findViewById(R.id.SUP_no_match_warning_TextView);
-                warning.setText(R.string.email_exists);
-                warning.setVisibility(TextView.VISIBLE);
+                showWarningMessage(getString(R.string.email_exists));
             }
 
         }
 
 
+    }
+    private void showWarningMessage(String warningMsg)
+    {
+        //Warning that amount was not given
+        AlertDialog.Builder warning = new AlertDialog.Builder(this);
+        warning.setMessage(warningMsg)
+                //If yes user account is deleted
+                .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        // Create the AlertDialog object and return it
+        warning.create();
+        warning.show();
     }
 }
