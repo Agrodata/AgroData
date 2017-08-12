@@ -14,61 +14,66 @@
         tools:context="com.example.gretchen.agrodata.activities.UserProfile">
 
         <TextView
-            android:id="@+id/UPP_profile_name_EditText"
+            android:id="@+id/UPP_profile_name_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="32dp"
             android:gravity="start"
             android:textAlignment="textStart"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/UPP_profile_Image"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintTop_toTopOf="@+id/UPP_profile_Image"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/UPP_profile_Image"
+            android:layout_marginBottom="0dp" />
 
         <TextView
-            android:id="@+id/UPP_profile_email_EditText"
+            android:id="@+id/UPP_profile_email_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_name_EditText"
-            app:layout_constraintHorizontal_bias="0.488" />
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/UPP_profile_name_TextView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/UPP_email_Image"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/UPP_email_Image"
+            android:layout_marginBottom="0dp" />
 
         <TextView
-            android:id="@+id/UPP_profile_phone_EditText"
+            android:id="@+id/UPP_profile_phone_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_email_EditText" />
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/UPP_profile_email_TextView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/UPP_phone_Image"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/UPP_phone_Image"
+            android:layout_marginBottom="0dp" />
 
         <TextView
             android:id="@+id/UPP_user_rating_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/user_rating"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_phone_EditText"
+            app:layout_constraintTop_toBottomOf="@+id/UPP_phone_Image"
             android:layout_marginStart="8dp" />
 
         <RatingBar
@@ -77,14 +82,18 @@
             android:layout_height="48dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="12dp"
             app:layout_constraintLeft_toRightOf="@+id/UPP_user_rating_TextView"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_phone_EditText"
             android:progressDrawable="@drawable/ratingbar_toma"
 
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/UPP_user_rating_TextView"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/UPP_user_rating_TextView"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintVertical_bias="0.526" />
 
         <ImageButton
             android:id="@+id/UPP_edit_account_ImageButton"
@@ -291,6 +300,36 @@
             app:layout_constraintLeft_toLeftOf="@+id/UPP_eliminate_ImageButton"
             app:layout_constraintRight_toRightOf="@+id/UPP_eliminate_ImageButton"
             app:layout_constraintTop_toBottomOf="@+id/UPP_eliminate_ImageButton" />
+
+        <ImageView
+            android:id="@+id/UPP_profile_Image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:srcCompat="@drawable/ic_profile_name"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="32dp" />
+
+        <ImageView
+            android:id="@+id/UPP_email_Image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:srcCompat="@drawable/ic_email"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/UPP_profile_Image" />
+
+        <ImageView
+            android:id="@+id/UPP_phone_Image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_phone"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/UPP_email_Image"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
