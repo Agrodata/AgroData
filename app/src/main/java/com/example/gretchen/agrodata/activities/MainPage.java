@@ -41,6 +41,7 @@ public class MainPage extends ParentActivity {
         ImageButton fruit = (ImageButton) findViewById(R.id.MP_fruit_button);
         ImageButton grain = (ImageButton) findViewById(R.id.MP_grain_button);
         ImageButton meat = (ImageButton) findViewById(R.id.MP_meat_button);
+        ImageButton apiculture = (ImageButton) findViewById(R.id.MP_apiculture_button);
 
         //The activity that will have the list we want to see
         final Intent showSublist = new Intent(this,SubdivisionList.class);
@@ -102,6 +103,9 @@ public class MainPage extends ParentActivity {
 
                         startActivity(showSublist);
                         break;
+                    case R.id.MP_apiculture_button:
+                        showSublist.putExtra(getString(R.string.subdivision_key),R.array.apiculture_list);
+                        showSublist.putExtra(getString(R.string.list_type),getString(R.string.apiary));
 
                 }
             }

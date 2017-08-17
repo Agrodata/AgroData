@@ -5,7 +5,7 @@
     android:id="@+id/MP_constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/fruit_stand_background"
     tools:context="com.example.gretchen.agrodata.activities.MainPage">
 
     <ImageButton
@@ -51,14 +51,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:text="@string/grain"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="@+id/MP_grain_button"
         app:layout_constraintRight_toRightOf="@+id/MP_grain_button"
-        app:layout_constraintTop_toBottomOf="@+id/MP_grain_button" />
+        app:layout_constraintTop_toBottomOf="@+id/MP_grain_button"
+        app:layout_constraintHorizontal_bias="0.523" />
 
     <TextView
         android:id="@+id/MP_vegetable_TextView"
@@ -94,7 +95,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@+id/MP_grain_TextView"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -109,7 +110,7 @@
         android:layout_marginTop="0dp"
         android:text="@string/poultry"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintLeft_toLeftOf="@+id/MP_poultry_button"
@@ -123,7 +124,7 @@
         android:layout_column="0"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:layout_row="1"
         android:text="@string/fruit"
         android:textAlignment="center"
@@ -202,7 +203,8 @@
         app:layout_constraintTop_toTopOf="@+id/MP_grain_button"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/MP_grain_button"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginBottom="0dp"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/MP_meat_TextView"
@@ -235,8 +237,9 @@
         android:src="@drawable/ic_vegetable"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/MP_poultry_TextView" />
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/MP_poultry_TextView"
+        app:layout_constraintHorizontal_bias="0.501" />
 
     <TextView
         android:id="@+id/MP_dairy_TextView"
@@ -246,12 +249,12 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:text="@string/dairy"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@+id/MP_dairy_button"
         app:layout_constraintRight_toRightOf="@+id/MP_dairy_button"
         app:layout_constraintTop_toBottomOf="@+id/MP_dairy_button" />
@@ -270,7 +273,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="63dp" />
+        android:layout_marginTop="79dp" />
 
     <ImageButton
         android:id="@+id/add_product_ImageButton"
@@ -284,6 +287,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/ic_add_product_circle" />
+
+    <ImageButton
+        android:id="@+id/MP_apiculture_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_apiculture"
+        app:layout_constraintTop_toTopOf="@+id/MP_vegetable_button"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/MP_vegetable_button"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/MP_meat_button"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="@+id/MP_meat_button" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/apiary"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/MP_apiculture_button"
+        app:layout_constraintRight_toRightOf="@+id/MP_apiculture_button"
+        app:layout_constraintTop_toBottomOf="@+id/MP_apiculture_button" />
 
 
 </android.support.constraint.ConstraintLayout>
