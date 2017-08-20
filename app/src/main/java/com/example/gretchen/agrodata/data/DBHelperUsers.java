@@ -34,8 +34,8 @@ public class DBHelperUsers extends SQLiteOpenHelper {
                 + User.KEY_email + " TEXT, "
                 + User.KEY_phone + " TEXT, "
                 + User.KEY_password + " TEXT, "
-                + User.KEY_Location + " TEXT, "
-                + User.KEY_ratingBarScore + " TEXT, "
+                + User.KEY_location + " TEXT, "
+                + User.KEY_ratingBarScore + " FLOAT, "
                 + User.KEY_inventory + " TEXT NOT NULL)";
 
         db.execSQL(CREATE_TABLE_USER);

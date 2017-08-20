@@ -119,6 +119,7 @@ public class MainPage extends ParentActivity {
         fruit.setOnClickListener(listener);
         vegetable.setOnClickListener(listener);
         grain.setOnClickListener(listener);
+        apiculture.setOnClickListener(listener);
 
 
     }

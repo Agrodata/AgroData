@@ -5,7 +5,7 @@
     android:id="@+id/MP_constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fruit_stand_background"
+    android:background="@drawable/landscape_background"
     tools:context="com.example.gretchen.agrodata.activities.MainPage">
 
     <ImageButton
@@ -37,8 +37,8 @@
         android:layout_marginTop="0dp"
         android:text="@string/farinaceous"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@+id/MP_farinaceuos_button"
         app:layout_constraintRight_toRightOf="@+id/MP_farinaceuos_button"
         app:layout_constraintTop_toBottomOf="@+id/MP_farinaceuos_button"
@@ -54,12 +54,12 @@
         android:layout_marginTop="8dp"
         android:text="@string/grain"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintLeft_toLeftOf="@+id/MP_grain_button"
         app:layout_constraintRight_toRightOf="@+id/MP_grain_button"
-        app:layout_constraintTop_toBottomOf="@+id/MP_grain_button"
-        app:layout_constraintHorizontal_bias="0.523" />
+        app:layout_constraintTop_toBottomOf="@+id/MP_grain_button" />
 
     <TextView
         android:id="@+id/MP_vegetable_TextView"
@@ -72,8 +72,8 @@
         android:layout_marginTop="0dp"
         android:text="@string/vegetable"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintLeft_toLeftOf="@+id/MP_vegetable_button"
         app:layout_constraintRight_toRightOf="@+id/MP_vegetable_button"
@@ -110,8 +110,8 @@
         android:layout_marginTop="0dp"
         android:text="@string/poultry"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintLeft_toLeftOf="@+id/MP_poultry_button"
         app:layout_constraintRight_toRightOf="@+id/MP_poultry_button"
@@ -128,8 +128,8 @@
         android:layout_row="1"
         android:text="@string/fruit"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@+id/MP_fruit_button"
         app:layout_constraintRight_toRightOf="@+id/MP_fruit_button"
         app:layout_constraintTop_toBottomOf="@+id/MP_fruit_button"
@@ -217,8 +217,8 @@
         android:layout_marginTop="0dp"
         android:text="@string/meat"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintLeft_toLeftOf="@+id/MP_meat_button"
         app:layout_constraintRight_toRightOf="@+id/MP_meat_button"
@@ -252,8 +252,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/dairy"
         android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@+id/MP_dairy_button"
         app:layout_constraintRight_toRightOf="@+id/MP_dairy_button"
@@ -273,20 +273,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="79dp" />
+        android:layout_marginTop="61dp" />
 
     <ImageButton
         android:id="@+id/add_product_ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:onClick="goToAddProduct"
         android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_add_product_circle"
         app:layout_constraintRight_toRightOf="parent"
-        android:src="@drawable/ic_add_product_circle" />
+        android:layout_marginRight="7dp" />
 
     <ImageButton
         android:id="@+id/MP_apiculture_button"
@@ -312,8 +312,8 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:text="@string/apiary"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@+id/MP_apiculture_button"
         app:layout_constraintRight_toRightOf="@+id/MP_apiculture_button"
         app:layout_constraintTop_toBottomOf="@+id/MP_apiculture_button" />

@@ -18,9 +18,9 @@ public class User {
     public static final String KEY_phone = "phone";
     public static final String KEY_password = "password";
     public static final String KEY_inventory = "inventory";
-    public static final String KEY_order_history = "orderHistory";
-    public static final String KEY_sell_history = "sellHistory";
-    public static final String KEY_Location = "location";
+  //public static final String KEY_order_history = "orderHistory";
+   // public static final String KEY_sell_history = "sellHistory";
+    public static final String KEY_location = "location";
     public static final String KEY_ratingBarScore = "ratingBarScore";
 
 
