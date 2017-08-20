@@ -20,6 +20,8 @@ public class User {
     public static final String KEY_inventory = "inventory";
     public static final String KEY_order_history = "orderHistory";
     public static final String KEY_sell_history = "sellHistory";
+    public static final String KEY_Location = "location";
+    public static final String KEY_ratingBarScore = "ratingBarScore";
 
 
 
@@ -37,6 +39,12 @@ public class User {
     private String password;
     //User's inventory. Will be a string that will hold the unique ID's of each product they are selling
     private String inventory;
+    //User Location
+    private String location;
+    //User score
+    private String ratingBarScore;
+    
+
 
     //Might be needed later
    /* //Users order history
@@ -50,59 +58,93 @@ public class User {
         return id;
     }
 
+
     //Sets the user's id
     public void setId(int id) {
         this.id = id;
     }
+
+
     //Return's the user's name
     public String getName() {
         return name;
     }
+
+
     //Sets the user's name
     public void setName(String name) {
         this.name = name;
     }
 
+
     //Returns the user's email
     public String getEmail() {
         return email;
     }
+
+
     //Sets the user's email
     public void setEmail(String email) {
         this.email = email;
     }
+
+
     //Returns the user's phone number
     public String getPhone() {
         return phone;
     }
+
+
     //Sets the user's phone number
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
     //Returns the user's password
     public String getPassword() {
         return password;
     }
+
+
     //Sets the user's password
     public void setPassword(String password) {
         this.password = password;
     }
+
+   //Sets the user's location
+    public void setLocation(String location) {this.location = location;}
+
+
+    //Gets the user's location
+    public String getLocation() {return location;}
+
+
+    //Sets the user rating score
+    public void setRatingBarScore(String ratingBarScore) {this.ratingBarScore = ratingBarScore;}
+
+
+    //Get the user's Rating
+    public String getRatingBarScore() {return ratingBarScore;}
+
+
+
     //Returns a string array with the user's inventory. Each item in the array has the uniqueID of
     //each product the user has.
-    public String[] getInventoryArray() {
+    public String[] getInventoryArray() {   return getInventory().split("_,_");   }
 
-        return getInventory().split("_,_");
-    }
+
     //Returns the user's inventory string
     public String getInventory()
     {
         return inventory;
     }
-    //Sets the user's inventory
-    public void setInventory(String inventory) {
 
-        this.inventory = inventory;
-    }
+
+    //Sets the user's inventory
+    public void setInventory(String inventory) {  this.inventory = inventory;  }
+
+
     //Adds a products uniqueID to the seller's inventory
     public void addToInventory(String productId)
     {

@@ -14,7 +14,7 @@ public class DBHelperUsers extends SQLiteOpenHelper {
     //version number to upgrade database version
     //each time if you Add, Edit table, you need to change the
     //version number.
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 5; //I haven't change the version from the original 5
 
     // Database Name
     private static final String DATABASE_NAME = "users.db";
@@ -34,6 +34,8 @@ public class DBHelperUsers extends SQLiteOpenHelper {
                 + User.KEY_email + " TEXT, "
                 + User.KEY_phone + " TEXT, "
                 + User.KEY_password + " TEXT, "
+                + User.KEY_Location + " TEXT, "
+                + User.KEY_ratingBarScore + " TEXT, "
                 + User.KEY_inventory + " TEXT NOT NULL)";
 
         db.execSQL(CREATE_TABLE_USER);
