@@ -35,6 +35,9 @@ public class UserRepo {
         values.put(User.KEY_phone, user.getPhone());
         values.put(User.KEY_password,user.getPassword());
         values.put(User.KEY_inventory, user.getInventory());
+        values.put(User.KEY_ratingBarScore, user.getRatingBarScore());
+        values.put(User.KEY_ratingAmount, user.getRatingAmount());
+        values.put(User.KEY_location, user.getLocation());
 
         // Inserting Row
         long user_Id = db.insert(User.TABLE, null, values);
@@ -65,6 +68,10 @@ public class UserRepo {
         values.put(User.KEY_phone, user.getPhone());
         values.put(User.KEY_password,user.getPassword());
         values.put(User.KEY_inventory,user.getInventory());
+        values.put(User.KEY_ratingBarScore, user.getRatingBarScore());
+        values.put(User.KEY_ratingAmount, user.getRatingAmount());
+        values.put(User.KEY_location, user.getLocation());
+
 
 
         db.update(User.TABLE, values, User.KEY_ID + "= ?", new String[] { String.valueOf(user.getId()) });
@@ -81,7 +88,10 @@ public class UserRepo {
                 User.KEY_email + "," +
                 User.KEY_phone + "," +
                 User.KEY_password + "," +
-                User.KEY_inventory +
+                User.KEY_inventory + "," +
+                User.KEY_ratingBarScore +"," +
+                User.KEY_ratingAmount +"," +
+                User.KEY_location +
                 " FROM " + User.TABLE;
 
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -99,7 +109,10 @@ public class UserRepo {
                 User.KEY_email + "," +
                 User.KEY_phone + "," +
                 User.KEY_password + "," +
-                User.KEY_inventory +
+                User.KEY_inventory + "," +
+                User.KEY_ratingBarScore +"," +
+                User.KEY_ratingAmount +"," +
+                User.KEY_location +
                 " FROM " + User.TABLE
                 + " WHERE " +
                 User.KEY_ID + "=?";// It's a good practice to use parameter ?, instead of concatenate string
@@ -115,6 +128,9 @@ public class UserRepo {
                 user.setPhone(cursor.getString(cursor.getColumnIndex(User.KEY_phone)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(User.KEY_password)));
                 user.setInventory(cursor.getString(cursor.getColumnIndex(User.KEY_inventory)));
+                user.setRatingBarScore(cursor.getFloat(cursor.getColumnIndex(User.KEY_ratingBarScore)));
+                user.setRatingAmount(cursor.getInt(cursor.getColumnIndex(User.KEY_ratingAmount)));
+                user.setLocation(cursor.getString(cursor.getColumnIndex(User.KEY_location)));
 
             } while (cursor.moveToNext());
         }
@@ -132,7 +148,10 @@ public class UserRepo {
                 User.KEY_email + "," +
                 User.KEY_phone + "," +
                 User.KEY_password + "," +
-                User.KEY_inventory +
+                User.KEY_inventory +  "," +
+                User.KEY_ratingBarScore +"," +
+                User.KEY_ratingAmount +"," +
+                User.KEY_location +
                 " FROM " + User.TABLE
                 + " WHERE " +
                 User.KEY_email + "=?";// It's a good practice to use parameter ?, instead of concatenate string
@@ -148,6 +167,9 @@ public class UserRepo {
                 user.setPhone(cursor.getString(cursor.getColumnIndex(User.KEY_phone)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(User.KEY_password)));
                 user.setInventory(cursor.getString(cursor.getColumnIndex(User.KEY_inventory)));
+                user.setRatingBarScore(cursor.getFloat(cursor.getColumnIndex(User.KEY_ratingBarScore)));
+                user.setRatingAmount(cursor.getInt(cursor.getColumnIndex(User.KEY_ratingAmount)));
+                user.setLocation(cursor.getString(cursor.getColumnIndex(User.KEY_location)));
 
             } while (cursor.moveToNext());
         }
@@ -166,7 +188,10 @@ public class UserRepo {
                 User.KEY_email + "," +
                 User.KEY_phone + "," +
                 User.KEY_password + "," +
-                User.KEY_inventory +
+                User.KEY_inventory +  "," +
+                User.KEY_ratingBarScore +"," +
+                User.KEY_ratingAmount +"," +
+                User.KEY_location +
                 " FROM " + User.TABLE
                 + " WHERE " +
                 User.KEY_name+ " LIKE '%"+name+"%'";
@@ -184,6 +209,9 @@ public class UserRepo {
                 user.put("phone", cursor.getString(cursor.getColumnIndex(User.KEY_phone)));
                 user.put("password", cursor.getString(cursor.getColumnIndex(User.KEY_password)));
                 user.put("inventory", cursor.getString(cursor.getColumnIndex(User.KEY_inventory)));
+                user.put("rating", cursor.getString(cursor.getColumnIndex(User.KEY_ratingBarScore)));
+                user.put("ratingAmount", cursor.getString(cursor.getColumnIndex(User.KEY_ratingAmount)));
+                user.put("location", cursor.getString(cursor.getColumnIndex(User.KEY_location)));
                 userList.add(user);
             } while (cursor.moveToNext());
         }
@@ -202,7 +230,10 @@ public class UserRepo {
                 User.KEY_email + "," +
                 User.KEY_phone + "," +
                 User.KEY_password + "," +
-                User.KEY_inventory +
+                User.KEY_inventory +  "," +
+                User.KEY_ratingBarScore +"," +
+                User.KEY_ratingAmount +"," +
+                User.KEY_location +
                 " FROM " + User.TABLE
                 + " WHERE " +
                 User.KEY_email+ " LIKE '%"+email+"%'";
@@ -220,6 +251,9 @@ public class UserRepo {
                 user.put("phone", cursor.getString(cursor.getColumnIndex(User.KEY_phone)));
                 user.put("password", cursor.getString(cursor.getColumnIndex(User.KEY_password)));
                 user.put("inventory", cursor.getString(cursor.getColumnIndex(User.KEY_inventory)));
+                user.put("rating", cursor.getString(cursor.getColumnIndex(User.KEY_ratingBarScore)));
+                user.put("ratingAmount", cursor.getString(cursor.getColumnIndex(User.KEY_ratingAmount)));
+                user.put("location", cursor.getString(cursor.getColumnIndex(User.KEY_location)));
                 userList.add(user);
             } while (cursor.moveToNext());
         }

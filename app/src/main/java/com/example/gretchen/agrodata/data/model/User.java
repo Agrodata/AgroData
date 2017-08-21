@@ -22,6 +22,7 @@ public class User {
    // public static final String KEY_sell_history = "sellHistory";
     public static final String KEY_location = "location";
     public static final String KEY_ratingBarScore = "ratingBarScore";
+    public static final String KEY_ratingAmount = "ratingAmount";
 
 
 
@@ -42,8 +43,10 @@ public class User {
     //User Location
     private String location;
     //User score
-    private String ratingBarScore;
-    
+    private float ratingBarScore;
+    //User's number of people that have rated them
+    private int ratingAmount;
+
 
 
     //Might be needed later
@@ -121,11 +124,17 @@ public class User {
 
 
     //Sets the user rating score
-    public void setRatingBarScore(String ratingBarScore) {this.ratingBarScore = ratingBarScore;}
+    public void setRatingBarScore(float ratingBarScore) {this.ratingBarScore = ratingBarScore;}
 
 
     //Get the user's Rating
-    public String getRatingBarScore() {return ratingBarScore;}
+    public float getRatingBarScore() {return ratingBarScore;}
+
+    //Sets the user's rating amount
+    public void setRatingAmount(int ratingAmount)  {this.ratingAmount = ratingAmount;}
+
+    public int getRatingAmount() {return ratingAmount;}
+
 
 
 

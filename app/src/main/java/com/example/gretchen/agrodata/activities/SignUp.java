@@ -120,6 +120,7 @@ public class SignUp extends Activity {
                     newUser.setPhone(userPhone.getText().toString());
                     newUser.setPassword(userPass.getText().toString());
                     newUser.setInventory("empty");
+                    newUser.setRatingBarScore(0);
 
                     //Adds new user to database
                     repo.insert(newUser);

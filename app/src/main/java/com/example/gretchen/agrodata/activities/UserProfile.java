@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.gretchen.agrodata.ParentActivity;
@@ -110,6 +111,13 @@ public class UserProfile extends ParentActivity {
         //For finding user
         UserRepo repo = new UserRepo(this);
         user = repo.getUserById(userId);
+
+
+
+        //Setting the ratingBar
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.UPP_rating_RatingBar);
+        ratingBar.setEnabled(false);
+        ratingBar.setRating(user.getRatingBarScore());
 
 
 
