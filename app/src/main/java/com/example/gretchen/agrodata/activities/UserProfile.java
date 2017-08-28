@@ -234,4 +234,10 @@ public class UserProfile extends ParentActivity {
         history.putExtra(getString(R.string.order_history_bit_key),1);
         startActivity(history);
     }
+
+    public void goToLocation(View v){
+        Intent location = new Intent (this, MapsActivity.class);
+        startActivity(location);
+
+    }
 }

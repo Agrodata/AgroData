@@ -332,5 +332,6 @@
     <string name="user_rating_key">UserRatingKey</string>
     //Key for getting user inventory
     <string name="user_inventory_key">UserInventoryKey</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

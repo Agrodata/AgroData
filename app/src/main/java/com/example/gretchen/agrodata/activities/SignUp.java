@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.support.v4.content.ContextCompat;
 
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.User;
@@ -28,7 +32,7 @@ import org.w3c.dom.Text;
 
 public class SignUp extends Activity {
 
-    private FusedLocationProviderClient mFusedLocationClient;
+
 
 
 
@@ -39,15 +43,6 @@ public class SignUp extends Activity {
         setContentView(R.layout.activity_sign_up);
         EditText userPhone = (EditText)findViewById(R.id.SUP_phone_EditText);
         userPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
-
-
-
-
-
-
-
-        //LocationClient
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
 
     }
@@ -61,34 +56,11 @@ public class SignUp extends Activity {
         EditText userPhone = (EditText) findViewById(R.id.SUP_phone_EditText);
         EditText userPass = (EditText) findViewById(R.id.SUP_password_EditText);
         EditText userPass2= (EditText) findViewById(R.id.SUP_re_paswword_EditText);
-        final TextView userLoca;
 
 
 
 
-        //Need to fix this crap
 
-
-
-        LocationRequest mLocationRequest = new LocationRequest();
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
-
-
-        SettingsClient client = LocationServices.getSettingsClient(this);
-        Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
-
-
- //       mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
- //                   @Override
- //                   public void onSuccess(Location location) {
- //                       // Got last known location. In some rare situations this can be null.
- //                       if (location != null) {
- //                           //userLoca = location.toString();
- //
- //
- //                        }
- //                   }
- //               });
 
 
 
@@ -160,4 +132,16 @@ public class SignUp extends Activity {
         warning.create();
         warning.show();
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
