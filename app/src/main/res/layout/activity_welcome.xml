@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/landscape_background"
     tools:context="com.example.gretchen.agrodata.activities.Welcome">
 
     <TextView
         android:id="@+id/WP_Welcome_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="173dp"
+        android:layout_marginTop="94dp"
         android:text="@string/welcome_message"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="40sp"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,11 +25,12 @@
         android:id="@+id/WP_have_account_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="65dp"
         android:text="@string/if_account_msg"
         android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.502"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WP_Welcome_TextView" />
@@ -35,14 +39,15 @@
         android:id="@+id/WP_if_new_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="82dp"
         android:text="@string/if_new_msg"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WP_Login_button"
-        app:layout_constraintHorizontal_bias="0.502" />
+        app:layout_constraintTop_toBottomOf="@+id/WP_Login_button" />
 
     <Button
         android:id="@+id/WP_Login_button"
@@ -78,6 +83,7 @@
         android:layout_marginTop="7dp"
         android:contentDescription="@string/welcome_message"
         android:src="@drawable/fruit"
+        android:visibility="gone"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

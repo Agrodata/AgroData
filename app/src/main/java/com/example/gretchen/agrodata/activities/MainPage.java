@@ -106,6 +106,8 @@ public class MainPage extends ParentActivity {
                     case R.id.MP_apiculture_button:
                         showSublist.putExtra(getString(R.string.subdivision_key),R.array.apiculture_list);
                         showSublist.putExtra(getString(R.string.list_type),getString(R.string.apiary));
+                        startActivity(showSublist);
+                        break;
 
                 }
             }
