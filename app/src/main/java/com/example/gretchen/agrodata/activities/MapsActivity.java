@@ -91,6 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     UserRepo repo = new UserRepo(MapsActivity.this);
                     user = repo.getUserById(bundle.getInt(getString(R.string.id_key)));
                     user.setLocation(Double.toString(location.getLatitude())+","+Double.toString(location.getLongitude()));
+                    repo.update(user);
                     setPinInMap(location);
                     //String locTex = location.toString();
 
