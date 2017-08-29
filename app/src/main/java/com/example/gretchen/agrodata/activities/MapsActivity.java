@@ -9,6 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.example.gretchen.agrodata.R;
+import com.example.gretchen.agrodata.data.model.User;
+import com.example.gretchen.agrodata.data.repo.UserRepo;
 import com.google.android.gms.internal.zzccb;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -32,6 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationClient;
     private Location loca;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
 
 
-    public void locationTest() {
+    public void getLastLocation() {
 
         //Need to fix this crap
 
@@ -84,21 +87,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
 
-                    loca = location;
+                    Bundle bundle = getIntent().getExtras();
+                    UserRepo repo = new UserRepo(MapsActivity.this);
+                    user = repo.getUserById(bundle.getInt(getString(R.string.id_key)));
+                    user.setLocation(Double.toString(location.getLatitude())+","+Double.toString(location.getLongitude()));
+                    setPinInMap(location);
                     //String locTex = location.toString();
 
 
                 }
-                else
-                {
-                    loca=null;
-                }
+
             }
 
 
         });
 
 
+
+
+    }
+    private void setPinInMap(Location location)
+    {
+        LatLng puertorico = new LatLng(location.getLatitude(), location.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(puertorico).title("Puerto Rico"));
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(puertorico).zoom(12.0f).build();
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+        mMap.moveCamera(cameraUpdate);
+    }
+    private void setPinInMap(Double latitud, Double longitud)
+    {
+        LatLng puertorico = new LatLng(latitud, longitud);
+        mMap.addMarker(new MarkerOptions().position(puertorico).title("Puerto Rico"));
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(puertorico).zoom(12.0f).build();
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+        mMap.moveCamera(cameraUpdate);
     }
 
 
@@ -106,22 +128,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        locationTest();
-        // Add a marker in Sydney and move the camera
-        if (loca == null) {
+        Bundle bundle = getIntent().getExtras();
 
-
-            LatLng puertorico = new LatLng(18.466333, -66.105721);
-            mMap.addMarker(new MarkerOptions().position(puertorico).title("Puerto Rico"));
-            CameraPosition cameraPosition = new CameraPosition.Builder().target(puertorico).zoom(8.0f).build();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-            mMap.moveCamera(cameraUpdate);
-        } else {
-            LatLng puertorico = new LatLng(loca.getLatitude(), loca.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(puertorico).title("Puerto Rico"));
-            CameraPosition cameraPosition = new CameraPosition.Builder().target(puertorico).zoom(8.0f).build();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-            mMap.moveCamera(cameraUpdate);
+        if(bundle.getInt(getString(R.string.location_key))==0){
+            getLastLocation();
         }
+        else
+        {
+            UserRepo repo = new UserRepo(this);
+            user = repo.getUserById(bundle.getInt(getString(R.string.id_key)));
+
+            String coords[]= user.getLocation().split(",");
+
+            setPinInMap(Double.parseDouble(coords[0]),Double.parseDouble(coords[1]));
+
+        }
+
+
+
     }
 }

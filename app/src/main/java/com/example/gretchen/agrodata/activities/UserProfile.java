@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -98,6 +99,7 @@ public class UserProfile extends ParentActivity {
         TextView email = (TextView) findViewById(R.id.UPP_profile_email_TextView) ;
         TextView phone  = (TextView) findViewById(R.id.UPP_profile_phone_TextView);
        // TextView rating = (TextView) findViewById(R.id.UPP_profile_rating_EditText);  //ADDED
+        Button locationBttn = (Button) findViewById(R.id.UPP_location_Button);
 
         //Get user info that should be displayed
         Bundle bundle = getIntent().getExtras();
@@ -164,6 +166,7 @@ public class UserProfile extends ParentActivity {
             deleteText.setVisibility(View.VISIBLE);
             orderHistoryText.setVisibility(View.VISIBLE);
             sellHistoryText.setVisibility(View.VISIBLE);
+            locationBttn.setText(getString(R.string.location_update));
         }
         //If not the current user's account then don't show editing options
         else
@@ -184,6 +187,7 @@ public class UserProfile extends ParentActivity {
             deleteText.setVisibility(View.INVISIBLE);
             orderHistoryText.setVisibility(View.INVISIBLE);
             sellHistoryText.setVisibility(View.INVISIBLE);
+            locationBttn.setText(getString(R.string.view_location));
         }
 
     }
@@ -237,6 +241,17 @@ public class UserProfile extends ParentActivity {
 
     public void goToLocation(View v){
         Intent location = new Intent (this, MapsActivity.class);
+        Button location_Bttn = (Button) findViewById(R.id.UPP_location_Button);
+        if(location_Bttn.getText().toString().equals(getString(R.string.location_update)))
+        {
+            location.putExtra(getString(R.string.location_key),0);
+        }
+        else
+        {
+            location.putExtra(getString(R.string.location_key),1);
+            location.putExtra(getString(R.string.id_key),user.getId());
+
+        }
         startActivity(location);
 
     }

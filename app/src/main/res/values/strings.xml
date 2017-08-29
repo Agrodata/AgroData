@@ -26,6 +26,10 @@
     //Used for putExtra for order history page. If it receives a 0 it is purchase history and a
     // 1 is sell history.
     <string name="order_history_bit_key">OrderHistoryBitKey</string>
+    //Key for knowing what location to show on map. A 0 means its to update location
+    //a 1 indicates it's supposed to show the users last location
+    <string name="location_key">LocationKey</string>
+
 
     //------Strings for layout components--------//
     //The string resources are organized by the activities they were designed for, but can be used
@@ -72,6 +76,8 @@
     <string name="seller">Vendedor:</string>
     <string name="delete">Eliminar</string>
     <string name="user_rating">Rating:</string>
+    <string name="location_update">Actualizar Localizacion</string>
+    <string name="view_location">Ver Localizacion</string>
     //Product profile
     <string name="view_seller_info">Ver Vendedor</string>
     //Search
