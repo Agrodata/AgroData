@@ -55,6 +55,21 @@ public class User {
     //User's sell history
     private String sellHistory;*/
 
+    public User(){}
+
+    public User(int id, String name, String email, String phone, String password, String inventory, String location, float ratingBarScore, int ratingAmount) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.inventory = inventory;
+        this.location = location;
+        this.ratingBarScore = ratingBarScore;
+        this.ratingAmount = ratingAmount;
+    }
+
+
 
     //Returns the user's id
     public int getId() {

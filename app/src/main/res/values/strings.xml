@@ -47,6 +47,7 @@
     <string name="phone">Telefono:</string>
     <string name="password">Contraseña</string>
     <string name="re_enter_password">Reingrese la contraseña</string>
+    <string name="server_error">Error del Servidor</string>
     //Warning messages for login and sign up
     <string name="all_must_be_filled_msg">Todo tiene que ser llenado.</string>
     <string name="incorrect_email_password">Email o contraseña incorrecta.</string>

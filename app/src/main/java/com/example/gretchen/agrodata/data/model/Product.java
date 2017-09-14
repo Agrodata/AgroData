@@ -98,7 +98,7 @@ public class Product {
         this.amount = amount;
     }
 
-    public int getSellerID() {
+    public int  getSellerID() {
         return sellerID;
     }
 

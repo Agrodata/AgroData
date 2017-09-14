@@ -12,20 +12,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.gretchen.agrodata.data.model.Transaction;
+import com.example.gretchen.agrodata.data.repo.TransactionRepo;
 import com.microsoft.windowsazure.mobileservices.*;
 
 import com.example.gretchen.agrodata.R;
 import com.example.gretchen.agrodata.data.model.Product;
-import com.example.gretchen.agrodata.data.model.Transaction;
-import com.example.gretchen.agrodata.data.model.User;
 import com.example.gretchen.agrodata.data.repo.StoreRepo;
-import com.example.gretchen.agrodata.data.repo.TransactionRepo;
-import com.example.gretchen.agrodata.data.repo.UserRepo;
-import com.example.gretchen.agrodata.data.model.pokeTheServer;
-import com.microsoft.windowsazure.mobileservices.http.ServiceFilterResponse;
-import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
-
-import org.w3c.dom.Text;
 
 import java.net.MalformedURLException;
 import java.text.DateFormat;
@@ -39,7 +33,7 @@ public class BuyProductPage extends AppCompatActivity {
     private String owner, amountBought, total;
 
     private MobileServiceClient mClient;
-    private pokeTheServer poke;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +44,7 @@ public class BuyProductPage extends AppCompatActivity {
         setAmountListener();
 
 
-        poke = new pokeTheServer();
+
         try {
             mClient = new MobileServiceClient("https://agrodatatest.azurewebsites.net", this);
         } catch (MalformedURLException e) {
@@ -88,11 +82,6 @@ public class BuyProductPage extends AppCompatActivity {
         product_available_amount.setText(product.getAmount());
         product_seller.setText(owner);
         product_amount_type.setText(product.getAmount().substring(product.getAmount().indexOf(" ") + 1));
-
-
-
-        //server testing
-        serverPoking();
 
 
     }
@@ -233,33 +222,6 @@ public class BuyProductPage extends AppCompatActivity {
 
     }
 
-
-    //server testing
-
-    public void serverPoking() {
-       poke = new pokeTheServer();
-        try {
-            mClient = new MobileServiceClient("https://agrodatatest.azurewebsites.net", this);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        poke.setText("Yosh");
-
-        mClient.getTable(pokeTheServer.class).insert(poke, new TableOperationCallback<pokeTheServer>() {
-            public void onCompleted(pokeTheServer entity, Exception exception, ServiceFilterResponse response) {
-                if (exception == null) {
-                    // Insert succeeded
-                } else {
-                    // Insert failed
-                }
-            }
-        });
-
-
-
-
-    }
 
 
 

@@ -59,11 +59,11 @@ public class UserProfile extends ParentActivity {
                         //Deletes every product of the user from the store
                         for (int i=0; i<inventory.length;i++)
                         {
-                            Product product = srepo.getProductByUniqueId(inventory[i]);
-                            srepo.delete(product.getID(),product.getType());
+                            //Product product = srepo.getProductByUniqueId(inventory[i]);
+                            //srepo.delete(product.getID(),product.getType());
                         }
                         //Delete user
-                        repo.delete(user.getId());
+                        //repo.delete(user.getId());
 
                         //User is no longer logged in
                         SharedPreferences.Editor loginEditor = userInfo.edit();
@@ -175,7 +175,7 @@ public class UserProfile extends ParentActivity {
             addProduct.setVisibility(View.INVISIBLE);
             editAccount.setVisibility(View.INVISIBLE);
             changePass.setVisibility(View.INVISIBLE);
-            //viewInv.setVisibility(View.INVISIBLE);
+            viewInv.setVisibility(View.INVISIBLE);
             deleteAccount.setVisibility(View.INVISIBLE);
             orderHistory.setVisibility(View.INVISIBLE);
             sellHistory.setVisibility(View.INVISIBLE);
@@ -183,7 +183,7 @@ public class UserProfile extends ParentActivity {
             addProductText.setVisibility(View.INVISIBLE);
             editAccountText.setVisibility(View.INVISIBLE);
             changePassText.setVisibility(View.INVISIBLE);
-            //viewInventoryText.setVisibility(View.INVISIBLE);
+            viewInventoryText.setVisibility(View.INVISIBLE);
             deleteText.setVisibility(View.INVISIBLE);
             orderHistoryText.setVisibility(View.INVISIBLE);
             sellHistoryText.setVisibility(View.INVISIBLE);

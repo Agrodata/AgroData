@@ -22,6 +22,7 @@ public class Welcome extends Activity {
     public void logIn(View v) {
         Intent login = new Intent(this, LogIn.class);
         startActivity(login);
+
     }
 
     //If sign up button is pressed go to sign up page.

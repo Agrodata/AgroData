@@ -33,20 +33,20 @@ public class EditUser extends ParentActivity {
         EditText userName = (EditText) findViewById(R.id.EUP_name_EditText);
         EditText userEmail = (EditText) findViewById(R.id.EUP_email_EditText);
         EditText userPhone = (EditText) findViewById(R.id.EUP_phone_EditText);
-        //EditText userRating = (EditText) findViewById(R.id.EUP_rating_EditText); //ADDED
+
 
         //Get shared preference that holds logged user info
         SharedPreferences userInfo = getSharedPreferences(getString(R.string.login_preference_key), Context.MODE_PRIVATE);
 
         UserRepo repo = new UserRepo(this);
         //Get current user
-        user = repo.getUserById(userInfo.getInt(getString(R.string.id_key),0));
+       user = repo.getUserById(userInfo.getInt(getString(R.string.id_key),0));
 
         //Set the edit texts to current info
         userName.setText(user.getName());
         userEmail.setText(user.getEmail());
         userPhone.setText(user.getPhone());
-        //userRating.setText(user.getRating());  //ADDED
+
 
 
     }
@@ -66,12 +66,12 @@ public class EditUser extends ParentActivity {
         EditText newName = (EditText) findViewById(R.id.EUP_name_EditText);
         EditText newEmail = (EditText) findViewById(R.id.EUP_email_EditText);
         EditText newPhone = (EditText) findViewById(R.id.EUP_phone_EditText);
-        //EditText newRating = (EditText) findViewById(R.id.EUP_rating_EditText); //ADDED
+
         //Set new user info
         user.setName(newName.getText().toString());
         user.setEmail(newEmail.getText().toString());
         user.setPhone(newPhone.getText().toString());
-        //user.setRating(newRating.getText().toString()); //ADDED
+
         //Update info
         repo.update(user);
 

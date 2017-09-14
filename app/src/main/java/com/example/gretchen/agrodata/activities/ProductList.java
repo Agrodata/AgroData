@@ -203,7 +203,7 @@ public class ProductList extends ParentActivity {
         else
         {
             //Get list of the given subtype
-            this.products = repo.getProductListbySubtype(this.productType,this.subtype,start);
+           this.products = repo.getProductListbySubtype(this.productType,this.subtype,start);
 
         }
     }

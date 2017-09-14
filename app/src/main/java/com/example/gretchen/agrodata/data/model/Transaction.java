@@ -27,7 +27,7 @@ public class Transaction {
     private int id;
     private String productName;
     private String sellerName;
-    private int sellerID;
+    private int  sellerID;
     private String buyerName;
     private int buyerID;
     private String datePublished;
@@ -40,8 +40,28 @@ public class Transaction {
 
 
 
-    public Transaction(String pName, String pSeller, int pSellerID, String pBuyerName, int pBuyerID, String pDatePublish, String pDateSold, String pPrice, String pAmountSold, String pTotalAmoutPaid){
+    public Transaction(String pName, String pSeller, int  pSellerID, String pBuyerName,
+                       int  pBuyerID, String pDatePublish, String pDateSold, String pPrice,
+                       String pAmountSold, String pTotalAmoutPaid){
 
+        this.productName = pName;
+        this.sellerName = pSeller;
+        this.sellerID = pSellerID;
+        this.buyerName = pBuyerName;
+        this.buyerID = pBuyerID;
+        this.datePublished = pDatePublish;
+        this.dateSold = pDateSold;
+        this.price = pPrice;
+        this.amountSold = pAmountSold;
+        this.totalAmountPaid = pTotalAmoutPaid;
+
+
+    }
+    public Transaction(int id,String pName, String pSeller, int  pSellerID, String pBuyerName,
+                       int  pBuyerID, String pDatePublish, String pDateSold, String pPrice,
+                       String pAmountSold, String pTotalAmoutPaid){
+
+        this.id=id;
         this.productName = pName;
         this.sellerName = pSeller;
         this.sellerID = pSellerID;
@@ -57,16 +77,7 @@ public class Transaction {
     }
     public Transaction()
     {
-        this.productName = "";
-        this.sellerName = "";
-        this.sellerID = 0;
-        this.buyerName = "";
-        this.buyerID = 0;
-        this.datePublished = "";
-        this.dateSold = "";
-        this.price = "";
-        this.amountSold = "";
-        this.totalAmountPaid = "";
+
     }
 
 
@@ -108,7 +119,7 @@ public class Transaction {
         return buyerID;
     }
 
-    public void setBuyerID(int buyerID) {
+    public void setBuyerID(int  buyerID) {
         this.buyerID = buyerID;
     }
 

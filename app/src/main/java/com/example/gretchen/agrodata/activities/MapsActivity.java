@@ -93,7 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     user.setLocation(Double.toString(location.getLatitude())+","+Double.toString(location.getLongitude()));
                     repo.update(user);
                     setPinInMap(location);
-                    //String locTex = location.toString();
+                    String locTex = location.toString();
 
 
                 }
